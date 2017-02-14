@@ -3,6 +3,7 @@ from apiclient import errors
 from apiclient.http import MediaFileUpload
 import httplib2
 import os
+import hashlib
 
 from apiclient import discovery
 from oauth2client import client
@@ -145,12 +146,18 @@ def main():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('drive', 'v3', http=http)
 
-    fileId = '0B3wvsjTJuTRQSlFQd0VxaGxuNHcnothere'
+    fileId = '0B3wvsjTJuTRQMHhWY2JlLW9iSnM'
     new_file = r'./test/data/repos.zip'
     # request = service.files().get_media(fileId=fileId)
     # print(request.to_json())
-    f = service.files().get(fileId=fileId, fields='description, name, mimeType, md5Checksum').execute()
+
+    #f = service.revisions().list(fileId=fileId).execute()
+    # f = service.revisions().get(fileId=fileId, revisionId='0B3wvsjTJuTRQS09JdnhvMkpBRTlSS2NoVXZiRlZETGMyTWdBPQ', fields='originalFilename, size').execute()
+    f = service.files().get(fileId=fileId, fields='name, size').execute()
     print(f)
+    # file_path = r'/Volumes/C/GisWork/drive_sgid/test_outputs/Trails_gdb.zip'
+    # local_file_hash = hashlib.md5(open(file_path, 'rb').read()).hexdigest()
+    # print(local_file_hash)
     # upFile = update_file(service, fileId, 'repos.zip', 'ohyeah2', 'application/zip', new_file)
     # print(upFile)
 

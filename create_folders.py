@@ -55,6 +55,7 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
+
 def file_exists(file_id):
     """
     Checks whether a file exists on the Drive and is not trashed.
@@ -71,6 +72,7 @@ def file_exists(file_id):
     except Exception:
         return False
 
+
 def get_file_id_name_and_directory(name, parent_id, service):
     response = service.files().list(q="name='{}' and '{}' in parents".format(name, parent_id),
                                     spaces='drive',
@@ -81,15 +83,17 @@ def get_file_id_name_and_directory(name, parent_id, service):
     else:
         return None
 
+
 def create_drive_folder(service, parent_id, name):
     file_metadata = {
-      'name' : name,
-      'mimeType' : 'application/vnd.google-apps.folder',
-      'parents' : [ parent_id ]
+      'name': name,
+      'mimeType': 'application/vnd.google-apps.folder',
+      'parents': [parent_id]
     }
     folder = service.files().create(body=file_metadata,
                                     fields='id').execute()
     return folder.get('id')
+
 
 def create_drive_file(service, parent_id, name, media_body):
 
@@ -128,14 +132,15 @@ def copy_directory_structure_to_drive(root_drive_folder_id, top_level_directory,
     path_id_list = []
     for ftp_path in google_folder_ids:
         path_id_list.append({
-            'path' : ftp_path,
-            'fileId' : google_folder_ids[ftp_path],
-            'parentId' : google_folder_ids.get(os.path.dirname(ftp_path), '')
+            'path': ftp_path,
+            'fileId': google_folder_ids[ftp_path],
+            'parentId': google_folder_ids.get(os.path.dirname(ftp_path), '')
         })
     with open(folder_path_id_json, 'w') as folder_ids:
         json.dump(path_id_list, folder_ids)
     print('created folder id json: {}'.format(folder_path_id_json))
     print('Total folders created: {}'.format(total_folders))
+
 
 def load_path_ids(folder_path_id_json):
     path_id_list = None
@@ -146,11 +151,12 @@ def load_path_ids(folder_path_id_json):
         folder_path_ids[path_id['path']] = path_id['fileId']
     return folder_path_ids
 
+
 def load_all_zip_files(top_level_directory, folder_path_id_json, service, file_path_json):
     folder_path_ids = load_path_ids(folder_path_id_json)
     top_dir = top_level_directory
     google_file_ids = {}
-    total_files= 0
+    total_files = 0
     for root, dirs, files in os.walk(top_dir, topdown=True):
         for name in files:
             if name.endswith('.zip'):
@@ -184,20 +190,22 @@ def load_all_zip_files(top_level_directory, folder_path_id_json, service, file_p
     path_id_list = []
     for ftp_path in google_file_ids:
         path_id_list.append({
-            'path' : ftp_path,
-            'fileId' : google_file_ids[ftp_path],
-            'parentId' : folder_path_ids.get(os.path.dirname(ftp_path), '')
+            'path': ftp_path,
+            'fileId': google_file_ids[ftp_path],
+            'parentId': folder_path_ids.get(os.path.dirname(ftp_path), '')
         })
     with open(file_path_json, 'w') as file_ids:
         json.dump(path_id_list, file_ids)
     print('created file id json: {}'.format(file_path_json))
     print('Total files created: {}'.format(total_files))
 
+
 def load_all_zip_files_test(service):
     top_level_directory = './test/dir_structure'
     folder_path_id_json = './test/data/folderids_test.json'
     file_path_id_json = './test/data/fileids_test.json'
     load_all_zip_files(top_level_directory, folder_path_id_json, service, file_path_id_json)
+
 
 def print_excluded_zip_files(top_level_directory, file_path_id_json):
     file_path_ids = load_path_ids(file_path_id_json)
@@ -210,6 +218,7 @@ def print_excluded_zip_files(top_level_directory, file_path_id_json):
                     print()
                     print(name)
                     print(dir_path)
+
 
 def create_zip_downloadlink_csv(file_path_id_json, output_directory):
     link_csv = os.path.join(output_directory, 'ftp_file_downloadlinks_{}.csv'.format(unique_run_num))
