@@ -183,7 +183,7 @@ def zip_folder(folder_path, zip_name):
 
 def get_hash_lookup(hash_path, hash_field):
     hash_lookup = {}
-    with arcpy.da.SearchCursor(hash_path, [hash_field, 'OID@']) as cursor:
+    with arcpy.da.SearchCursor(hash_path, [hash_field, 'src_id']) as cursor:
         for row in cursor:
             hash_value, hash_oid = row
             if hash_value not in hash_lookup:
@@ -194,8 +194,7 @@ def get_hash_lookup(hash_path, hash_field):
     return hash_lookup
 
 
-def detect_changes(data_path, fields, past_hashes, output_fc, output_hashes, shape_token=None):
-    # past_hashes = get_hash_lookup(hashes_path, hash_field)
+def create_hash_table(data_path, fields, output_hashes, shape_token=None):
     hash_store = output_hashes
     cursor_fields = list(fields)
     attribute_subindex = -1
@@ -207,7 +206,6 @@ def detect_changes(data_path, fields, past_hashes, output_fc, output_hashes, sha
 
     hashes = {}
     with arcpy.da.SearchCursor(data_path, cursor_fields) as cursor, \
-            arcpy.da.InsertCursor(output_fc, fields[:-1]) as ins_cursor, \
             open(hash_store, 'wb') as hash_csv:
             hash_writer = csv.writer(hash_csv)
             hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
@@ -225,13 +223,52 @@ def detect_changes(data_path, fields, past_hashes, output_fc, output_hashes, sha
                 while digest in hashes:
                     hasher.update(digest)
                     digest = hasher.hexdigest()
+
                 oid = row[attribute_subindex]
                 hash_writer.writerow((oid, digest, str(row[-2])))
+
+
+def detect_changes(data_path, fields, past_hashes, output_fc, output_hashes, shape_token=None):
+    # past_hashes = get_hash_lookup(hashes_path, hash_field)
+    hash_store = output_hashes
+    cursor_fields = list(fields)
+    attribute_subindex = -1
+    cursor_fields.append('OID@')
+    if shape_token:
+        cursor_fields.append('SHAPE@XY')
+        cursor_fields.append(shape_token)
+        attribute_subindex = -3
+
+    hashes = {}
+    with arcpy.da.SearchCursor(data_path, cursor_fields) as cursor, \
+            arcpy.da.InsertCursor(output_fc, fields) as ins_cursor, \
+            open(hash_store, 'wb') as hash_csv:
+            hash_writer = csv.writer(hash_csv)
+            hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
+            for row in cursor:
+                hasher = xxh32()  # Create/reset hash object
+                hasher.update(str(row[:attribute_subindex - 1]))  # Hash only attributes first
+                if shape_token:
+                    shape_string = row[-1]
+                    if shape_string:  # None object won't hash
+                        hasher.update(shape_string)
+                    else:
+                        hasher.update('No shape')  # Add something to the hash to represent None geometry object
+                # Generate a unique hash if current row has duplicates
+                digest = hasher.hexdigest()
+                while digest in hashes:
+                    hasher.update(digest)
+                    digest = hasher.hexdigest()
+
+                oid = row[attribute_subindex]
+                hash_writer.writerow((oid, digest, str(row[-2])))
+                ins_cursor.insertRow(row[:attribute_subindex])
+
                 if digest not in past_hashes:
                     print 'OID {} is an update'.format(oid)
 
 
-def create_formatted_outputs(output_directory, input_feature, output_name, past_hashes_path, hash_field):
+def create_formatted_outputs(output_directory, input_feature, output_name):
     input_desc = arcpy.Describe(input_feature)
     spatial_ref = input_desc.spatialReference
     geo_type = input_desc.shapeType
@@ -260,28 +297,68 @@ def create_formatted_outputs(output_directory, input_feature, output_name, past_
     fields = _filter_fields(fields)
     fields.append('SHAPE@')
     fields.append('OID@')
+    sql_clause = (None, 'ORDER BY {}'.format('OBJECTID'))
+    unique_salty_id = 0
+    hash_ins_time = clock()
+    with arcpy.da.SearchCursor(input_feature, fields, sql_clause=sql_clause) as cursor, \
+            arcpy.da.InsertCursor(output_fc, fields[:-1]) as ins_cursor, \
+            open(hash_store, 'wb') as hash_csv:
+            hash_writer = csv.writer(hash_csv)
+            hash_writer.writerow(('src_id', 'att_hash', 'geo_hash'))
+            for row in cursor:
+                unique_salty_id += 1
+                src_id = row[-1]
+                shape = row[-2]
+                geom_hash_digest = None
+                if shape:
+                    shape_wkt = shape.WKT
+                    geom_hash_digest = _create_hash(shape_wkt, unique_salty_id)
+                #: create attribute hash
+                attribute_hash_digest = _create_hash(str(row[:-2]), unique_salty_id)
+                hash_writer.writerow((src_id, geom_hash_digest, attribute_hash_digest))
+                ins_cursor.insertRow(row[:-1])
+    print 'hash ins time: {}'.format(clock() - hash_ins_time)
+    # Create shape file
+    arcpy.CopyFeatures_management(output_fc, output_shape)
+
+    return (output_gdb, shape_directory, hash_directory)
+
+
+def create_changes_and_outputs(output_directory, input_feature, output_name, past_hashes_path, hash_field):
+    input_desc = arcpy.Describe(input_feature)
+    spatial_ref = input_desc.spatialReference
+    geo_type = input_desc.shapeType
+    # output_name = input_feature.split('.')[-1]
+    # Create output GDB and feature class
+    output_gdb = arcpy.CreateFileGDB_management(output_directory, output_name)[0]
+    output_fc = arcpy.CreateFeatureclass_management(output_gdb,
+                                                    output_name,
+                                                    geo_type,
+                                                    input_feature,
+                                                    spatial_reference=spatial_ref)
+    # Create directory to contain shape file
+    shape_directory = os.path.join(output_directory, output_name)
+    if not os.path.exists(shape_directory):
+        os.makedirs(shape_directory)
+    output_shape = os.path.join(shape_directory, output_name)
+    # Create directory for feature hashes
+    hash_directory = os.path.join(output_directory, output_name + '_hash')
+    if not os.path.exists(hash_directory):
+        os.makedirs(hash_directory)
+    hash_store = os.path.join(hash_directory, '{}_hashes.csv'.format(output_name))
+
+    # Cursor through input_feature and do some stuff while creating output
+    fields = set([fld.name for fld in arcpy.ListFields(input_feature)]) & \
+        set([fld.name for fld in arcpy.ListFields(output_fc)])
+    fields = _filter_fields(fields)
+    fields.append('SHAPE@')
+    # fields.append('OID@')
     # sql_clause = (None, 'ORDER BY {}'.format('OBJECTID'))
     # unique_salty_id = 0
     hash_ins_time = clock()
     past_hashes = get_hash_lookup(past_hashes_path, hash_field)
+
     detect_changes(input_feature, fields, past_hashes, output_fc, hash_store, 'SHAPE@WKT')
-    # with arcpy.da.SearchCursor(input_feature, fields, sql_clause=sql_clause) as cursor, \
-    #         arcpy.da.InsertCursor(output_fc, fields[:-1]) as ins_cursor, \
-    #         open(hash_store, 'wb') as hash_csv:
-    #         hash_writer = csv.writer(hash_csv)
-    #         hash_writer.writerow(('src_id', 'att_hash', 'geo_hash'))
-    #         for row in cursor:
-    #             unique_salty_id += 1
-    #             src_id = row[-1]
-    #             shape = row[-2]
-    #             geom_hash_digest = None
-    #             if shape:
-    #                 shape_wkt = shape.WKT
-    #                 geom_hash_digest = _create_hash(shape_wkt, unique_salty_id)
-    #             #: create attribute hash
-    #             attribute_hash_digest = _create_hash(str(row[:-2]), unique_salty_id)
-    #             hash_writer.writerow((src_id, geom_hash_digest, attribute_hash_digest))
-    #             ins_cursor.insertRow(row[:-1])
     print 'hash ins time: {}'.format(clock() - hash_ins_time)
     # Create shape file
     arcpy.CopyFeatures_management(output_fc, output_shape)
@@ -298,13 +375,23 @@ if __name__ == '__main__':
         shutil.rmtree(output_directory)
         print 'directory removed'
         os.makedirs(output_directory)
+
     input_feature = r'Database Connections\Connection to sgid.agrc.utah.gov.sde\SGID10.Recreation.Trails'
     output_name = input_feature.split('.')[-1]
-    fc_directory, shape_directory, hash_directory = create_formatted_outputs(output_directory,
+
+    fields = _filter_fields([fld.name for fld in arcpy.ListFields(input_feature)])
+
+    hash_directory = r'C:\GisWork\drive_sgid\past_hashes'
+    past_hash_store = os.path.join(hash_directory, 'Trails_pasthashes.csv')
+    hash_field = 'hash'
+
+    #create_hash_table(input_feature, fields, past_hash_store, 'SHAPE@WKT')
+    fc_directory, shape_directory, hash_directory = create_changes_and_outputs(
+                                                                             output_directory,
                                                                              input_feature,
                                                                              output_name,
-                                                                             past_hashes,
-                                                                             )
+                                                                             past_hash_store,
+                                                                             hash_field)
 
     # # Zip up outputs
     # zip_folder(fc_directory, os.path.join(output_directory, '{}_gdb.zip'.format(output_name)))

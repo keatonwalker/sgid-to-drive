@@ -99,14 +99,14 @@ def create_drive_file(service, parent_id, name, media_body):
 
     file_metadata = {'name': name,
                      'mimeType': 'application/zip',
-                     'parents': [ parent_id ]}
+                     'parents': [parent_id]}
 
     request = service.files().create(body=file_metadata,
-                                        media_body=media_body,
-                                        fields="id")
+                                     media_body=media_body,
+                                     fields="id")
     response = None
     while response is None:
-      status, response = request.next_chunk()
+        status, response = request.next_chunk()
     #   if status :
     #     print('{} percent {}'.format(name, int(status.progress() * 100)))
 
