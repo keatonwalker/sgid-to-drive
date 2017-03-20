@@ -1,0 +1,7 @@
+{
+    "name": "Trails",
+    "FeatureClasses": [
+        "SGID10.RECREATION.Trails",
+        "SGID10.RECREATION.Trailheads"
+    ]
+}
