@@ -3,5 +3,7 @@
     "FeatureClasses": [
         "SGID10.RECREATION.Trails",
         "SGID10.RECREATION.Trailheads"
-    ]
+    ],
+    "drive_id": "",
+    "parent_ids": []
 }
