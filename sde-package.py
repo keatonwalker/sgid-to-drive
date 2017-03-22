@@ -5,7 +5,7 @@ import zipfile
 import csv
 from time import clock
 from hashlib import md5
-from xxhash import xxh32
+# from xxhash import xxh32
 import json
 import io
 import ntpath
@@ -127,7 +127,7 @@ def _is_naughty_field(fld):
 
 
 def _create_hash(string, salt):
-    hasher = xxhash.xxh32(string)
+    hasher = md5(string)
     hasher.update(str(salt))
 
     return hasher.hexdigest()
@@ -221,7 +221,7 @@ def create_hash_table(data_path, fields, output_hashes, shape_token=None):
             hash_writer = csv.writer(hash_csv)
             hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
             for row in cursor:
-                hasher = xxh32()  # Create/reset hash object
+                hasher = md5()  # Create/reset hash object
                 hasher.update(str(row[:attribute_subindex]))  # Hash only attributes first
                 if shape_token:
                     shape_string = row[-1]
@@ -258,7 +258,7 @@ def detect_changes(data_path, fields, past_hashes, output_fc, output_hashes, sha
             hash_writer = csv.writer(hash_csv)
             hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
             for row in cursor:
-                hasher = xxh32()  # Create/reset hash object
+                hasher = md5()  # Create/reset hash object
                 hasher.update(str(row[:attribute_subindex - 1]))  # Hash only attributes first
                 if shape_token:
                     shape_string = row[-1]
