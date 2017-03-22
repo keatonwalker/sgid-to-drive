@@ -513,6 +513,8 @@ if __name__ == '__main__':
         print 'Creating drive folder {}'.format(feature['category'])
         temp_folder_id = create_drive_folder(feature['category'], [UTM_DRIVE_FOLDER], drive_service)
         feature['parent_ids'].append(temp_folder_id)
+    elif category_id not in feature['parent_ids']:
+        feature['parent_ids'].append(category_id)
 
     output_name = feature['name']
     fields = _filter_fields([fld.name for fld in arcpy.ListFields(input_feature_path)])
