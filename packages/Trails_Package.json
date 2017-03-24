@@ -1,5 +1,6 @@
 {
     "name": "Trails",
+    "category": "RECREATION",
     "FeatureClasses": [
         "SGID10.RECREATION.Trails",
         "SGID10.RECREATION.Trailheads"

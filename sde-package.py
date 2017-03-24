@@ -19,8 +19,8 @@ from oauth2client import tools
 from oauth2client.file import Storage
 
 
-HASH_DRIVE_FOLDER = '0B3wvsjTJuTRQMmJPSVkwanFqeHc'
-UTM_DRIVE_FOLDER = '0B3wvsjTJuTRQX1VldnFGS0pqZ2s'
+HASH_DRIVE_FOLDER = '0B3wvsjTJuTRQZUJXWEhEX3p3d1k'
+UTM_DRIVE_FOLDER = '0B3wvsjTJuTRQaGluYVphcUNEREE'
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/drive-python-quickstart.json
 SCOPES = 'https://www.googleapis.com/auth/drive'
@@ -475,25 +475,12 @@ def load_feature_json(json_path):
     return feature
 
 
-if __name__ == '__main__':
-    drive_service = setup_drive_service()
-    # -------------Set these to test--------------------
-    workspace = r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
-    feature_name = 'SGID10.RECREATION.Trails'
+def create_feature_spec_name(feature_class):
+    spec_name = '_'.join(feature_class.split('.')[-2:]) + '.json'
+    return spec_name
 
-    output_directory = r'package_temp'
-    empty_spec = os.path.join('features', 'template.json')
 
-    def renew_temp_directory(directory):
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        else:
-            shutil.rmtree(directory)
-            print 'Temp directory removed'
-            os.makedirs(directory)
-
-    renew_temp_directory(output_directory)
-
+def update_feature(workspace, feature_name, output_directory, empty_spec, drive_service):
     input_feature_path = os.path.join(workspace, feature_name)
     spec_name = '_'.join(feature_name.split('.')[-2:]) + '.json'
     feature_spec = os.path.join('features', spec_name)
@@ -517,7 +504,7 @@ if __name__ == '__main__':
         feature['parent_ids'].append(category_id)
 
     output_name = feature['name']
-    fields = _filter_fields([fld.name for fld in arcpy.ListFields(input_feature_path)])
+    # fields = _filter_fields([fld.name for fld in arcpy.ListFields(input_feature_path)])
 
     # Get the last hash from drive to check changes
     past_hash_directory = os.path.join(output_directory, 'pasthashes')
@@ -569,5 +556,79 @@ if __name__ == '__main__':
     with open(feature_spec, 'w') as f_out:
         f_out.write(json.dumps(feature, sort_keys=True, indent=4))
     # print json.dumps(feature, sort_keys=True, indent=4)
+
+
+def update_package(workspace, package_name, output_directory, drive_service):
+    spec_name = package_name
+    if package_name.index('.json') == -1:
+        spec_name += '.json'
+
+    package_spec = os.path.join('packages', spec_name)
+
+    package = None
+    if not os.path.exists(package_spec):
+        raise Exception('Package spec does not exist at {}'.format(package_spec))
+    else:
+        package = load_feature_json(package_spec)
+
+    package_shape = os.path.join(output_directory, package['name'])
+    os.makedirs(package_shape)
+    package_gdb = arcpy.CreateFileGDB_management(output_directory, package['name'])[0]
+
+    for feature_class in package['FeatureClasses']:
+        feature_output_name = None
+        spec_name = create_feature_spec_name(feature_class)
+        feature_spec = os.path.join('features', spec_name)
+        if os.path.exists(feature_spec):
+            spec = load_feature_json(feature_spec)
+            feature_output_name = spec['name']
+        else:
+            feature_output_name = feature_class.split('.')[-1]
+
+        out_fc_path = os.path.join(package_gdb, feature_output_name)
+
+        shape_directory_path = os.path.join(output_directory, '..', feature_output_name)
+        fc_path = os.path.join(shape_directory_path + '.gdb', feature_output_name)
+        if os.path.exists(shape_directory_path) and arcpy.Exists(fc_path):
+            print feature_class, 'local'
+            arcpy.CopyFeatures_management(fc_path,
+                                          out_fc_path)
+
+            shutil.copytree(shape_directory_path, os.path.join(package_shape, feature_output_name))
+
+        else:
+            print feature_class, 'not local'
+            arcpy.CopyFeatures_management(os.path.join(workspace, feature_class),
+                                          out_fc_path)
+
+            s_dir = os.path.join(package_shape, feature_output_name)
+            os.makedirs(s_dir)
+            arcpy.CopyFeatures_management(os.path.join(workspace, feature_class),
+                                          os.path.join(s_dir, feature_output_name))
+
+
+if __name__ == '__main__':
+    #drive_service = setup_drive_service()
+    # -------------Set these to test--------------------
+    workspace = r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
+    feature_name = 'SGID10.RECREATION.Trails'
+
+    output_directory = r'package_temp'
+    temp_package_directory = os.path.join(output_directory, 'output_packages')
+    empty_spec = os.path.join('features', 'template.json')
+
+    def renew_temp_directory(directory):
+        if not os.path.exists(directory):
+            os.makedirs(temp_package_directory)
+        else:
+            shutil.rmtree(directory)
+            print 'Temp directory removed'
+            os.makedirs(directory)
+
+    #renew_temp_directory(temp_package_directory)
+
+    #update_feature(workspace, feature_name, output_directory, empty_spec, drive_service)
+
+    update_package(workspace, 'Trails_Package.json', temp_package_directory, '')
 
     print 'Complete!'
