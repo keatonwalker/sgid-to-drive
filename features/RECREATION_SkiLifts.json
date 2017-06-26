@@ -1,0 +1,15 @@
+{
+    "category": "RECREATION", 
+    "gdb_id": "0B3wvsjTJuTRQcTBlR3BUQ1lrT0E", 
+    "hash_id": "0B3wvsjTJuTRQRWhDTGc0dVJoczQ", 
+    "name": "SkiLifts", 
+    "packages": [
+        "SkiAreas"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQMXV5NG1lQTduQlE"
+    ], 
+    "sgid_name": "SGID10.RECREATION.SkiLifts", 
+    "shape_id": "0B3wvsjTJuTRQaXc3c2k5VEhHYW8", 
+    "upload_date": "2017_03_24"
+}

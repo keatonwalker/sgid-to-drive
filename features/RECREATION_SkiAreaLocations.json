@@ -1,0 +1,15 @@
+{
+    "category": "RECREATION", 
+    "gdb_id": "0B3wvsjTJuTRQYkFTdkxUSVNDTVk", 
+    "hash_id": "0B3wvsjTJuTRQWXIyaDJ6alhPVjA", 
+    "name": "SkiAreaLocations", 
+    "packages": [
+        "SkiAreas"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQMXV5NG1lQTduQlE"
+    ], 
+    "sgid_name": "SGID10.RECREATION.SkiAreaLocations", 
+    "shape_id": "0B3wvsjTJuTRQMXRwMEJmcDFfM00", 
+    "upload_date": "2017_03_24"
+}

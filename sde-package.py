@@ -3,7 +3,7 @@ import shutil
 import os
 import zipfile
 import csv
-from time import clock
+from time import clock, strftime
 from hashlib import md5
 # from xxhash import xxh32
 import json
@@ -181,10 +181,8 @@ def zip_folder(folder_path, zip_name):
         original_size += info.file_size
         compress_size += info.compress_size
     zf.close()
-    print '{} Original / Compressed size: {} / {} MB'.format(ntpath.basename(zip_name),
-                                                             original_size / 1000000.0,
-                                                             compress_size / 1000000.0)
-    # print '{} Compresses size: {} KB'.format(zip_name, compress_size / 1000)
+    print '{} Compressed size: {} MB'.format(ntpath.basename(zip_name),
+                                             compress_size / 1000000.0)
 
 
 def unzip(zip_path, output_path):
@@ -468,6 +466,26 @@ def create_drive_folder(name, parent_ids, service):
     return response.get('id')
 
 
+def load_zip_to_drive(spec, id_key, new_zip, parent_folder_ids, service):
+    if spec[id_key]:
+        update_file(spec[id_key], new_zip, service)
+    else:
+        temp_id = create_drive_zip(ntpath.basename(new_zip),
+                                   parent_folder_ids,
+                                   new_zip,
+                                   service)
+        spec[id_key] = temp_id
+
+
+def get_category_folder_id(category, parent_id, service):
+    category_id = get_file_id_by_name_and_directory(category, parent_id, service)
+    if not category_id:
+        print 'Creating drive folder: {}'.format(category)
+        category_id = create_drive_folder(category, [parent_id], service)
+
+    return category_id
+
+
 def load_feature_json(json_path):
     with open(json_path, 'r') as json_file:
         feature = json.load(json_file)
@@ -475,12 +493,25 @@ def load_feature_json(json_path):
     return feature
 
 
+def save_spec_json(json_path, spec):
+    with open(json_path, 'w') as f_out:
+        spec['upload_date'] = strftime("%Y_%m_%d")
+        f_out.write(json.dumps(spec, sort_keys=True, indent=4))
+
+
+def valitdate_spec(spec):
+    if "" in spec['parent_ids']:
+        raise Exception('Invalid spec: {}'.format(spec))
+
+
 def create_feature_spec_name(feature_class):
     spec_name = '_'.join(feature_class.split('.')[-2:]) + '.json'
     return spec_name
 
 
-def update_feature(workspace, feature_name, output_directory, empty_spec, drive_service):
+def update_feature(workspace, feature_name, output_directory, drive_service):
+    print '\nStarting feature:', feature_name
+    empty_spec = os.path.join('features', 'template.json')
     input_feature_path = os.path.join(workspace, feature_name)
     spec_name = '_'.join(feature_name.split('.')[-2:]) + '.json'
     feature_spec = os.path.join('features', spec_name)
@@ -495,16 +526,11 @@ def update_feature(workspace, feature_name, output_directory, empty_spec, drive_
         feature = load_feature_json(feature_spec)
 
     # Check for category folder
-    category_id = get_file_id_by_name_and_directory(feature['category'], UTM_DRIVE_FOLDER, drive_service)
-    if not category_id:
-        print 'Creating drive folder {}'.format(feature['category'])
-        temp_folder_id = create_drive_folder(feature['category'], [UTM_DRIVE_FOLDER], drive_service)
-        feature['parent_ids'].append(temp_folder_id)
-    elif category_id not in feature['parent_ids']:
+    category_id = get_category_folder_id(feature['category'], UTM_DRIVE_FOLDER, drive_service)
+    if category_id not in feature['parent_ids']:
         feature['parent_ids'].append(category_id)
 
     output_name = feature['name']
-    # fields = _filter_fields([fld.name for fld in arcpy.ListFields(input_feature_path)])
 
     # Get the last hash from drive to check changes
     past_hash_directory = os.path.join(output_directory, 'pasthashes')
@@ -528,15 +554,6 @@ def update_feature(workspace, feature_name, output_directory, empty_spec, drive_
                                                                              past_hashes,
                                                                              hash_field)
 
-    def load_zip_to_drive(id_key, new_zip, parent_folder_ids):
-        if feature[id_key]:
-            update_file(feature[id_key], new_zip, drive_service)
-        else:
-            temp_id = create_drive_zip(ntpath.basename(new_zip),
-                                       parent_folder_ids,
-                                       new_zip,
-                                       drive_service)
-            feature[id_key] = temp_id
     # Zip up outputs
     new_gdb_zip = os.path.join(output_directory, '{}_gdb.zip'.format(output_name))
     new_shape_zip = os.path.join(output_directory, '{}_shp.zip'.format(output_name))
@@ -546,21 +563,20 @@ def update_feature(workspace, feature_name, output_directory, empty_spec, drive_
     zip_folder(shape_directory, new_shape_zip)
     zip_folder(hash_directory, new_hash_zip)
     # Upload to drive
-    load_zip_to_drive('gdb_id', new_gdb_zip, feature['parent_ids'])
+    load_zip_to_drive(feature, 'gdb_id', new_gdb_zip, feature['parent_ids'], drive_service)
     print 'GDB loaded'
-    load_zip_to_drive('shape_id', new_shape_zip, feature['parent_ids'])
+    load_zip_to_drive(feature, 'shape_id', new_shape_zip, feature['parent_ids'], drive_service)
     print 'Shape loaded'
-    load_zip_to_drive('hash_id', new_hash_zip, [HASH_DRIVE_FOLDER])
+    load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER], drive_service)
     print 'Hash loaded'
 
-    with open(feature_spec, 'w') as f_out:
-        f_out.write(json.dumps(feature, sort_keys=True, indent=4))
-    # print json.dumps(feature, sort_keys=True, indent=4)
+    save_spec_json(feature_spec, feature)
 
 
 def update_package(workspace, package_name, output_directory, drive_service):
+    print '\nStarting package:', package_name
     spec_name = package_name
-    if package_name.index('.json') == -1:
+    if package_name.find('.json') == -1:
         spec_name += '.json'
 
     package_spec = os.path.join('packages', spec_name)
@@ -570,21 +586,30 @@ def update_package(workspace, package_name, output_directory, drive_service):
         raise Exception('Package spec does not exist at {}'.format(package_spec))
     else:
         package = load_feature_json(package_spec)
+    valitdate_spec(package)
+    # Check for category folder
+    category_id = get_category_folder_id(package['category'], UTM_DRIVE_FOLDER, drive_service)
+    category_packages_id = get_category_folder_id('packages', category_id, drive_service)
+    drive_folder_id = get_category_folder_id(package['name'], category_packages_id, drive_service)
+    if drive_folder_id not in package['parent_ids']:
+        package['parent_ids'].append(drive_folder_id)
 
+    package_gdb = arcpy.CreateFileGDB_management(output_directory, package['name'])[0]
     package_shape = os.path.join(output_directory, package['name'])
     os.makedirs(package_shape)
-    package_gdb = arcpy.CreateFileGDB_management(output_directory, package['name'])[0]
 
     for feature_class in package['FeatureClasses']:
-        feature_output_name = None
         spec_name = create_feature_spec_name(feature_class)
         feature_spec = os.path.join('features', spec_name)
-        if os.path.exists(feature_spec):
-            spec = load_feature_json(feature_spec)
-            feature_output_name = spec['name']
-        else:
-            feature_output_name = feature_class.split('.')[-1]
+        if not os.path.exists(feature_spec):
+            update_feature(workspace, feature_class, os.path.join(output_directory, '..'), drive_service)
 
+        spec = load_feature_json(feature_spec)
+        if package_name not in spec['packages']:
+            spec['packages'].append(package_name)
+            save_spec_json(feature_spec, spec)
+
+        feature_output_name = spec['name']
         out_fc_path = os.path.join(package_gdb, feature_output_name)
 
         shape_directory_path = os.path.join(output_directory, '..', feature_output_name)
@@ -597,7 +622,7 @@ def update_package(workspace, package_name, output_directory, drive_service):
             shutil.copytree(shape_directory_path, os.path.join(package_shape, feature_output_name))
 
         else:
-            print feature_class, 'not local'
+            print feature_class, 'workspace'
             arcpy.CopyFeatures_management(os.path.join(workspace, feature_class),
                                           out_fc_path)
 
@@ -606,29 +631,42 @@ def update_package(workspace, package_name, output_directory, drive_service):
             arcpy.CopyFeatures_management(os.path.join(workspace, feature_class),
                                           os.path.join(s_dir, feature_output_name))
 
+    # Zip up outputs
+    print
+    new_gdb_zip = os.path.join(output_directory, '{}_gdb.zip'.format(package['name']))
+    new_shape_zip = os.path.join(output_directory, '{}_shp.zip'.format(package['name']))
+
+    zip_folder(package_gdb, new_gdb_zip)
+    zip_folder(package_shape, new_shape_zip)
+    # Upload to drive
+    load_zip_to_drive(package, 'gdb_id', new_gdb_zip, package['parent_ids'], drive_service)
+    print 'GDB loaded'
+    load_zip_to_drive(package, 'shape_id', new_shape_zip, package['parent_ids'], drive_service)
+    print 'Shape loaded'
+
+    save_spec_json(package_spec, package)
+
 
 if __name__ == '__main__':
-    #drive_service = setup_drive_service()
+    drive_service = setup_drive_service()
     # -------------Set these to test--------------------
     workspace = r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
-    feature_name = 'SGID10.RECREATION.Trails'
-
+    # feature_name = 'SGID10.RECREATION.Trailheads'
     output_directory = r'package_temp'
     temp_package_directory = os.path.join(output_directory, 'output_packages')
-    empty_spec = os.path.join('features', 'template.json')
 
-    def renew_temp_directory(directory):
+    def renew_temp_directory(directory, package_dir):
         if not os.path.exists(directory):
             os.makedirs(temp_package_directory)
         else:
             shutil.rmtree(directory)
             print 'Temp directory removed'
-            os.makedirs(directory)
+            os.makedirs(package_dir)
+    renew_temp_directory(output_directory, temp_package_directory)
 
-    #renew_temp_directory(temp_package_directory)
+    start_time = clock()
 
-    #update_feature(workspace, feature_name, output_directory, empty_spec, drive_service)
-
-    update_package(workspace, 'Trails_Package.json', temp_package_directory, '')
-
-    print 'Complete!'
+    update_feature(workspace, 'SGID10.RECREATION.SkiTrails_XC', output_directory, drive_service)
+    update_package(workspace, 'SkiAreas', temp_package_directory, drive_service)
+    # update_package(workspace, 'Trails.json', temp_package_directory, drive_service)
+    print '\nComplete!', clock() - start_time

@@ -1,0 +1,16 @@
+{
+    "FeatureClasses": [
+        "SGID10.RECREATION.SkiLifts", 
+        "SGID10.RECREATION.SkiAreaBoundaries", 
+        "SGID10.RECREATION.SkiAreaLocations", 
+        "SGID10.RECREATION.SkiTrails_XC"
+    ], 
+    "category": "RECREATION", 
+    "gdb_id": "0B3wvsjTJuTRQaWhkX2dCVlBCalE", 
+    "name": "SkiAreas", 
+    "parent_ids": [
+        "0B3wvsjTJuTRQbW11UWpmLWloMEU"
+    ], 
+    "shape_id": "0B3wvsjTJuTRQTGQ5WHVJeXNnVjQ", 
+    "upload_date": "2017_06_26"
+}

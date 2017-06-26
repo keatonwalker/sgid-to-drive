@@ -1,0 +1,15 @@
+{
+    "category": "RECREATION", 
+    "gdb_id": "0B3wvsjTJuTRQdEJmTjkxamUyV2s", 
+    "hash_id": "0B3wvsjTJuTRQSEdLQ21QWTQ3T1E", 
+    "name": "SkiAreaBoundaries", 
+    "packages": [
+        "SkiAreas"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQMXV5NG1lQTduQlE"
+    ], 
+    "sgid_name": "SGID10.RECREATION.SkiAreaBoundaries", 
+    "shape_id": "0B3wvsjTJuTRQNndzMWpGQmUySVE", 
+    "upload_date": "2017_03_24"
+}

@@ -1,0 +1,14 @@
+{
+    "FeatureClasses": [
+        "SGID10.RECREATION.Trails", 
+        "SGID10.RECREATION.Trailheads"
+    ], 
+    "category": "RECREATION", 
+    "gdb_id": "0B3wvsjTJuTRQZVltc0g5b0E4c3c", 
+    "name": "Trails", 
+    "parent_ids": [
+        "0B3wvsjTJuTRQS1dRN056QUwyb28", 
+        "0B3wvsjTJuTRQS1dRN056QUwyb28"
+    ], 
+    "shape_id": "0B3wvsjTJuTRQQmFVemRwalBQSlk"
+}
