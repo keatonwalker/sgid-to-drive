@@ -1,0 +1,13 @@
+{
+    "category": "UTILITIES", 
+    "feature_classes": [
+        "SGID10.UTILITIES.ElectricalService", 
+        "SGID10.UTILITIES.NaturalGasService_Approx", 
+        "SGID10.UTILITIES.RetailCulinaryWaterServiceAreas"
+    ], 
+    "gdb_id": "", 
+    "name": "WaterGasElectricUtilities", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

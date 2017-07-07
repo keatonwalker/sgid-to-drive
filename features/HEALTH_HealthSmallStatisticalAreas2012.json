@@ -1,0 +1,13 @@
+{
+    "category": "HEALTH", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "HealthSmallStatisticalAreas2012", 
+    "packages": [
+        "SmallStatisticalAreas"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.HEALTH.HealthSmallStatisticalAreas2012", 
+    "shape_id": "", 
+    "upload_date": ""
+}

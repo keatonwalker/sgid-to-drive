@@ -1,0 +1,13 @@
+{
+    "category": "UTILITIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "BroadbandWireless_historic", 
+    "packages": [
+        "BroadbandInternet"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.UTILITIES.BroadbandWireless_historic", 
+    "shape_id": "", 
+    "upload_date": ""
+}

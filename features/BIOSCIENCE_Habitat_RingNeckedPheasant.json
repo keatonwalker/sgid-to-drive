@@ -1,0 +1,15 @@
+{
+    "category": "BIOSCIENCE", 
+    "gdb_id": "0B3wvsjTJuTRQb3BDMktDd193V28", 
+    "hash_id": "0B3wvsjTJuTRQNDg2RVppTS1jaWc", 
+    "name": "Habitat_RingNeckedPheasant", 
+    "packages": [
+        "DWRWildlifeHabitat"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQSDZ0MHVjYjNUNkE"
+    ], 
+    "sgid_name": "SGID10.BIOSCIENCE.Habitat_RingNeckedPheasant", 
+    "shape_id": "0B3wvsjTJuTRQVUdrVkMyUjVmTTA", 
+    "upload_date": ""
+}

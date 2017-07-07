@@ -1,0 +1,13 @@
+{
+    "category": "TRANSPORTATION", 
+    "feature_classes": [
+        "SGID10.TRANSPORTATION.AirportLocations", 
+        "SGID10.TRANSPORTATION.Airports", 
+        "SGID10.TRANSPORTATION.Heliports"
+    ], 
+    "gdb_id": "", 
+    "name": "AirTransportation", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

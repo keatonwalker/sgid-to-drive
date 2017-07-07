@@ -1,0 +1,15 @@
+{
+    "category": "TRANSPORTATION", 
+    "gdb_id": "0B3wvsjTJuTRQSXk3QjlaNnV0TUk", 
+    "hash_id": "0B3wvsjTJuTRQU1h0Qm5xMndycXc", 
+    "name": "UDOTMileposts", 
+    "packages": [
+        "UtahTransitSystems"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQdlczNjZaTzNVbDQ"
+    ], 
+    "sgid_name": "SGID10.TRANSPORTATION.UDOTMileposts", 
+    "shape_id": "0B3wvsjTJuTRQbFFTVHYydGlOSms", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "POLITICAL", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "USCongressDistricts2012", 
+    "packages": [
+        "UtahPoliticalDistricts_Begin2012"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.POLITICAL.USCongressDistricts2012", 
+    "shape_id": "", 
+    "upload_date": ""
+}

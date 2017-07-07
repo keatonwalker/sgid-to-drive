@@ -1,0 +1,13 @@
+{
+    "category": "ECONOMY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "EnterpriseZones", 
+    "packages": [
+        "CurrentTaxingUnits"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ECONOMY.EnterpriseZones", 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,16 @@
+{
+    "category": "SOCIETY", 
+    "feature_classes": [
+        "SGID10.SOCIETY.CorrectionalFacilities", 
+        "SGID10.SOCIETY.FireStations", 
+        "SGID10.SOCIETY.LawEnforcement", 
+        "SGID10.SOCIETY.PSAPBoundaries", 
+        "SGID10.SOCIETY.PSAPLocations", 
+        "SGID10.SOCIETY.StateAgencyDispatch"
+    ], 
+    "gdb_id": "", 
+    "name": "PublicSafety", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

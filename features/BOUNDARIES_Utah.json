@@ -1,0 +1,13 @@
+{
+    "category": "BOUNDARIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Utah", 
+    "packages": [
+        "StateCountyMunicipalBoundaries"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BOUNDARIES.Utah", 
+    "shape_id": "", 
+    "upload_date": ""
+}

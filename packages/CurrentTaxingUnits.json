@@ -1,0 +1,16 @@
+{
+    "category": "ECONOMY", 
+    "feature_classes": [
+        "SGID10.ECONOMY.TaxEntities2016", 
+        "SGID10.ECONOMY.NonTaxFeeEntities2016", 
+        "SGID10.ECONOMY.TaxAreas2016", 
+        "SGID10.ECONOMY.SalesTaxAreas", 
+        "SGID10.ECONOMY.TransitSpecialTaxAreas", 
+        "SGID10.ECONOMY.EnterpriseZones"
+    ], 
+    "gdb_id": "", 
+    "name": "CurrentTaxingUnits", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "BOUNDARIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "USFSWildernessAreas", 
+    "packages": [
+        "Wilderness_ProtectedLandsAndProposals"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BOUNDARIES.USFSWildernessAreas", 
+    "shape_id": "", 
+    "upload_date": ""
+}

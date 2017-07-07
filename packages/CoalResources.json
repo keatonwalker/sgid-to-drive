@@ -1,0 +1,14 @@
+{
+    "category": "ENERGY", 
+    "feature_classes": [
+        "SGID10.ENERGY.Coal_4FootSeams", 
+        "SGID10.ENERGY.CoalDepositAreas1988", 
+        "SGID10.ENERGY.CoalLeases", 
+        "SGID10.ENERGY.CoalMines_UGS"
+    ], 
+    "gdb_id": "", 
+    "name": "CoalResources", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

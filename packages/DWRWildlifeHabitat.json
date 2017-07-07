@@ -1,0 +1,40 @@
+{
+    "category": "BIOSCIENCE", 
+    "feature_classes": [
+        "SGID10.BIOSCIENCE.Habitat_Turkey", 
+        "SGID10.BIOSCIENCE.Habitat_BandtailedPigeon", 
+        "SGID10.BIOSCIENCE.Habitat_Bison", 
+        "SGID10.BIOSCIENCE.Habitat_BlackBear", 
+        "SGID10.BIOSCIENCE.Habitat_BlueGrouse", 
+        "SGID10.BIOSCIENCE.Habitat_BonetailedChub", 
+        "SGID10.BIOSCIENCE.Habitat_CaliforniaBigHornSheep", 
+        "SGID10.BIOSCIENCE.Habitat_CaliforniaQuail", 
+        "SGID10.BIOSCIENCE.Habitat_Chukar", 
+        "SGID10.BIOSCIENCE.Habitat_DesertBighornSheep", 
+        "SGID10.BIOSCIENCE.Habitat_GambelsQuail", 
+        "SGID10.BIOSCIENCE.Habitat_GreaterSageGrouseBrood", 
+        "SGID10.BIOSCIENCE.Habitat_GreaterSageGrouseOccupied", 
+        "SGID10.BIOSCIENCE.Habitat_GreaterSageGrouseWinter", 
+        "SGID10.BIOSCIENCE.Habitat_GunnisonSageGrouse", 
+        "SGID10.BIOSCIENCE.Habitat_HungarianPartridge", 
+        "SGID10.BIOSCIENCE.Habitat_Moose", 
+        "SGID10.BIOSCIENCE.Habitat_MountainGoat", 
+        "SGID10.BIOSCIENCE.Habitat_Muledeer", 
+        "SGID10.BIOSCIENCE.Habitat_Pronghorn", 
+        "SGID10.BIOSCIENCE.Habitat_RazorbackSucker", 
+        "SGID10.BIOSCIENCE.Habitat_RingNeckedPheasant", 
+        "SGID10.BIOSCIENCE.Habitat_RockyMountainBighornSheep", 
+        "SGID10.BIOSCIENCE.Habitat_RockyMountainElk", 
+        "SGID10.BIOSCIENCE.Habitat_RuffedGrouse", 
+        "SGID10.BIOSCIENCE.Habitat_SharpTailedGrouse", 
+        "SGID10.BIOSCIENCE.Habitat_SnowshoeHare", 
+        "SGID10.BIOSCIENCE.Habitat_WhiteTailedPtarmigan"
+    ], 
+    "gdb_id": "0B3wvsjTJuTRQWVZTd3RncTM0cGc", 
+    "name": "DWRWildlifeHabitat", 
+    "parent_ids": [
+        "0B3wvsjTJuTRQYjV2TVZzZDlRaFE"
+    ], 
+    "shape_id": "0B3wvsjTJuTRQdUV5aXg4dWZyZVk", 
+    "upload_date": ""
+}

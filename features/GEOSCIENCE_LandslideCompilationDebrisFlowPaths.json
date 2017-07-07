@@ -1,0 +1,13 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LandslideCompilationDebrisFlowPaths", 
+    "packages": [
+        "LandslideInventory"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.GEOSCIENCE.LandslideCompilationDebrisFlowPaths", 
+    "shape_id": "", 
+    "upload_date": ""
+}

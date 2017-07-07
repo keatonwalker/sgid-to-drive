@@ -1,0 +1,13 @@
+{
+    "category": "ENERGY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CoalMines_UGS", 
+    "packages": [
+        "CoalResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENERGY.CoalMines_UGS", 
+    "shape_id": "", 
+    "upload_date": ""
+}

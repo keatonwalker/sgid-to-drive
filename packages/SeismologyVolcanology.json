@@ -1,0 +1,13 @@
+{
+    "category": "GEOSCIENCE", 
+    "feature_classes": [
+        "SGID10.GEOSCIENCE.EpicentersModern", 
+        "SGID10.GEOSCIENCE.QuaternaryFaults", 
+        "SGID10.GEOSCIENCE.VolcanicCones"
+    ], 
+    "gdb_id": "", 
+    "name": "SeismologyVolcanology", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

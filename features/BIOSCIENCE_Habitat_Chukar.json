@@ -1,0 +1,13 @@
+{
+    "category": "BIOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Habitat_Chukar", 
+    "packages": [
+        "DWRWildlifeHabitat"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BIOSCIENCE.Habitat_Chukar", 
+    "shape_id": "", 
+    "upload_date": ""
+}

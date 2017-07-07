@@ -1,0 +1,13 @@
+{
+    "category": "TRANSPORTATION", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "UDOTRoutes_LRS", 
+    "packages": [
+        "UtahTransitSystems"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.TRANSPORTATION.UDOTRoutes_LRS", 
+    "shape_id": "", 
+    "upload_date": ""
+}

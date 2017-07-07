@@ -1,0 +1,15 @@
+{
+    "category": "ENERGY", 
+    "feature_classes": [
+        "SGID10.ENERGY.DNROilGasFields", 
+        "SGID10.ENERGY.DNROilGasUnits", 
+        "SGID10.ENERGY.DNROilGasWells", 
+        "SGID10.ENERGY.DNROilGasWells_HDBottom", 
+        "SGID10.ENERGY.DNROilGasWells_HDPath"
+    ], 
+    "gdb_id": "", 
+    "name": "DOGMOilAndGasResources", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "ENERGY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CoalLeases", 
+    "packages": [
+        "CoalResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENERGY.CoalLeases", 
+    "shape_id": "", 
+    "upload_date": ""
+}

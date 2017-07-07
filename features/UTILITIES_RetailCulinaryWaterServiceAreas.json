@@ -1,0 +1,13 @@
+{
+    "category": "UTILITIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "RetailCulinaryWaterServiceAreas", 
+    "packages": [
+        "WaterGasElectricUtilities"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.UTILITIES.RetailCulinaryWaterServiceAreas", 
+    "shape_id": "", 
+    "upload_date": ""
+}

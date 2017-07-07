@@ -1,0 +1,13 @@
+{
+    "category": "UTILITIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "ElectricalService", 
+    "packages": [
+        "WaterGasElectricUtilities"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.UTILITIES.ElectricalService", 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "BOUNDARIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "USFSRoadlessInventory", 
+    "packages": [
+        "Wilderness_ProtectedLandsAndProposals"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BOUNDARIES.USFSRoadlessInventory", 
+    "shape_id": "", 
+    "upload_date": ""
+}

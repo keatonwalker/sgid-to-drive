@@ -1,0 +1,13 @@
+{
+    "category": "ENERGY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Coal_4FootSeams", 
+    "packages": [
+        "CoalResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENERGY.Coal_4FootSeams", 
+    "shape_id": "", 
+    "upload_date": ""
+}

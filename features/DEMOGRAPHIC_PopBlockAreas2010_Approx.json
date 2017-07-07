@@ -1,0 +1,13 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "PopBlockAreas2010_Approx", 
+    "packages": [
+        "Census2010"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.DEMOGRAPHIC.PopBlockAreas2010_Approx", 
+    "shape_id": "", 
+    "upload_date": ""
+}

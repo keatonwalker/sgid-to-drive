@@ -1,0 +1,12 @@
+{
+    "category": "SOCIETY", 
+    "feature_classes": [
+        "SGID10.SOCIETY.Schools", 
+        "SGID10.SOCIETY.Libraries"
+    ], 
+    "gdb_id": "", 
+    "name": "SchoolsLibraries", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

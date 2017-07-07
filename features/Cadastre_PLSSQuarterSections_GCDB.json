@@ -1,0 +1,13 @@
+{
+    "category": "Cadastre", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "PLSSQuarterSections_GCDB", 
+    "packages": [
+        "PLSS_GCDB_Cadastre"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.Cadastre.PLSSQuarterSections_GCDB", 
+    "shape_id": "", 
+    "upload_date": ""
+}

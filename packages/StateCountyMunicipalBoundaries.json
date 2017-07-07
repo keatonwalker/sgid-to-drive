@@ -1,0 +1,15 @@
+{
+    "category": "BOUNDARIES", 
+    "feature_classes": [
+        "SGID10.BOUNDARIES.Counties", 
+        "SGID10.BOUNDARIES.Municipalities", 
+        "SGID10.BOUNDARIES.Municipalities_Carto", 
+        "SGID10.BOUNDARIES.Municipalities_Modifications", 
+        "SGID10.BOUNDARIES.Utah"
+    ], 
+    "gdb_id": "", 
+    "name": "StateCountyMunicipalBoundaries", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "WATER", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LakesNHDHighRes", 
+    "packages": [
+        "LakesRiversSprings"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.WATER.LakesNHDHighRes", 
+    "shape_id": "", 
+    "upload_date": ""
+}

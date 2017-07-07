@@ -1,0 +1,12 @@
+{
+    "category": "PLANNING", 
+    "feature_classes": [
+        "SGID10.PLANNING.UtahPLI_Areas_Proposal_Jan16", 
+        "SGID10.PLANNING.UtahPLI_Lines_Proposal_Jan16"
+    ], 
+    "gdb_id": "", 
+    "name": "PublicLandsInitiativeProposal", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

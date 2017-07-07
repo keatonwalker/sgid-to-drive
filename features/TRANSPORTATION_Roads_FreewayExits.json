@@ -1,0 +1,13 @@
+{
+    "category": "TRANSPORTATION", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Roads_FreewayExits", 
+    "packages": [
+        "UtahTransitSystems"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.TRANSPORTATION.Roads_FreewayExits", 
+    "shape_id": "", 
+    "upload_date": ""
+}

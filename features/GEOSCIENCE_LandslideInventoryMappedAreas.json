@@ -1,0 +1,13 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LandslideInventoryMappedAreas", 
+    "packages": [
+        "LandslideInventory"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.GEOSCIENCE.LandslideInventoryMappedAreas", 
+    "shape_id": "", 
+    "upload_date": ""
+}

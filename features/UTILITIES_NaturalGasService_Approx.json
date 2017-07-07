@@ -1,0 +1,13 @@
+{
+    "category": "UTILITIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "NaturalGasService_Approx", 
+    "packages": [
+        "WaterGasElectricUtilities"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.UTILITIES.NaturalGasService_Approx", 
+    "shape_id": "", 
+    "upload_date": ""
+}

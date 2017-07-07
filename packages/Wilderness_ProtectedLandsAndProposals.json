@@ -1,0 +1,27 @@
+{
+    "category": "BOUNDARIES", 
+    "feature_classes": [
+        "SGID10.BOUNDARIES.Wilderness_BLMWSAs", 
+        "SGID10.BOUNDARIES.Wilderness_BLMSuitability", 
+        "SGID10.BOUNDARIES.Wilderness_BLM98Reinventory", 
+        "SGID10.BOUNDARIES.USFSRoadlessInventory", 
+        "SGID10.BOUNDARIES.USFSWildernessAreas", 
+        "SGID10.CADASTRE.LandOwnership", 
+        "SGID10.PLANNING.WildernessProp_BLM", 
+        "SGID10.PLANNING.WildernessProp_HR1500", 
+        "SGID10.PLANNING.WildernessProp_HR1745", 
+        "SGID10.PLANNING.WildernessProp_NineCo1995", 
+        "SGID10.PLANNING.WildernessProp_RedRock", 
+        "SGID10.PLANNING.WildernessProp_UWA1995", 
+        "SGID10.PLANNING.WildernessProp_UWC1989", 
+        "SGID10.PLANNING.WildernessProp_UWC1995", 
+        "SGID10.PLANNING.WildernessProp_UWC2008", 
+        "SGID10.PLANNING.WildernessProp_WashingtonCo", 
+        "SGID10.PLANNING.WildernessProp_WDesert1999"
+    ], 
+    "gdb_id": "", 
+    "name": "Wilderness_ProtectedLandsAndProposals", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

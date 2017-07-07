@@ -1,0 +1,13 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DWQMonitoredLakes132", 
+    "packages": [
+        "DEQLandRelatedSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.DWQMonitoredLakes132", 
+    "shape_id": "", 
+    "upload_date": ""
+}

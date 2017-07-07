@@ -1,0 +1,13 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "QuaternaryVolcanicFlow", 
+    "packages": [
+        "Quaternary"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.GEOSCIENCE.QuaternaryVolcanicFlow", 
+    "shape_id": "", 
+    "upload_date": ""
+}

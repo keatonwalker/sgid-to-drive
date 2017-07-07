@@ -1,15 +1,13 @@
 {
     "category": "RECREATION", 
-    "gdb_id": "0B3wvsjTJuTRQUXFicjJOa3ZNSTg", 
-    "hash_id": "0B3wvsjTJuTRQTXFKQU5wVFFLbU0", 
+    "gdb_id": "", 
+    "hash_id": "", 
     "name": "SkiTrails_XC", 
     "packages": [
         "SkiAreas"
     ], 
-    "parent_ids": [
-        "0B3wvsjTJuTRQMXV5NG1lQTduQlE"
-    ], 
+    "parent_ids": [], 
     "sgid_name": "SGID10.RECREATION.SkiTrails_XC", 
-    "shape_id": "0B3wvsjTJuTRQVzZhbTJUbDRrRTA", 
-    "upload_date": "2017_06_26"
+    "shape_id": "", 
+    "upload_date": ""
 }

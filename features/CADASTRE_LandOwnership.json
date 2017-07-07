@@ -1,0 +1,13 @@
+{
+    "category": "CADASTRE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LandOwnership", 
+    "packages": [
+        "Wilderness_ProtectedLandsAndProposals"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.CADASTRE.LandOwnership", 
+    "shape_id": "", 
+    "upload_date": ""
+}

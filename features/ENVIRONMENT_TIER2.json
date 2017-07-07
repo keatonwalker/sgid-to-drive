@@ -1,0 +1,14 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "TIER2", 
+    "packages": [
+        "DEQLand", 
+        "DEQLandRelatedContaminantAndCleanupSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.TIER2", 
+    "shape_id": "", 
+    "upload_date": ""
+}

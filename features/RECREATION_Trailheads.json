@@ -1,0 +1,13 @@
+{
+    "category": "RECREATION", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Trailheads", 
+    "packages": [
+        "Trails"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.RECREATION.Trailheads", 
+    "shape_id": "", 
+    "upload_date": ""
+}

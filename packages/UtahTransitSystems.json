@@ -1,0 +1,14 @@
+{
+    "category": "TRANSPORTATION", 
+    "feature_classes": [
+        "SGID10.TRANSPORTATION.Roads", 
+        "SGID10.TRANSPORTATION.Roads_FreewayExits", 
+        "SGID10.TRANSPORTATION.UDOTMileposts", 
+        "SGID10.TRANSPORTATION.UDOTRoutes_LRS"
+    ], 
+    "gdb_id": "", 
+    "name": "UtahTransitSystems", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

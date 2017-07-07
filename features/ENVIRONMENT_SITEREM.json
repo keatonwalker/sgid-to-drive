@@ -1,0 +1,14 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "SITEREM", 
+    "packages": [
+        "DEQLand", 
+        "DEQLandRelatedContaminantAndCleanupSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.SITEREM", 
+    "shape_id": "", 
+    "upload_date": ""
+}

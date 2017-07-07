@@ -1,0 +1,13 @@
+{
+    "category": "ENERGY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DNROilGasUnits", 
+    "packages": [
+        "DOGMOilAndGasResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENERGY.DNROilGasUnits", 
+    "shape_id": "", 
+    "upload_date": ""
+}

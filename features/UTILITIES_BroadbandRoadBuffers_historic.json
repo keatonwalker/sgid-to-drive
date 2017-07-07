@@ -1,0 +1,13 @@
+{
+    "category": "UTILITIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "BroadbandRoadBuffers_historic", 
+    "packages": [
+        "BroadbandInternet"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.UTILITIES.BroadbandRoadBuffers_historic", 
+    "shape_id": "", 
+    "upload_date": ""
+}

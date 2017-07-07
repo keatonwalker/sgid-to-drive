@@ -1,0 +1,12 @@
+{
+    "category": "HEALTH", 
+    "feature_classes": [
+        "SGID10.HEALTH.HealthCareFacilities", 
+        "SGID10.HEALTH.EmergencyMedicalServices"
+    ], 
+    "gdb_id": "", 
+    "name": "HealthCareFacilities", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

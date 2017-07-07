@@ -1,0 +1,13 @@
+{
+    "category": "BIOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Habitat_SnowshoeHare", 
+    "packages": [
+        "DWRWildlifeHabitat"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BIOSCIENCE.Habitat_SnowshoeHare", 
+    "shape_id": "", 
+    "upload_date": ""
+}

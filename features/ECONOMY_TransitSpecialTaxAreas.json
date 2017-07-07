@@ -1,0 +1,13 @@
+{
+    "category": "ECONOMY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "TransitSpecialTaxAreas", 
+    "packages": [
+        "CurrentTaxingUnits"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ECONOMY.TransitSpecialTaxAreas", 
+    "shape_id": "", 
+    "upload_date": ""
+}

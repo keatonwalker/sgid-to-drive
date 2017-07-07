@@ -1,0 +1,13 @@
+{
+    "category": "ENERGY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CoalDepositAreas1988", 
+    "packages": [
+        "CoalResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENERGY.CoalDepositAreas1988", 
+    "shape_id": "", 
+    "upload_date": ""
+}

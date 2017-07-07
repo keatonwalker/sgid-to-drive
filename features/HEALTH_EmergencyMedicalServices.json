@@ -1,0 +1,13 @@
+{
+    "category": "HEALTH", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "EmergencyMedicalServices", 
+    "packages": [
+        "HealthCareFacilities"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.HEALTH.EmergencyMedicalServices", 
+    "shape_id": "", 
+    "upload_date": ""
+}

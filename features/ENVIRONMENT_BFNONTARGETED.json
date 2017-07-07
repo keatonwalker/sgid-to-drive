@@ -1,0 +1,13 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "BFNONTARGETED", 
+    "packages": [
+        "DEQLandRelatedContaminantAndCleanupSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.BFNONTARGETED", 
+    "shape_id": "", 
+    "upload_date": ""
+}

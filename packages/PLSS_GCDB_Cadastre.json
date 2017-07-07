@@ -1,0 +1,15 @@
+{
+    "category": "CADASTRE", 
+    "feature_classes": [
+        "SGID10.Cadastre.PLSSTownships_GCDB", 
+        "SGID10.Cadastre.PLSSSections_GCDB", 
+        "SGID10.Cadastre.PLSSQuarterSections_GCDB", 
+        "SGID10.Cadastre.PLSSQuarterQuarterSections_GCDB", 
+        "SGID10.Cadastre.PLSSPoint_GCDB"
+    ], 
+    "gdb_id": "", 
+    "name": "PLSS_GCDB_Cadastre", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

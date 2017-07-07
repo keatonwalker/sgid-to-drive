@@ -1,0 +1,13 @@
+{
+    "category": "BOUNDARIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Municipalities_Modifications", 
+    "packages": [
+        "StateCountyMunicipalBoundaries"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BOUNDARIES.Municipalities_Modifications", 
+    "shape_id": "", 
+    "upload_date": ""
+}

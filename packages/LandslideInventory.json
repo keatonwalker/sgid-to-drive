@@ -1,0 +1,15 @@
+{
+    "category": "GEOSCIENCE", 
+    "feature_classes": [
+        "SGID10.GEOSCIENCE.LandslideCompilationDebrisFlowPaths", 
+        "SGID10.GEOSCIENCE.LandslideCompilationPolygons", 
+        "SGID10.GEOSCIENCE.LandslideCompilationScarps", 
+        "SGID10.GEOSCIENCE.LandslideInventoryMappedAreas", 
+        "SGID10.GEOSCIENCE.LandslideInventoryPolygons"
+    ], 
+    "gdb_id": "", 
+    "name": "LandslideInventory", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

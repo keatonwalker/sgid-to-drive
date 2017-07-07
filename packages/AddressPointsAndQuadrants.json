@@ -1,0 +1,12 @@
+{
+    "category": "LOCATION", 
+    "feature_classes": [
+        "SGID10.LOCATION.AddressPoints", 
+        "SGID10.LOCATION.AddressSystemQuadrants"
+    ], 
+    "gdb_id": "", 
+    "name": "AddressPointsAndQuadrants", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "SOCIETY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LawEnforcement", 
+    "packages": [
+        "PublicSafety"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.SOCIETY.LawEnforcement", 
+    "shape_id": "", 
+    "upload_date": ""
+}

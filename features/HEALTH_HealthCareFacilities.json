@@ -1,0 +1,13 @@
+{
+    "category": "HEALTH", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "HealthCareFacilities", 
+    "packages": [
+        "HealthCareFacilities"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.HEALTH.HealthCareFacilities", 
+    "shape_id": "", 
+    "upload_date": ""
+}

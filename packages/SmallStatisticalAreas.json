@@ -1,0 +1,12 @@
+{
+    "category": "HEALTH", 
+    "feature_classes": [
+        "SGID10.HEALTH.HealthSmallStatisticalAreas2012", 
+        "SGID10.HEALTH.HealthSmallStatisticalAreas2014"
+    ], 
+    "gdb_id": "", 
+    "name": "SmallStatisticalAreas", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

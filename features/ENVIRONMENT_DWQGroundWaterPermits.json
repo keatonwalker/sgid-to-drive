@@ -1,0 +1,13 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DWQGroundWaterPermits", 
+    "packages": [
+        "DEQLandRelatedSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.DWQGroundWaterPermits", 
+    "shape_id": "", 
+    "upload_date": ""
+}

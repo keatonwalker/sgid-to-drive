@@ -1,0 +1,13 @@
+{
+    "category": "LOCATION", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "AddressPoints", 
+    "packages": [
+        "AddressPointsAndQuadrants"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.LOCATION.AddressPoints", 
+    "shape_id": "", 
+    "upload_date": ""
+}

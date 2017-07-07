@@ -1,0 +1,13 @@
+{
+    "category": "SOCIETY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CorrectionalFacilities", 
+    "packages": [
+        "PublicSafety"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.SOCIETY.CorrectionalFacilities", 
+    "shape_id": "", 
+    "upload_date": ""
+}

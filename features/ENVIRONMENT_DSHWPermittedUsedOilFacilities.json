@@ -1,0 +1,14 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DSHWPermittedUsedOilFacilities", 
+    "packages": [
+        "DEQLand", 
+        "DEQLandRelatedContaminantAndCleanupSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.DSHWPermittedUsedOilFacilities", 
+    "shape_id": "", 
+    "upload_date": ""
+}

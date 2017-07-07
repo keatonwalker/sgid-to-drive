@@ -1,0 +1,13 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "StreamMonitorSites", 
+    "packages": [
+        "DEQLandRelatedSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.StreamMonitorSites", 
+    "shape_id": "", 
+    "upload_date": ""
+}

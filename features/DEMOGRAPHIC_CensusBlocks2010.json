@@ -1,0 +1,13 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CensusBlocks2010", 
+    "packages": [
+        "Census2010"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.DEMOGRAPHIC.CensusBlocks2010", 
+    "shape_id": "", 
+    "upload_date": ""
+}

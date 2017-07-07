@@ -1,0 +1,13 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LakeMonitoring", 
+    "packages": [
+        "DEQLandRelatedSites"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.LakeMonitoring", 
+    "shape_id": "", 
+    "upload_date": ""
+}

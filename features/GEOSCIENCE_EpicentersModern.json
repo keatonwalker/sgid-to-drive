@@ -1,0 +1,13 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "EpicentersModern", 
+    "packages": [
+        "SeismologyVolcanology"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.GEOSCIENCE.EpicentersModern", 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,15 @@
+{
+    "category": "UTILITIES", 
+    "feature_classes": [
+        "SGID10.UTILITIES.BroadbandService", 
+        "SGID10.UTILITIES.BroadbandCAInstitutions", 
+        "SGID10.UTILITIES.BroadbandCensusBlocks_historic", 
+        "SGID10.UTILITIES.BroadbandRoadBuffers_historic", 
+        "SGID10.UTILITIES.BroadbandWireless_historic"
+    ], 
+    "gdb_id": "", 
+    "name": "BroadbandInternet", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}

@@ -1,0 +1,13 @@
+{
+    "category": "BIOSCIENCE", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "Habitat_GambelsQuail", 
+    "packages": [
+        "DWRWildlifeHabitat"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.BIOSCIENCE.Habitat_GambelsQuail", 
+    "shape_id": "", 
+    "upload_date": ""
+}

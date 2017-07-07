@@ -1,0 +1,13 @@
+{
+    "category": "ENERGY", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DNROilGasFields", 
+    "packages": [
+        "DOGMOilAndGasResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENERGY.DNROilGasFields", 
+    "shape_id": "", 
+    "upload_date": ""
+}

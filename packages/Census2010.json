@@ -1,0 +1,17 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "feature_classes": [
+        "SGID10.DEMOGRAPHIC.CensusBlockGroups2010", 
+        "SGID10.DEMOGRAPHIC.CensusBlocks2010", 
+        "SGID10.DEMOGRAPHIC.CensusCounties2010", 
+        "SGID10.DEMOGRAPHIC.CensusTracts2010", 
+        "SGID10.DEMOGRAPHIC.PopBlockAreas2010_Approx", 
+        "SGID10.DEMOGRAPHIC.PopPlacePts2010_Approx", 
+        "SGID10.DEMOGRAPHIC.UrbanAreasCensus2010"
+    ], 
+    "gdb_id": "", 
+    "name": "Census2010", 
+    "parent_ids": [], 
+    "shape_id": "", 
+    "upload_date": ""
+}
