@@ -1,0 +1,14 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "0B3yp_Bjfi5sXUGJtQ0dwcDR4VG8", 
+    "hash_id": "0B3yp_Bjfi5sXWHRtbkVjaUh3STg", 
+    "name": "MineralLocationsCRIB", 
+    "packages": [
+        "Minerals"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQclRTc3RmbzN5V0k"
+    ], 
+    "sgid_name": "SGID10.GEOSCIENCE.MineralLocationsCRIB", 
+    "shape_id": "0B3yp_Bjfi5sXNjVGSVVCbUhaOHc"
+}

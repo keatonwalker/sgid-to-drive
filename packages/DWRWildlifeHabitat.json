@@ -30,11 +30,10 @@
         "SGID10.BIOSCIENCE.Habitat_SnowshoeHare", 
         "SGID10.BIOSCIENCE.Habitat_WhiteTailedPtarmigan"
     ], 
-    "gdb_id": "0B3wvsjTJuTRQWVZTd3RncTM0cGc", 
+    "gdb_id": "0ByStJjVZ7c7mSThmNFMzQ0R5dDQ", 
     "name": "DWRWildlifeHabitat", 
     "parent_ids": [
-        "0B3wvsjTJuTRQYjV2TVZzZDlRaFE"
+        "0ByStJjVZ7c7mVE9ONURjR2UtX2s"
     ], 
-    "shape_id": "0B3wvsjTJuTRQdUV5aXg4dWZyZVk", 
-    "upload_date": ""
+    "shape_id": "0ByStJjVZ7c7mZUhSZGJNam1FU0U"
 }

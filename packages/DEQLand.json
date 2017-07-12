@@ -1,0 +1,21 @@
+{
+    "category": "ENVIRONMENT", 
+    "feature_classes": [
+        "SGID10.ENVIRONMENT.FUD", 
+        "SGID10.ENVIRONMENT.EWA", 
+        "SGID10.ENVIRONMENT.NPL", 
+        "SGID10.ENVIRONMENT.SITEREM", 
+        "SGID10.ENVIRONMENT.ICBUFFERZONES", 
+        "SGID10.ENVIRONMENT.TIER2", 
+        "SGID10.ENVIRONMENT.TRI", 
+        "SGID10.ENVIRONMENT.VCP", 
+        "SGID10.ENVIRONMENT.FACILITYUST"
+    ], 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DEQLand", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "", 
+    "shape_id": ""
+}

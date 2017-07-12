@@ -1,0 +1,14 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "0B3yp_Bjfi5sXX0V3UGdGRENaZEk", 
+    "hash_id": "0B3yp_Bjfi5sXbHBGTE5OWFg5ZHM", 
+    "name": "MineralDeposits1988", 
+    "packages": [
+        "Minerals"
+    ], 
+    "parent_ids": [
+        "0B3wvsjTJuTRQclRTc3RmbzN5V0k"
+    ], 
+    "sgid_name": "SGID10.GEOSCIENCE.MineralDeposits1988", 
+    "shape_id": "0B3yp_Bjfi5sXcXFwRHJKQVc1Nm8"
+}

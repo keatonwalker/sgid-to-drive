@@ -1,15 +1,12 @@
 {
     "category": "Cadastre", 
-    "gdb_id": "0B3wvsjTJuTRQRmJDUk5jbzFBZGM", 
-    "hash_id": "0B3wvsjTJuTRQWmlTM01EM1c4cWs", 
+    "gdb_id": "", 
+    "hash_id": "", 
     "name": "PLSSSections_GCDB", 
     "packages": [
         "PLSS_GCDB_Cadastre"
     ], 
-    "parent_ids": [
-        "0B3wvsjTJuTRQNXJKbGliQmtEU2M"
-    ], 
+    "parent_ids": [], 
     "sgid_name": "SGID10.Cadastre.PLSSSections_GCDB", 
-    "shape_id": "0B3wvsjTJuTRQMVl4WXE1T0dheW8", 
-    "upload_date": ""
+    "shape_id": ""
 }

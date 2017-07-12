@@ -7,100 +7,38 @@ from time import clock, strftime, sleep
 from hashlib import md5
 # from xxhash import xxh32
 import json
-import io
 import ntpath
 import argparse
 
-from apiclient import errors
-from apiclient.http import MediaFileUpload, MediaIoBaseDownload
-import httplib2
-from apiclient import discovery
-from oauth2client import client
+import spec_manager
 from oauth2client import tools
-from oauth2client.file import Storage
+import driver
+# from driver import AgrcDriver
 
-import manager
-
-
-HASH_DRIVE_FOLDER = '0B3wvsjTJuTRQZUJXWEhEX3p3d1k'
-UTM_DRIVE_FOLDER = '0B3wvsjTJuTRQaGluYVphcUNEREE'
-# If modifying these scopes, delete your previously saved credentials
-# at ~/.credentials/drive-python-quickstart.json
-SCOPES = 'https://www.googleapis.com/auth/drive'
-CLIENT_SECRET_FILE = 'client_secret.json'
-APPLICATION_NAME = 'Drive API Python Quickstart'
-
-FEATURE_JSON_FOLDER = r'features'
-PACKAGE_JSON_FOLDER = r'packages'
-
-# try:
-#     import argparse
-#     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-# except ImportError:
-#     flags = None
+drive = driver.AgrcDriver()
+user_drive = None
 
 
-def get_credentials():
-    """Gets valid user credentials from storage.
-
-    If nothing has been stored, or if the stored credentials are invalid,
-    the OAuth2 flow is completed to obtain the new credentials.
-
-    Returns:
-        Credentials, the obtained credential.
-    """
-    home_dir = os.path.expanduser('~')
-    credential_dir = os.path.join(home_dir, '.credentials')
-    if not os.path.exists(credential_dir):
-        os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'drive-python-quickstart.json')
-
-    store = Storage(credential_path)
-    credentials = store.get()
-    if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
-        flow.user_agent = APPLICATION_NAME
-        if flags:
-            credentials = tools.run_flow(flow, store, flags)
-        else:  # Needed only for compatibility with Python 2.6
-            credentials = tools.run(flow, store)
-        print('Storing credentials to ' + credential_path)
-    return credentials
+HASH_DRIVE_FOLDER = '0ByStJjVZ7c7mM1FjdGJoNUF4QXM'
+UTM_DRIVE_FOLDER = '0ByStJjVZ7c7mN2ltcllMcGFkZjA'
 
 
-def setup_drive_service():
-    # get auth
-    credentials = get_credentials()
-    http = credentials.authorize(httplib2.Http())
-    service = discovery.build('drive', 'v3', http=http)
+def get_user_drive(user_drive=user_drive):
+    if user_drive is None:
+        user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+        return user_drive
+    else:
+        return user_drive
 
-    return service
-
-
-def set_property(file_id, property_dict, service):
-    if not service:
-        service = setup_drive_service()
-    file_name = service.files().update(fileId=file_id,
-                                       fields='name',
-                                       body={'properties': property_dict}).execute()
-    return file_name
-
-
-def get_property(file_id, property_name, service):
-    if not service:
-        service = setup_drive_service()
-    file_property = service.files().get(fileId=file_id,
-                                        fields='properties({})'.format(property_name)).execute()
-    return file_property['properties'][property_name]
 
 def _filter_fields(fields):
-    '''
+    """
+    Filter out fields that mess up the change detection logic.
+
     fields: String[]
     source_primary_key: string
     returns: String[]
-    Filters out fields that mess up the update logic
-    and move the primary be the last field so that we can filter it out of the hash.'''
+    """
     new_fields = [field for field in fields if not _is_naughty_field(field)]
     new_fields.sort()
 
@@ -111,36 +49,11 @@ def _is_naughty_field(fld):
     #: global id's do not export to file geodatabase
     #: removes shape, shape_length etc
     #: removes objectid_ which is created by geoprocessing tasks and wouldn't be in destination source
-    #: TODO: Deal with possibility of OBJECTID_* being the OIDFieldName
     return fld.upper().startswith('SHAPE') or fld.upper().startswith('SHAPE_') or fld.startswith('OBJECTID')
 
 
-def get_unpackaged_drivefiles_by_name(folder_path_drivefiles):
-    unpackaged_drivefiles = {}
-
-    def _get_category_name(path):
-        path_list = path.split('/')
-        cat_index = path_list.index('UTM12_NAD83') + 1
-        category = path_list[cat_index]
-        return category
-    print 'name,path1,path2'
-    for ftp_path in folder_path_drivefiles:
-        if 'UnpackagedData' in ftp_path and 'OLD' not in ftp_path:
-            category_file = _get_category_name(ftp_path).lower() + '|' + os.path.basename(ftp_path).lower()
-            # category_file = os.path.basename(ftp_path)
-            if category_file not in unpackaged_drivefiles:
-                unpackaged_drivefiles[category_file] = folder_path_drivefiles[ftp_path].path
-            else:
-                print '{},{},{}'.format(category_file, unpackaged_drivefiles[category_file], ftp_path)
-                # fix issue with /Volumes/ftp/UtahSGID_Vector/UTM12_NAD83/SOCIETY/UnpackagedData/UDOTMap_CityLocationsz
-                print'Duplicate unpackaged name'
-                print 'First: {}, {}, {}'.format(category_file, unpackaged_drivefiles[category_file], folder_path_drivefiles[ftp_path].file_id)
-                print 'Current: {}, {}, {}'.format(category_file, ftp_path, folder_path_drivefiles[ftp_path].file_id)
-
-    return unpackaged_drivefiles
-
-
 def zip_folder(folder_path, zip_name):
+    """Zip a folder with compression to reduce storage size."""
     zf = zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED)
     for root, subdirs, files in os.walk(folder_path):
         for filename in files:
@@ -153,16 +66,18 @@ def zip_folder(folder_path, zip_name):
         original_size += info.file_size
         compress_size += info.compress_size
     zf.close()
-    print '{} Compressed size: {} MB'.format(ntpath.basename(zip_name),
-                                             compress_size / 1000000.0)
+    # print '{} Compressed size: {} MB'.format(ntpath.basename(zip_name),
+    #                                          compress_size / 1000000.0)
 
 
 def unzip(zip_path, output_path):
+    """Unzip a folder that was zipped by zip_folder."""
     with zipfile.ZipFile(zip_path, 'r', zipfile.ZIP_DEFLATED) as zipped:
         zipped.extractall(output_path)
 
 
 def get_hash_lookup(hash_path, hash_field):
+    """Get the has lookup for change detection."""
     hash_lookup = {}
     with arcpy.da.SearchCursor(hash_path, [hash_field, 'src_id']) as cursor:
         for row in cursor:
@@ -232,192 +147,39 @@ def create_outputs(output_directory, input_feature, output_name):
     return (output_gdb, shape_directory)
 
 
-def download_zip(file_id, service, output):
-    import shutil
-    request = service.files().get_media(fileId=file_id)
-    fh = io.BytesIO()
-    downloader = MediaIoBaseDownload(fh, request)
-
-    response = False
-    backoff = 1
-    while response is False:
-        try:
-            status, response = downloader.next_chunk()
-            if status:
-                print "Download %d%%." % int(status.progress() * 100)
-        except errors.HttpError, e:
-            if e.resp.status in [404]:
-                # Start the upload all over again.
-                raise Exception('Download Failed 404')
-            elif e.resp.status in [500, 502, 503, 504]:
-                if backoff > 8:
-                    raise Exception('Download Failed: {}'.format(e))
-                print 'Retrying download in: {} seconds'.format(backoff)
-                sleep(backoff)
-                backoff += backoff
-            else:
-                raise Exception('download Failed')
-
-    fh.seek(0)
-    with open(output, 'wb') as out_zip:
-        shutil.copyfileobj(fh, out_zip, length=131072)
-
-
-def keep_version(file_id, service, revision_id='head'):
-    file_metadata = {'keepForever': True}
-    request = service.revisions().update(fileId=file_id,
-                                         revisionId=revision_id,
-                                         body=file_metadata,
-                                         fields='id')
-
-    response = None
-    backoff = 1
-    while response is None:
-        try:
-            response = request.execute()
-        except errors.HttpError, e:
-            if e.resp.status in [404]:
-                # Start the upload all over again.
-                raise Exception('Upload Failed 404')
-            elif e.resp.status in [500, 502, 503, 504]:
-                if backoff > 8:
-                    raise Exception('Upload Failed: {}'.format(e))
-                print 'Retrying upload in: {} seconds'.format(backoff)
-                sleep(backoff)
-                backoff += backoff
-            else:
-                raise Exception('Upload Failed')
-
-    return response.get('id')
-
-
-def update_file(file_id, local_file, drive_service):
-    media_body = MediaFileUpload(local_file,
-                                 mimetype='application/zip',
-                                 resumable=True)
-
-    request = drive_service.files().update(fileId=file_id,
-                                           media_body=media_body)
-
-    response = None
-    backoff = 1
-    while response is None:
-        try:
-            status, response = request.next_chunk()
-        except errors.HttpError, e:
-            if e.resp.status in [404]:
-                # Start the upload all over again.
-                raise Exception('Upload Failed 404')
-            elif e.resp.status in [500, 502, 503, 504]:
-                if backoff > 8:
-                    raise Exception('Upload Failed: {}'.format(e))
-                print 'Retrying upload in: {} seconds'.format(backoff)
-                sleep(backoff)
-                backoff += backoff
-            else:
-                raise Exception('Upload Failed')
-    keep_version(response.get('id'), drive_service)
-
-    return response.get('id')
-
-
-def create_drive_zip(name, parent_ids, local_file, service, propertyDict=None):
-
-    file_metadata = {'name': name,
-                     'mimeType': 'application/zip',
-                     'parents': parent_ids}
-
-    media_body = MediaFileUpload(local_file,
-                                 mimetype='application/zip',
-                                 resumable=True)
-    request = service.files().create(body=file_metadata,
-                                     media_body=media_body,
-                                     fields="id")
-
-    response = None
-    backoff = 1
-    while response is None:
-        try:
-            status, response = request.next_chunk()
-            # if status:
-            #     print('{} percent {}'.format(name, int(status.progress() * 100)))
-        except errors.HttpError, e:
-            if e.resp.status in [404]:
-                # Start the upload all over again.
-                raise Exception('Upload Failed 404')
-            elif e.resp.status in [500, 502, 503, 504]:
-                if backoff > 8:
-                    raise Exception('Upload Failed: {}'.format(e))
-                print 'Retrying upload in: {} seconds'.format(backoff)
-                sleep(backoff)
-                backoff += backoff
-            else:
-                raise Exception('Upload Failed')
-    if propertyDict:
-        set_property(response.get('id'), propertyDict, service)
-
-    keep_version(response.get('id'), drive_service)
-
-    return response.get('id')
-
-
-def get_file_id_by_name_and_directory(name, parent_id, service):
-    response = service.files().list(q="name='{}' and '{}' in parents  and explicitlyTrashed=false".format(name,
-                                                                                                          parent_id),
-                                    spaces='drive',
-                                    fields='files(id)').execute()
-    files = response.get('files', [])
-    if len(files) > 0:
-        return files[0].get('id')
-    else:
-        return None
-
-
-def create_drive_folder(name, parent_ids, service):
-    # existing_file_id = get_file_id_by_name_and_directory(name, parent_ids[0], service)
-    # if existing_file_id:
-    #     print 'Existing file'
-    #     return existing_file_id
-        # raise Exception('Drive folder {} already exists at: {}'.format(name, existing_file_id))
-
-    file_metadata = {'name': name,
-                     'mimeType': 'application/vnd.google-apps.folder',
-                     'parents': parent_ids}
-
-    response = service.files().create(body=file_metadata,
-                                      fields="id").execute()
-
-    return response.get('id')
-
-
-def load_zip_to_drive(spec, id_key, new_zip, parent_folder_ids, service):
+def load_zip_to_drive(spec, id_key, new_zip, parent_folder_ids):
+    """Create or update a zip file on drive."""
     if spec[id_key]:
-        update_file(spec[id_key], new_zip, service)
+        drive.update_file(spec[id_key], new_zip, 'application/zip')
     else:
-        temp_id = create_drive_zip(ntpath.basename(new_zip),
-                                   parent_folder_ids,
-                                   new_zip,
-                                   service)
+        temp_id = get_user_drive().create_drive_file(ntpath.basename(new_zip),
+                                               parent_folder_ids,
+                                               new_zip,
+                                               'application/zip')
         spec[id_key] = temp_id
 
+    drive.keep_revision(spec[id_key])
 
-def get_category_folder_id(category, parent_id, service):
-    category_id = get_file_id_by_name_and_directory(category, parent_id, service)
+
+def get_category_folder_id(category, parent_id):
+    """Get drive id for a folder with name of category and in parent_id drive folder."""
+    category_id = drive.get_file_id_by_name_and_directory(category, parent_id)
     if not category_id:
         print 'Creating drive folder: {}'.format(category)
-        category_id = create_drive_folder(category, [parent_id], service)
+        category_id = get_user_drive().create_drive_folder(category, [parent_id])
 
     return category_id
 
 
-def update_feature(workspace, feature_name, output_directory, drive_service, load_to_drive=True, force_update=False):
+def update_feature(workspace, feature_name, output_directory, load_to_drive=True, force_update=False):
+    """Update a feature class on drive if it has changed."""
     print '\nStarting feature:', feature_name
     input_feature_path = os.path.join(workspace, feature_name)
 
-    feature = manager.get_feature(feature_name)
+    feature = spec_manager.get_feature(feature_name)
 
     # Check for category folder
-    category_id = get_category_folder_id(feature['category'], UTM_DRIVE_FOLDER, drive_service)
+    category_id = get_category_folder_id(feature['category'], UTM_DRIVE_FOLDER)
     if category_id not in feature['parent_ids']:
         feature['parent_ids'].append(category_id)
 
@@ -430,7 +192,7 @@ def update_feature(workspace, feature_name, output_directory, drive_service, loa
     past_hash_store = os.path.join(past_hash_directory, output_name + '_hash', output_name + '_hashes.csv')
     past_hashes = None
     if feature['hash_id']:
-        download_zip(feature['hash_id'], drive_service, past_hash_zip)
+        drive.download_file(feature['hash_id'], past_hash_zip)
         print 'Past hashes downloaded'
         unzip(past_hash_zip, past_hash_directory)
         past_hashes = get_hash_lookup(past_hash_store, hash_field)
@@ -468,25 +230,24 @@ def update_feature(workspace, feature_name, output_directory, drive_service, loa
         zip_folder(hash_directory, new_hash_zip)
         # Upload to drive
         if load_to_drive:
-            load_zip_to_drive(feature, 'gdb_id', new_gdb_zip, feature['parent_ids'], drive_service)
-            print 'GDB loaded'
-            load_zip_to_drive(feature, 'shape_id', new_shape_zip, feature['parent_ids'], drive_service)
-            print 'Shape loaded'
-            load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER], drive_service)
-            print 'Hash loaded'
+            load_zip_to_drive(feature, 'gdb_id', new_gdb_zip, feature['parent_ids'])
+            load_zip_to_drive(feature, 'shape_id', new_shape_zip, feature['parent_ids'])
+            load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER])
+            print 'All zips loaded'
 
-        manager.save_spec_json(os.path.join('features', manager.create_feature_spec_name(feature_name)), feature)
+        spec_manager.save_spec_json(os.path.join('features', spec_manager.create_feature_spec_name(feature_name)), feature)
 
     return packages
 
 
-def update_package(workspace, package_name, output_directory, drive_service, load_to_drive=True):
+def update_package(workspace, package_name, output_directory, load_to_drive=True):
+    """Update a package on drive."""
     print '\nStarting package:', package_name
-    package = manager.get_package(package_name)
+    package = spec_manager.get_package(package_name)
     # Check for category folder
-    category_id = get_category_folder_id(package['category'], UTM_DRIVE_FOLDER, drive_service)
-    category_packages_id = get_category_folder_id('packages', category_id, drive_service)
-    drive_folder_id = get_category_folder_id(package['name'], category_packages_id, drive_service)
+    category_id = get_category_folder_id(package['category'], UTM_DRIVE_FOLDER)
+    category_packages_id = get_category_folder_id('packages', category_id)
+    drive_folder_id = get_category_folder_id(package['name'], category_packages_id)
     if drive_folder_id not in package['parent_ids']:
         package['parent_ids'].append(drive_folder_id)
 
@@ -495,15 +256,15 @@ def update_package(workspace, package_name, output_directory, drive_service, loa
     os.makedirs(package_shape)
 
     for feature_class in package['feature_classes']:
-        spec_name = manager.create_feature_spec_name(feature_class)
+        spec_name = spec_manager.create_feature_spec_name(feature_class)
         feature_spec = os.path.join('features', spec_name)
         if not os.path.exists(feature_spec):
-            update_feature(workspace, feature_class, os.path.join(output_directory, '..'), drive_service)
+            update_feature(workspace, feature_class, os.path.join(output_directory, '..'))
 
-        spec = manager.get_feature(feature_class, [package_name])
+        spec = spec_manager.get_feature(feature_class, [package_name])
         # if package_name not in spec['packages']:
         #     spec['packages'].append(package_name.replace('.json', ''))
-        #     manager.save_spec_json(feature_spec, spec)
+        #     spec_manager.save_spec_json(feature_spec, spec)
 
         feature_output_name = spec['name']
         out_fc_path = os.path.join(package_gdb, feature_output_name)
@@ -537,21 +298,25 @@ def update_package(workspace, package_name, output_directory, drive_service, loa
 
     if load_to_drive:
         # Upload to drive
-        load_zip_to_drive(package, 'gdb_id', new_gdb_zip, package['parent_ids'], drive_service)
-        print 'GDB loaded'
-        load_zip_to_drive(package, 'shape_id', new_shape_zip, package['parent_ids'], drive_service)
-        print 'Shape loaded'
+        load_zip_to_drive(package, 'gdb_id', new_gdb_zip, package['parent_ids'])
+        load_zip_to_drive(package, 'shape_id', new_shape_zip, package['parent_ids'])
+        print 'All zips loaded'
 
-    manager.save_spec_json(os.path.join('packages', package['name'] + '.json'), package)
+    spec_manager.save_spec_json(os.path.join('packages', package['name'] + '.json'), package)
 
 
-def run_features(feature_list_json=None, load=True, force=False):
+def run_features(output_directory, feature_list_json=None, load=True, force=False):
+    """
+    CLI option to update all features in spec_manager.FEATURE_SPEC_FOLDER or just those in feature_list_json.
+
+    feature_list_json: json file with array named "features"
+    """
     run_all_lists = None
     features = []
     if not feature_list_json:
-        for root, subdirs, files in os.walk(FEATURE_JSON_FOLDER):
+        for root, subdirs, files in os.walk(spec_manager.FEATURE_SPEC_FOLDER):
             for filename in files:
-                feature_spec = manager.load_feature_json(os.path.join(root, filename))
+                feature_spec = spec_manager.load_feature_json(os.path.join(root, filename))
                 if feature_spec['sgid_name'] != '':
                     features.append(feature_spec['sgid_name'])
             break
@@ -562,17 +327,23 @@ def run_features(feature_list_json=None, load=True, force=False):
 
     packages = []
     for feature in features:
-        packages.extend(update_feature(workspace, feature, output_directory, drive_service, load_to_drive=True, force_update=force))
+        packages.extend(update_feature(workspace, feature, output_directory, load_to_drive=True, force_update=force))
     for package in set(packages):
-        update_package(workspace, package, temp_package_directory, drive_service)
+        update_package(workspace, package, temp_package_directory)
 
 
-def run_packages(package_list_json=None, load=True, force=False):
+def run_packages(output_directory, package_list_json=None, load=True, force=False):
+    """
+    CLI option to update all packages in spec_manager.PACKAGE_SPEC_FOLDER or just those in package_list_json.
+
+    All features contianed in a package will also be updated if they have changed.
+    package_list_json: json file with array named "packages"
+    """
     run_all_lists = None
     features = []
     packages_to_check = []
     if not package_list_json:
-        for root, subdirs, files in os.walk(PACKAGE_JSON_FOLDER):
+        for root, subdirs, files in os.walk(spec_manager.PACKAGE_SPEC_FOLDER):
             for filename in files:
                 if filename == '.DS_Store':
                     continue
@@ -586,34 +357,35 @@ def run_packages(package_list_json=None, load=True, force=False):
     for p in packages_to_check:
         if not p.endswith('.json'):
             p += '.json'
-        packages_spec = manager.get_package(p)
+        packages_spec = spec_manager.get_package(p)
         fcs = packages_spec['feature_classes']
         if fcs != '' and len(fcs) > 0:
             for f in fcs:
-                manager.add_package_to_feature(f, p.replace('.json', ''))
+                spec_manager.add_package_to_feature(f, p.replace('.json', ''))
                 features.append(f)
 
     features = set(features)
     packages = []
     for feature in features:
-        packages.extend(update_feature(workspace, feature, output_directory, drive_service, load_to_drive=load, force_update=force))
+        packages.extend(update_feature(workspace, feature, output_directory, load_to_drive=load, force_update=force))
     for package in set(packages):
-        update_package(workspace, package, temp_package_directory, drive_service, load_to_drive=load)
+        update_package(workspace, package, temp_package_directory, load_to_drive=load)
 
 
-def run_feature(sgid_name, load=True, force=False):
+def run_feature(source_name, output_directory, load=True, force=False):
+    """CLI option to update one feature."""
     packages = update_feature(workspace,
-                              sgid_name,
+                              source_name,
                               output_directory,
-                              drive_service,
                               load_to_drive=load,
                               force_update=force)
     for package in set(packages):
-        update_package(workspace, package, temp_package_directory, drive_service, load_to_drive=load)
+        update_package(workspace, package, temp_package_directory, load_to_drive=load)
 
 
 def upload_zip(source_name, output_directory):
-    feature = manager.get_feature(source_name)
+    """CLI option to upload zip files from update process run with load_to_drive=False."""
+    feature = spec_manager.get_feature(source_name)
     output_name = feature['name']
     # Zip up outputs
     new_gdb_zip = os.path.join(output_directory, '{}_gdb.zip'.format(output_name))
@@ -626,29 +398,31 @@ def upload_zip(source_name, output_directory):
         raise(Exception('Required zip file do not exist at {}'.format(output_directory)))
 
     # Upload to drive
-    load_zip_to_drive(feature, 'gdb_id', new_gdb_zip, feature['parent_ids'], drive_service)
+    load_zip_to_drive(feature, 'gdb_id', new_gdb_zip, feature['parent_ids'])
     print 'GDB loaded'
-    load_zip_to_drive(feature, 'shape_id', new_shape_zip, feature['parent_ids'], drive_service)
+    load_zip_to_drive(feature, 'shape_id', new_shape_zip, feature['parent_ids'])
     print 'Shape loaded'
-    load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER], drive_service)
+    load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER])
     print 'Hash loaded'
 
-    manager.save_spec_json(os.path.join('features', manager.create_feature_spec_name(source_name)), feature)
+    spec_manager.save_spec_json(os.path.join('features', spec_manager.create_feature_spec_name(source_name)), feature)
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Update zip files on drive')#, parents=[tools.argparser])
+    parser = tools.argparser  # argparse.ArgumentParser(description='Update zip files on drive', parents=[tools.argparser])
 
-    parser.add_argument('--all', action='store_true', dest='check_features',
-                        help='Check all features for changes and update changed features and packages')
-    parser.add_argument('--all_packages', action='store_true', dest='check_packages',
-                        help='Update all packages that have changed features. Equivalent to --all with all features contained in package specs')
-    parser.add_argument('--feature', action='store', dest='feature',
-                        help='Check one feature for changes and update if needed. Takes one SGID feature name')
     parser.add_argument('-f', action='store_true', dest='force',
                         help='Force unchanged features and packages to create zip files')
     parser.add_argument('-n', action='store_false', dest='load',
                         help='Do not upload any files to drive')
+    parser.add_argument('--all', action='store_true', dest='check_features',
+                        help='Check all features for changes and update changed features and packages')
+    parser.add_argument('--all_packages', action='store_true', dest='check_packages',
+                        help='Update aziploader.sll packages that have changed features. Equivalent to --all with all features contained in package specs')
+    parser.add_argument('--package_list', action='store', dest='package_list',
+                        help='Update all packages in a json file with array named "packages".')
+    parser.add_argument('--feature', action='store', dest='feature',
+                        help='Check one feature for changes and update if needed. Takes one SGID feature name')
     parser.add_argument('--upload_zip', action='store', dest='zip_feature',
                         help='Upload zip files for provided feature. Will fail if zip files do not exist')
     parser.add_argument('workspace', action='store',
@@ -656,14 +430,12 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    drive_service = setup_drive_service()
-    # -------------Set these to test--------------------
     workspace = args.workspace  # r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
-    # feature_name = 'SGID10.RECREATION.Trailheads'
-    output_directory = r'package_temp'  # TODO make parameter or global
+    output_directory = r'package_temp'
     temp_package_directory = os.path.join(output_directory, 'output_packages')
 
     def renew_temp_directory(directory, package_dir):
+        """Delete and recreate required temp directories."""
         if not os.path.exists(directory):
             os.makedirs(temp_package_directory)
         else:
@@ -676,13 +448,15 @@ if __name__ == '__main__':
     start_time = clock()
 
     if args.check_features:
-        run_features(load=args.load, force=args.force)
+        run_features(output_directory, load=args.load, force=args.force)
 
     if args.check_packages:
-        run_packages(load=args.load, force=args.force)
+        run_packages(output_directory, load=args.load, force=args.force)
+    elif args.package_list:
+        run_packages(output_directory, package_list_json=args.package_list, load=args.load, force=args.force)
 
     if args.feature:
-        run_feature(args.feature, args.load, args.force)
+        run_feature(args.feature, output_directory, args.load, args.force)
 
     if args.zip_feature:
         upload_zip(args.zip_feature, output_directory)

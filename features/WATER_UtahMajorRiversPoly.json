@@ -1,0 +1,12 @@
+{
+    "category": "WATER", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "UtahMajorRiversPoly", 
+    "packages": [
+        "LakesRiversSprings"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.WATER.UtahMajorRiversPoly", 
+    "shape_id": ""
+}

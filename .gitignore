@@ -56,3 +56,4 @@ data/
 test/
 package_temp/
 client_secret.json
+service_secret.json

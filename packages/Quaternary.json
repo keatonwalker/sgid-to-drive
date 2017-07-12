@@ -1,0 +1,12 @@
+{
+    "category": "GEOSCIENCE", 
+    "feature_classes": [
+        "SGID10.GEOSCIENCE.QuaternaryFaults", 
+        "SGID10.GEOSCIENCE.QuaternaryVolcanicFlow", 
+        "SGID10.GEOSCIENCE.QuaternaryVolcanicVents"
+    ], 
+    "gdb_id": "", 
+    "name": "Quaternary", 
+    "parent_ids": [], 
+    "shape_id": ""
+}

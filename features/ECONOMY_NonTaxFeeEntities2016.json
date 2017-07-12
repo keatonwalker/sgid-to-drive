@@ -1,7 +1,7 @@
 {
     "category": "ECONOMY", 
-    "gdb_id": "0B3wvsjTJuTRQUU5aRmhuenYzZlE", 
-    "hash_id": "0B3wvsjTJuTRQYkNiUnNVTUZsU28", 
+    "gdb_id": "0B3yp_Bjfi5sXdUxGUG1aVjNaUjQ", 
+    "hash_id": "0B3yp_Bjfi5sXUjdDY0lXX2N0OWs", 
     "name": "NonTaxFeeEntities2016", 
     "packages": [
         "CurrentTaxingUnits"
@@ -10,6 +10,5 @@
         "0B3wvsjTJuTRQZXBEQjBMZGMzNFE"
     ], 
     "sgid_name": "SGID10.ECONOMY.NonTaxFeeEntities2016", 
-    "shape_id": "0B3wvsjTJuTRQRFNtOElqeEFfbEE", 
-    "upload_date": ""
+    "shape_id": "0B3yp_Bjfi5sXNVRocUVNRmxxeEU"
 }

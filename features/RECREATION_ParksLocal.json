@@ -1,0 +1,12 @@
+{
+    "category": "RECREATION", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "ParksLocal", 
+    "packages": [
+        "ParksAndGolfCourses"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.RECREATION.ParksLocal", 
+    "shape_id": ""
+}

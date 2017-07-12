@@ -1,0 +1,11 @@
+{
+    "category": "WATER",
+    "feature_classes": [
+        "SGID10.WATER.Wetlands",
+        "SGID10.WATER.WetlandsMappingProjects"
+    ],
+    "gdb_id": "",
+    "name": "Wetlands",
+    "parent_ids": [],
+    "shape_id": ""
+}

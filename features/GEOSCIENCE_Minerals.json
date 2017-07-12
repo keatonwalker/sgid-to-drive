@@ -1,0 +1,14 @@
+{
+    "category": "GEOSCIENCE", 
+    "gdb_id": "0B3yp_Bjfi5sXYTBoVVE3bmwxU2s", 
+    "hash_id": "0B3yp_Bjfi5sXejhjUDA0VU9lbTA", 
+    "name": "Minerals", 
+    "packages": [
+        "Minerals"
+    ], 
+    "parent_ids": [
+        "0B3yp_Bjfi5sXZmhGeHI0MkJ3cWc"
+    ], 
+    "sgid_name": "SGID10.GEOSCIENCE.Minerals", 
+    "shape_id": "0B3yp_Bjfi5sXdXpvQy1tZ3pjRlk"
+}

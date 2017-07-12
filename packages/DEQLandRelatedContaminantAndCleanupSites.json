@@ -1,0 +1,24 @@
+{
+    "category": "ENVIRONMENT", 
+    "feature_classes": [
+        "SGID10.ENVIRONMENT.BFNONTARGETED", 
+        "SGID10.ENVIRONMENT.BFTARGETED", 
+        "SGID10.ENVIRONMENT.VCP", 
+        "SGID10.ENVIRONMENT.TRI", 
+        "SGID10.ENVIRONMENT.TIER2", 
+        "SGID10.ENVIRONMENT.SITEREM", 
+        "SGID10.ENVIRONMENT.NPL", 
+        "SGID10.ENVIRONMENT.MMRP", 
+        "SGID10.ENVIRONMENT.ICBUFFERZONES", 
+        "SGID10.ENVIRONMENT.FUD", 
+        "SGID10.ENVIRONMENT.FACILITYUST", 
+        "SGID10.ENVIRONMENT.EWA"
+    ], 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DEQLandRelatedContaminantAndCleanupSites", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "", 
+    "shape_id": ""
+}

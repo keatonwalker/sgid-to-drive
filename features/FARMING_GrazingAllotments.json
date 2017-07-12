@@ -1,0 +1,12 @@
+{
+    "category": "FARMING", 
+    "gdb_id": "0B3yp_Bjfi5sXcjl5OVg2UVFVbUk", 
+    "hash_id": "0B3yp_Bjfi5sXVDZFWWc0b2dGVkU", 
+    "name": "GrazingAllotments", 
+    "packages": [], 
+    "parent_ids": [
+        "0B3yp_Bjfi5sXQWdzbUMtV2xoeU0"
+    ], 
+    "sgid_name": "SGID10.FARMING.GrazingAllotments", 
+    "shape_id": "0B3yp_Bjfi5sXUEtOWmhMQm9IVVE"
+}
