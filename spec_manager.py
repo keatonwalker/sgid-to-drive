@@ -239,6 +239,6 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    create_package_spec('UraniumResources',
-                        ['SGID10.ENERGY.PermittedUraniumMines', 'SGID10.ENERGY.UraniumAreaBoundaries', 'SGID10.ENERGY.UraniumDistricts_UGS', 'SGID10.ENERGY.UraniumMills', 'SGID10.ENERGY.UraniumPastProducers'],
-                        'ENERGY')
+    create_package_spec('Grazing',
+                        ['SGID10.ENVIRONMENT.GrazingAllotments', 'SGID10.ENVIRONMENT.GrazingImprovementRegions'],
+                        'FARMING')

@@ -4,7 +4,8 @@
     "hash_id": "0ByStJjVZ7c7meDVyWDBhT3owc0k", 
     "name": "DWQAssessmentUnits", 
     "packages": [
-        "DEQLandRelatedSites"
+        "DEQLandRelatedSites", 
+        "DEQWaterMonitoring"
     ], 
     "parent_ids": [
         "0ByStJjVZ7c7mWUJsbVQtZUFINHc"

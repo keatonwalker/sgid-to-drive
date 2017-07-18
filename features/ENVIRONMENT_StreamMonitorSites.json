@@ -5,7 +5,7 @@
     "name": "StreamMonitorSites", 
     "packages": [
         "DEQLandRelatedSites", 
-        "ZZZEnv"
+        "DEQWaterMonitoring"
     ], 
     "parent_ids": [
         "0ByStJjVZ7c7mLVlDQ1hReXRId2M"

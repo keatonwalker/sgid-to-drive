@@ -1,10 +1,12 @@
 {
     "category": "GEOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7majNHMktSMDZjZEE", 
+    "hash_id": "0ByStJjVZ7c7mRWtFNk1id0VIeDA", 
     "name": "Aquifer_BasinFillBoundary", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mN0tMbjUzdlQ3UkE"
+    ], 
     "sgid_name": "SGID10.GEOSCIENCE.Aquifer_BasinFillBoundary", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mbW5qeFVtZUE0YlE"
 }

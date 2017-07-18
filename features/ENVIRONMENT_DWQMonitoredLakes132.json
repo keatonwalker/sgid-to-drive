@@ -4,7 +4,8 @@
     "hash_id": "0ByStJjVZ7c7mU2VQNjFuS3hhOGM", 
     "name": "DWQMonitoredLakes132", 
     "packages": [
-        "DEQLandRelatedSites"
+        "DEQLandRelatedSites", 
+        "DEQWaterMonitoring"
     ], 
     "parent_ids": [
         "0ByStJjVZ7c7ma0V0SEVkeVNwX2c"
