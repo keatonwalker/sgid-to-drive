@@ -1,12 +1,14 @@
 {
     "category": "ENVIRONMENT", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mbG5PU05qZ3FIeTA", 
+    "hash_id": "0ByStJjVZ7c7mMmN0TnJqTS04SEU", 
     "name": "DWQGroundWaterPermits", 
     "packages": [
         "DEQLandRelatedSites"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mbWUxS0lfdjhfdUU"
+    ], 
     "sgid_name": "SGID10.ENVIRONMENT.DWQGroundWaterPermits", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7maXd1S0M3WmdJa2M"
 }

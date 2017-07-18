@@ -1,10 +1,12 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mTzBrTnNGWWFoeTA", 
+    "hash_id": "0ByStJjVZ7c7mM3ZZaFNGVHJ0M28", 
     "name": "OilGasWells_Paths", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mMTJKTEpXRWxvRm8"
+    ], 
     "sgid_name": "SGID10.ENERGY.OilGasWells_Paths", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mOVMwRGoxbFIzYkk"
 }

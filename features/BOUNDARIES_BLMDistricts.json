@@ -1,10 +1,12 @@
 {
     "category": "BOUNDARIES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mc1ZWajZJSzVMTlU", 
+    "hash_id": "0ByStJjVZ7c7mSVNXUVp3QVNyMk0", 
     "name": "BLMDistricts", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mSHFBMlo3WEV5TG8"
+    ], 
     "sgid_name": "SGID10.BOUNDARIES.BLMDistricts", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mZENUNUM2ajNZVUk"
 }

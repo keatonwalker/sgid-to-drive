@@ -1,12 +1,14 @@
 {
     "category": "DEMOGRAPHIC", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mVFoyMXNpQThsdTg", 
+    "hash_id": "0ByStJjVZ7c7md1B1RjVhTmtOVjA", 
     "name": "PopPlacePts2010_Approx", 
     "packages": [
         "Census2010"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mcDBjSllkeDZTa3M"
+    ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.PopPlacePts2010_Approx", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mNFQzQXZlNV92eU0"
 }

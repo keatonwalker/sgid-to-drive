@@ -1,12 +1,14 @@
 {
     "category": "BIOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mZGxZMTBrRFpVSjg", 
+    "hash_id": "0ByStJjVZ7c7mZ1hWVkYxeUE1MUk", 
     "name": "Habitat_SharpTailedGrouse", 
     "packages": [
         "DWRWildlifeHabitat"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mZmJtY3U4cjVLODg"
+    ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_SharpTailedGrouse", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mWC1XcU1KWU9COU0"
 }

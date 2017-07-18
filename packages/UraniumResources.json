@@ -1,0 +1,16 @@
+{
+    "category": "ENERGY", 
+    "feature_classes": [
+        "SGID10.ENERGY.PermittedUraniumMines", 
+        "SGID10.ENERGY.UraniumAreaBoundaries", 
+        "SGID10.ENERGY.UraniumDistricts_UGS", 
+        "SGID10.ENERGY.UraniumMills", 
+        "SGID10.ENERGY.UraniumPastProducers"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mSGx2Ynk5ajVwNWs", 
+    "name": "UraniumResources", 
+    "parent_ids": [
+        "0ByStJjVZ7c7meUdSbjAxZ094UjA"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mYkNHTmxXSVhLMUE"
+}

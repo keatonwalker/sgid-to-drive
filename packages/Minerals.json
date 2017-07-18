@@ -5,11 +5,10 @@
         "SGID10.GEOSCIENCE.MineralLocationsCRIB", 
         "SGID10.GEOSCIENCE.Minerals"
     ], 
-    "gdb_id": "0B3yp_Bjfi5sXSG1FUEZ3Vy1jRFE", 
+    "gdb_id": "0ByStJjVZ7c7mdGR3eTdJcXd5djg", 
     "name": "Minerals", 
     "parent_ids": [
-        "0B3yp_Bjfi5sXVHB3SWpjaWhqeGs", 
-        "0B3yp_Bjfi5sXMFJLaFkwLTVfQ1E"
+        "0ByStJjVZ7c7mTHRUZmROd1hlSEU"
     ], 
-    "shape_id": "0B3yp_Bjfi5sXdEU1a0YteGFhSFU"
+    "shape_id": "0ByStJjVZ7c7mZG1ldEVaT2kwN0k"
 }

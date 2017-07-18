@@ -1,0 +1,12 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "UREZPhase1_Transmission", 
+    "packages": [
+        "RenewableEnergyResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.DEMOGRAPHIC.UREZPhase1_Transmission", 
+    "shape_id": ""
+}

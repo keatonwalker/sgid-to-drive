@@ -1,14 +1,14 @@
 {
     "category": "GEOSCIENCE", 
-    "gdb_id": "0B3yp_Bjfi5sXYTBoVVE3bmwxU2s", 
-    "hash_id": "0B3yp_Bjfi5sXejhjUDA0VU9lbTA", 
+    "gdb_id": "0ByStJjVZ7c7mUEJfXzRlV3lyMkU", 
+    "hash_id": "0ByStJjVZ7c7mMXRhYVBFR1R5Wlk", 
     "name": "Minerals", 
     "packages": [
         "Minerals"
     ], 
     "parent_ids": [
-        "0B3yp_Bjfi5sXZmhGeHI0MkJ3cWc"
+        "0ByStJjVZ7c7mU0hkQ0xDRTZTMTA"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.Minerals", 
-    "shape_id": "0B3yp_Bjfi5sXdXpvQy1tZ3pjRlk"
+    "shape_id": "0ByStJjVZ7c7maVdZZWdXSEM3cXM"
 }

@@ -7,8 +7,10 @@
         "SGID10.BOUNDARIES.Municipalities_Modifications", 
         "SGID10.BOUNDARIES.Utah"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mdGtQN0tXZ05DMVE", 
     "name": "StateCountyMunicipalBoundaries", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7md2JrOVU1V3BVc1E"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mWGF1MWJlVkl0b0U"
 }

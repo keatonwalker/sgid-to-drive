@@ -1,12 +1,14 @@
 {
     "category": "SOCIETY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mNEhMOWpHbmtiN1E", 
+    "hash_id": "0ByStJjVZ7c7mdXBpUEk3U0Q1TWM", 
     "name": "PSAPLocations", 
     "packages": [
         "PublicSafety"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mRnVTOUtHbHU0RjQ"
+    ], 
     "sgid_name": "SGID10.SOCIETY.PSAPLocations", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mSUdlNWlCOWJLUGc"
 }

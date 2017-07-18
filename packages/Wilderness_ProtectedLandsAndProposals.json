@@ -19,8 +19,10 @@
         "SGID10.PLANNING.WildernessProp_WashingtonCo", 
         "SGID10.PLANNING.WildernessProp_WDesert1999"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7md3VTdzlocmo0SDg", 
     "name": "Wilderness_ProtectedLandsAndProposals", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mV2JyekFMdHVqbEE"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mU3k2NDF3UDItS2M"
 }

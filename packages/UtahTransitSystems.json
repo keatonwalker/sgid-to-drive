@@ -6,8 +6,10 @@
         "SGID10.TRANSPORTATION.UDOTMileposts", 
         "SGID10.TRANSPORTATION.UDOTRoutes_LRS"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mODR2d0FYb1RMVnM", 
     "name": "UtahTransitSystems", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mcV8wS0otTmRRMWM"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mWHlSNklIMHhmVGM"
 }

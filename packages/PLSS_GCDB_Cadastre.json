@@ -7,8 +7,10 @@
         "SGID10.Cadastre.PLSSQuarterQuarterSections_GCDB", 
         "SGID10.Cadastre.PLSSPoint_GCDB"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mMXhuc0VNaDRYaVU", 
     "name": "PLSS_GCDB_Cadastre", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mOUpBR0dQcm9UdWs"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mWDQ2aEtRc01kWk0"
 }

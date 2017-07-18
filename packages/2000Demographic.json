@@ -1,0 +1,16 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "feature_classes": [
+        "SGID10.DEMOGRAPHIC.CensusBlockGroups2000", 
+        "SGID10.DEMOGRAPHIC.CensusBlocks2000", 
+        "SGID10.DEMOGRAPHIC.CensusCounties2000", 
+        "SGID10.DEMOGRAPHIC.CensusTracts2000", 
+        "SGID10.DEMOGRAPHIC.MetroMicroStatisticalAreas"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mQnFocUFjSzNkcnc", 
+    "name": "2000Demographic", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mcG5IZzluYXZpY1E"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mR0hjalhIbEM5NTA"
+}

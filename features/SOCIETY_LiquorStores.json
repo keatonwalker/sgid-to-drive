@@ -1,10 +1,12 @@
 {
     "category": "SOCIETY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mbVZwWGtJRmtMMmM", 
+    "hash_id": "0ByStJjVZ7c7meXRsU3JKQndtdFU", 
     "name": "LiquorStores", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mRkNtU2ladDVtVW8"
+    ], 
     "sgid_name": "SGID10.SOCIETY.LiquorStores", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7makMyNVlQdDJtNXc"
 }

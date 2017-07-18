@@ -1,12 +1,14 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mX2l2b1BsZEhUOUE", 
+    "hash_id": "0ByStJjVZ7c7mLTZFY1VyU0N1UE0", 
     "name": "CoalDepositAreas1988", 
     "packages": [
         "CoalResources"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7md1pyMm40SmlzZ0E"
+    ], 
     "sgid_name": "SGID10.ENERGY.CoalDepositAreas1988", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mbDB2TllJVVB4dGs"
 }

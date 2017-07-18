@@ -1,12 +1,14 @@
 {
     "category": "BOUNDARIES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mSGFock9fTE9BMHM", 
+    "hash_id": "0ByStJjVZ7c7mYVhPWkNYbEd1V28", 
     "name": "USFSWildernessAreas", 
     "packages": [
         "Wilderness_ProtectedLandsAndProposals"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mdmJrMzNmeVptcUk"
+    ], 
     "sgid_name": "SGID10.BOUNDARIES.USFSWildernessAreas", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mSTdncUFqOWRvYm8"
 }

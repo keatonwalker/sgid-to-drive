@@ -1,12 +1,14 @@
 {
     "category": "GEOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mN1VBNW5kZ1llZk0", 
+    "hash_id": "0ByStJjVZ7c7mTHlBZm50bWg3RHc", 
     "name": "LandslideInventoryPolygons", 
     "packages": [
         "LandslideInventory"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7meWZ0b0staXhTdG8"
+    ], 
     "sgid_name": "SGID10.GEOSCIENCE.LandslideInventoryPolygons", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mQUhCWGhRcGZ5X3M"
 }

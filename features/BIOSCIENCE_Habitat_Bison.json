@@ -1,12 +1,14 @@
 {
     "category": "BIOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mejg1eS16RjFkNFk", 
+    "hash_id": "0ByStJjVZ7c7mUXNqd1NRTm1Zb3M", 
     "name": "Habitat_Bison", 
     "packages": [
         "DWRWildlifeHabitat"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mdXhfbjhyaXdDTUk"
+    ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_Bison", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mc0FQdEU0RXRvSUE"
 }

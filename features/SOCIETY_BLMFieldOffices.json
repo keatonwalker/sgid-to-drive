@@ -1,10 +1,12 @@
 {
     "category": "SOCIETY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mY3BFT2RQWURwUjg", 
+    "hash_id": "0ByStJjVZ7c7mY0szZ2M5OEVacGM", 
     "name": "BLMFieldOffices", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mWlJMR3VESUtzcWs"
+    ], 
     "sgid_name": "SGID10.SOCIETY.BLMFieldOffices", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mT1BTcTY1S1lYV3M"
 }

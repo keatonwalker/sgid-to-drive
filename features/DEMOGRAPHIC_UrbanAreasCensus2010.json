@@ -1,12 +1,14 @@
 {
     "category": "DEMOGRAPHIC", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mbDBkUVNoNFkxVzA", 
+    "hash_id": "0ByStJjVZ7c7mSjVjem5MZFhhODg", 
     "name": "UrbanAreasCensus2010", 
     "packages": [
         "Census2010"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mQ05PSC1EUVoxdzA"
+    ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.UrbanAreasCensus2010", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7meDhvNTFaOGQ1YjQ"
 }

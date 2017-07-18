@@ -1,12 +1,14 @@
 {
     "category": "BIOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mTXJFeGd5WUtaWUU", 
+    "hash_id": "0ByStJjVZ7c7mcjlMRXdPbHJ2QmM", 
     "name": "Habitat_CaliforniaQuail", 
     "packages": [
         "DWRWildlifeHabitat"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mSUdLeGFsa2w4M3c"
+    ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_CaliforniaQuail", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mc09ZdVIzaFFuUnM"
 }

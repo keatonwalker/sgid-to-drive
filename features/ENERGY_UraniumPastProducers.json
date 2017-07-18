@@ -1,10 +1,14 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mRFBiYW9rR0FDRWc", 
+    "hash_id": "0ByStJjVZ7c7meVJTS3BGQ2c4a3M", 
     "name": "UraniumPastProducers", 
-    "packages": [], 
-    "parent_ids": [], 
+    "packages": [
+        "UraniumResources"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mbkdRd1FVSVg1VXc"
+    ], 
     "sgid_name": "SGID10.ENERGY.UraniumPastProducers", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mY2ZWckxvT1NpUzQ"
 }

@@ -1,14 +1,14 @@
 {
     "category": "BIOSCIENCE", 
-    "gdb_id": "0B3yp_Bjfi5sXcUhva05ITEd5OVE", 
-    "hash_id": "0B3yp_Bjfi5sXZ05TdU1wc3Y3d1k", 
+    "gdb_id": "0ByStJjVZ7c7maWVwVFVJdFlwZUU", 
+    "hash_id": "0ByStJjVZ7c7mR0E1Qlc2WV9idkE", 
     "name": "Habitat_RockyMountainElk", 
     "packages": [
         "DWRWildlifeHabitat"
     ], 
     "parent_ids": [
-        "0B3yp_Bjfi5sXUDJMVWNnY18wcW8"
+        "0ByStJjVZ7c7malpOdFN1cUg1Y3M"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_RockyMountainElk", 
-    "shape_id": "0B3yp_Bjfi5sXZEl4Z3VjX2V2SEU"
+    "shape_id": "0ByStJjVZ7c7mMDBIdEtMYUFVMU0"
 }

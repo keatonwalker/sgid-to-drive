@@ -1,14 +1,14 @@
 {
     "category": "BIOSCIENCE", 
-    "gdb_id": "0ByStJjVZ7c7mQnZrQmx1eENVOE0", 
-    "hash_id": "0ByStJjVZ7c7mRlQ0OG5FWGZFU2s", 
+    "gdb_id": "0ByStJjVZ7c7mTzJMSXYzMnNYQ2M", 
+    "hash_id": "0ByStJjVZ7c7mSmtmV3BveWZYR3M", 
     "name": "Habitat_Pronghorn", 
     "packages": [
         "DWRWildlifeHabitat"
     ], 
     "parent_ids": [
-        "0ByStJjVZ7c7mMVh0VFowcmo3VEU"
+        "0ByStJjVZ7c7mNDVrNm42SjlKX2s"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_Pronghorn", 
-    "shape_id": "0ByStJjVZ7c7mUldSZE12QnNEVk0"
+    "shape_id": "0ByStJjVZ7c7mRUgwREo0ektjZXM"
 }

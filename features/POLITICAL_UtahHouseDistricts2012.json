@@ -1,12 +1,14 @@
 {
     "category": "POLITICAL", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mbF8yQTFpWUtMbFU", 
+    "hash_id": "0ByStJjVZ7c7mMEFHbXIzYVhSUGM", 
     "name": "UtahHouseDistricts2012", 
     "packages": [
         "UtahPoliticalDistricts_Begin2012"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mQ1RDWTN1cm41VmM"
+    ], 
     "sgid_name": "SGID10.POLITICAL.UtahHouseDistricts2012", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7maWctb3BOcVduekU"
 }

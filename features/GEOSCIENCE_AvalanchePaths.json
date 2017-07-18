@@ -1,12 +1,10 @@
 {
     "category": "GEOSCIENCE", 
-    "gdb_id": "0B3yp_Bjfi5sXOFJaQVdnYWlMc2s", 
-    "hash_id": "0B3yp_Bjfi5sXWXYtdnlEbGxFYlE", 
+    "gdb_id": "", 
+    "hash_id": "", 
     "name": "AvalanchePaths", 
     "packages": [], 
-    "parent_ids": [
-        "0B3yp_Bjfi5sXZmhGeHI0MkJ3cWc"
-    ], 
+    "parent_ids": [], 
     "sgid_name": "SGID10.GEOSCIENCE.AvalanchePaths", 
-    "shape_id": "0B3yp_Bjfi5sXTUVSQm80NlFmTzQ"
+    "shape_id": ""
 }

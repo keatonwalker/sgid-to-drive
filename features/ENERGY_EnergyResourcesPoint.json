@@ -1,10 +1,12 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mdnB2TE9EclJIajA", 
+    "hash_id": "0ByStJjVZ7c7meV9SZk5wYWZYRkk", 
     "name": "EnergyResourcesPoint", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mZENibG9JcV9qY2s"
+    ], 
     "sgid_name": "SGID10.ENERGY.EnergyResourcesPoint", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mVDBLRUhYeUFoRnc"
 }

@@ -1,0 +1,12 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "UREZPhase1_SolarZones", 
+    "packages": [
+        "RenewableEnergyResources"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.DEMOGRAPHIC.UREZPhase1_SolarZones", 
+    "shape_id": ""
+}

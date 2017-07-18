@@ -1,12 +1,14 @@
 {
     "category": "SOCIETY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mN1Bobk5uYmNodW8", 
+    "hash_id": "0ByStJjVZ7c7mM1lrMzVWaWM2WEk", 
     "name": "Schools", 
     "packages": [
         "SchoolsLibraries"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mSTFXWnl4NVFfNkU"
+    ], 
     "sgid_name": "SGID10.SOCIETY.Schools", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mOXB2NWpKaEJkMWc"
 }

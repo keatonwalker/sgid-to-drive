@@ -4,8 +4,10 @@
         "SGID10.SOCIETY.Schools", 
         "SGID10.SOCIETY.Libraries"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mMUdkTWwwMFViSDg", 
     "name": "SchoolsLibraries", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mdTRGQ2JUS3BWWE0"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mNW5pSGNIdVJiUUU"
 }

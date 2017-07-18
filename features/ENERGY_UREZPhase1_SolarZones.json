@@ -1,10 +1,14 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mSk03cUV3ZlppQkU", 
+    "hash_id": "0ByStJjVZ7c7mVFRoNU1aQlkxdVE", 
     "name": "UREZPhase1_SolarZones", 
-    "packages": [], 
-    "parent_ids": [], 
+    "packages": [
+        "RenewableEnergyResources"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mTnVlSTY3RGI4UVE"
+    ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase1_SolarZones", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mUzJHOThlZ1Q5UE0"
 }

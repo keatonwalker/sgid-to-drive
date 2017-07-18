@@ -102,8 +102,8 @@ class AgrcDriver(object):
         while response is False:
             try:
                 status, response = downloader.next_chunk()
-                if status:
-                    print "Download %d%%." % int(status.progress() * 100)
+                # if status:
+                #     print "Download %d%%." % int(status.progress() * 100)
             except errors.HttpError, e:
                 if e.resp.status in [404]:
                     # Start the upload all over again.
@@ -174,7 +174,8 @@ class AgrcDriver(object):
                     sleep(backoff)
                     backoff += backoff
                 else:
-                    raise Exception('Upload Failed')
+                    msg = "Upload Failed {}".format(e.msg)
+                    raise Exception(msg)
         # keep_version(response.get('id'), drive_service)
 
         return response.get('id')
@@ -242,6 +243,34 @@ class AgrcDriver(object):
 
         return response.get('id')
 
+    def change_file_parent(self, file_id, old_parent_id, new_parent_id):
+        request = self.service.files().update(fileId=file_id,
+                                              addParents=new_parent_id,
+                                              removeParents=old_parent_id,
+                                              fields='id')
+
+        response = None
+        backoff = 1
+        while response is None:
+            try:
+                response = request.execute()
+            except errors.HttpError, e:
+                if e.resp.status in [404]:
+                    # Start the upload all over again.
+                    raise Exception('Upload Failed 404')
+                elif e.resp.status in [500, 502, 503, 504]:
+                    if backoff > 8:
+                        raise Exception('Upload Failed: {}'.format(e))
+                    print 'Retrying upload in: {} seconds'.format(backoff)
+                    sleep(backoff)
+                    backoff += backoff
+                else:
+                    msg = "Upload Failed {}".format(e.msg)
+                    raise Exception(msg)
+        # keep_version(response.get('id'), drive_service)
+
+        return response.get('id')
+
     def create_owner(self, file_id='0B3yp_Bjfi5sXVDZFWWc0b2dGVkU', email='kwalker@utah.gov'):
         domain_permission = {
             'type': 'user',
@@ -267,6 +296,16 @@ class SgidDriver(AgrcDriver):
     def __init__(self, secrets=SERVICE_ACCOUNT_SECRET_FILE, scopes=SCOPES):
         """Ctor."""
         super(SgidDriver, self).__init__(secrets, scopes)
+
+
+def get_download_link(file_id):
+    url_formatter = 'https://drive.google.com/a/utah.gov/uc?id={}&export=download'
+    return url_formatter.format(file_id)
+
+
+def get_webview_link(file_id):
+    url_formatter = 'https://drive.google.com/drive/folders/{}'
+    return url_formatter.format(file_id)
 
 
 if __name__ == '__main__':

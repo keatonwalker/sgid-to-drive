@@ -7,8 +7,10 @@
         "SGID10.ENVIRONMENT.LakeMonitoring", 
         "SGID10.ENVIRONMENT.StreamMonitorSites"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mYjNXMndRY0Nxd0U", 
     "name": "DEQLandRelatedSites", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mQXRWQjY3YXpBRlU"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mejRLTHQ3UDhXQ2M"
 }

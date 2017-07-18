@@ -1,12 +1,14 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mZmM2b2lXeS1hWjQ", 
+    "hash_id": "0ByStJjVZ7c7mRjdHSl9UWDVpYjA", 
     "name": "DNROilGasWells", 
     "packages": [
         "DOGMOilAndGasResources"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mSGRhbWFSeGxwb2c"
+    ], 
     "sgid_name": "SGID10.ENERGY.DNROilGasWells", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mcXZnVUxHUUZRUWM"
 }

@@ -1,13 +1,15 @@
 {
     "category": "ENVIRONMENT", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7maXY4RmpObDgtdHM", 
+    "hash_id": "0ByStJjVZ7c7mY042R1hSYXh5VG8", 
     "name": "EWA", 
     "packages": [
         "DEQLand", 
         "DEQLandRelatedContaminantAndCleanupSites"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mVldHNzZTTFVsX1U"
+    ], 
     "sgid_name": "SGID10.ENVIRONMENT.EWA", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mVjh2YnBHWlFpVG8"
 }

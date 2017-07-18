@@ -1,10 +1,14 @@
 {
     "category": "ENERGY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mYmNTc0pibnd0QVU", 
+    "hash_id": "0ByStJjVZ7c7mNDBrY1hhanhWbVU", 
     "name": "UREZPhase1_Transmission", 
-    "packages": [], 
-    "parent_ids": [], 
+    "packages": [
+        "RenewableEnergyResources"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mcmY2ZGphbUtMQTA"
+    ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase1_Transmission", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7meWdtdEZ2bWFVdDQ"
 }

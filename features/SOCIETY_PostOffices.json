@@ -1,10 +1,12 @@
 {
     "category": "SOCIETY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mT3BMNE90c19jRTQ", 
+    "hash_id": "0ByStJjVZ7c7mQUNIbkFueUk3LTg", 
     "name": "PostOffices", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mS3pTNEZDM0JNeHc"
+    ], 
     "sgid_name": "SGID10.SOCIETY.PostOffices", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mWnBYeUVxaDJ6Z1k"
 }

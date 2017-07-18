@@ -1,12 +1,14 @@
 {
     "category": "PLANNING", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mSXQwVXZxVzQ4RVk", 
+    "hash_id": "0ByStJjVZ7c7mSXlEeVhzaUtGZ0U", 
     "name": "WildernessProp_WashingtonCo", 
     "packages": [
         "Wilderness_ProtectedLandsAndProposals"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mOWw0TWUzRHE2dkE"
+    ], 
     "sgid_name": "SGID10.PLANNING.WildernessProp_WashingtonCo", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mcjlUQUp5Z2t2NEk"
 }

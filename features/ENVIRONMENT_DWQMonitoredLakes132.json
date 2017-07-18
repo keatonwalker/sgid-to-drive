@@ -1,12 +1,14 @@
 {
     "category": "ENVIRONMENT", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mSHN6R19xX1VRbkE", 
+    "hash_id": "0ByStJjVZ7c7mU2VQNjFuS3hhOGM", 
     "name": "DWQMonitoredLakes132", 
     "packages": [
         "DEQLandRelatedSites"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7ma0V0SEVkeVNwX2c"
+    ], 
     "sgid_name": "SGID10.ENVIRONMENT.DWQMonitoredLakes132", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7meWhHeDZKdHpZcVE"
 }

@@ -5,8 +5,10 @@
         "SGID10.TRANSPORTATION.Airports", 
         "SGID10.TRANSPORTATION.Heliports"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mUHRNZjZ1TnMwdWM", 
     "name": "AirTransportation", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mRU90UWh6NEdwVHc"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mVk9FN2dGdFNOdXM"
 }

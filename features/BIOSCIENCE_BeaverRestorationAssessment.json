@@ -1,10 +1,12 @@
 {
     "category": "BIOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mNHFwajNmMU1KTVU", 
+    "hash_id": "0ByStJjVZ7c7md2E3TVQ3QmNCLU0", 
     "name": "BeaverRestorationAssessment", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mZmJtZXNPN1l3ZFE"
+    ], 
     "sgid_name": "SGID10.BIOSCIENCE.BeaverRestorationAssessment", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mWmx2eTA4TmdEOFU"
 }

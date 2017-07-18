@@ -4,8 +4,10 @@
         "SGID10.PLANNING.UtahPLI_Areas_Proposal_Jan16", 
         "SGID10.PLANNING.UtahPLI_Lines_Proposal_Jan16"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mbkhHZmJEUjllVzg", 
     "name": "PublicLandsInitiativeProposal", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mNTA4bjY4aGp1QUk"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mTDlvQW05a1dWclk"
 }

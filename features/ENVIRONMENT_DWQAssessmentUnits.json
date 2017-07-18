@@ -1,12 +1,14 @@
 {
     "category": "ENVIRONMENT", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mNWRvTzA1ZnRwaUE", 
+    "hash_id": "0ByStJjVZ7c7meDVyWDBhT3owc0k", 
     "name": "DWQAssessmentUnits", 
     "packages": [
         "DEQLandRelatedSites"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mWUJsbVQtZUFINHc"
+    ], 
     "sgid_name": "SGID10.ENVIRONMENT.DWQAssessmentUnits", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mdGtHaXVEVGE5Wk0"
 }

@@ -133,7 +133,7 @@ def get_package_spec_list():
         for filename in files:
             if filename == '.DS_Store':
                 continue
-            packages.append(filename)
+            packages.append(os.path.join(PACKAGE_SPEC_FOLDER, filename))
         break
     return packages
 
@@ -158,10 +158,13 @@ def _list_packages_with_nonexistant_features(workspace):
     for p in packages_to_check:
         if not p.endswith('.json'):
             p += '.json'
-        packages_spec = get_package(p)
+        packages_spec = get_package(os.path.basename(p))
         fcs = packages_spec['feature_classes']
         if fcs != '' and len(fcs) > 0:
             for f in fcs:
+                if f == 'SGID10.ENERGY.CoalLeases':
+                    print f
+                    print 'exists: ', arcpy.Exists(os.path.join(workspace, f))
                 if f in bad_features or not arcpy.Exists(os.path.join(workspace, f)):
                     if f not in bad_features:
                         print f
@@ -194,13 +197,24 @@ def _list_nonexistant_features(workspace):
         print f
 
 
-def _clear_driveids(spec):
+def _clear_driveids(path, spec):
     if 'hash_id' in spec:
         spec['hash_id'] = ''
 
     spec['gdb_id'] = ''
     spec['shape_id'] = ''
     spec['parent_ids'] = []
+    save_spec_json(path, spec)
+
+
+def clear_all_drive_ids():
+    for path in get_feature_spec_list():
+        spec = load_feature_json(path)
+        _clear_driveids(path, spec)
+
+    for path in get_package_spec_list():
+        spec = load_feature_json(path)
+        _clear_driveids(path, spec)
 
 
 if __name__ == '__main__':
@@ -225,5 +239,6 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    # _create_new_jsons(r"C:\GisWork\drive_sgid\Old_jsonpackages")
-    _list_packages_with_nonexistant_features("Database Connections\Connection to sgid.agrc.utah.gov.sde")
+    create_package_spec('UraniumResources',
+                        ['SGID10.ENERGY.PermittedUraniumMines', 'SGID10.ENERGY.UraniumAreaBoundaries', 'SGID10.ENERGY.UraniumDistricts_UGS', 'SGID10.ENERGY.UraniumMills', 'SGID10.ENERGY.UraniumPastProducers'],
+                        'ENERGY')

@@ -1,10 +1,12 @@
 {
     "category": "BOUNDARIES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mQ2NpcF9CUmd0Wnc", 
+    "hash_id": "0ByStJjVZ7c7mZzVrQXJwS3B2V28", 
     "name": "NavajoChapters", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mLWNuY0hESG94dHM"
+    ], 
     "sgid_name": "SGID10.BOUNDARIES.NavajoChapters", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mV2dtWE9IY3pkeHM"
 }

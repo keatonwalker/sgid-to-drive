@@ -1,12 +1,14 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7ma0RGcTAzaFRlcjg", 
+    "hash_id": "0ByStJjVZ7c7mLVNFUXZUR2dLZTA", 
     "name": "UtahMajorRiversPoly", 
     "packages": [
         "LakesRiversSprings"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mMzJ0Y3ZRUGl1VUk"
+    ], 
     "sgid_name": "SGID10.WATER.UtahMajorRiversPoly", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mUDZqb0ZxbEdROXM"
 }

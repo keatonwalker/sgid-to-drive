@@ -7,8 +7,10 @@
         "SGID10.ENERGY.DNROilGasWells_HDBottom", 
         "SGID10.ENERGY.DNROilGasWells_HDPath"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mRlU4QjVGelp3M1E", 
     "name": "DOGMOilAndGasResources", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mS2c2djl3c2d6ZWs"
+    ], 
+    "shape_id": "0ByStJjVZ7c7maXpvUS1uTjBqQ3c"
 }

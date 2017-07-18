@@ -8,8 +8,10 @@
         "SGID10.SOCIETY.PSAPLocations", 
         "SGID10.SOCIETY.StateAgencyDispatch"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mMFFlVmhaenFNbnM", 
     "name": "PublicSafety", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mSk1mNzRyS1kwR3c"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mUVNsTGpOOFlYOXM"
 }

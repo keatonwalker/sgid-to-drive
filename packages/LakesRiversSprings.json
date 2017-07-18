@@ -6,8 +6,10 @@
         "SGID10.WATER.SpringsNHDHighRes", 
         "SGID10.WATER.UtahMajorRiversPoly"
     ], 
-    "gdb_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mRWYzYzliSDVNcEk", 
     "name": "LakesRiversSprings", 
-    "parent_ids": [], 
-    "shape_id": ""
+    "parent_ids": [
+        "0ByStJjVZ7c7mdjRzWWo0OUVKMVE"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mRVZ4U3VLX0ZBSmc"
 }

@@ -1,12 +1,14 @@
 {
     "category": "ECONOMY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mNlQwVG53WEY5NVU", 
+    "hash_id": "0ByStJjVZ7c7mWXRrS25yaXhnOG8", 
     "name": "TaxAreas2016", 
     "packages": [
         "CurrentTaxingUnits"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mdW90bzI1eTlVdGc"
+    ], 
     "sgid_name": "SGID10.ECONOMY.TaxAreas2016", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mT1I0X3NUSnVZNVk"
 }

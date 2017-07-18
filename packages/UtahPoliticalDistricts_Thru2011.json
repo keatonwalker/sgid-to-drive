@@ -1,0 +1,15 @@
+{
+    "category": "POLITICAL", 
+    "feature_classes": [
+        "SGID10.POLITICAL.USCongressDistricts2002", 
+        "SGID10.POLITICAL.UtahHouseDistricts2002", 
+        "SGID10.POLITICAL.UtahSenateDistricts2002", 
+        "SGID10.POLITICAL.VistaBallotAreas"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mVDFuckhwV3BYWUE", 
+    "name": "UtahPoliticalDistricts_Thru2011", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mM1VpTXBvUkEtcEk"
+    ], 
+    "shape_id": "0ByStJjVZ7c7memE2V3VwRDhXMUE"
+}
