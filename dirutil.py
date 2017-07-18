@@ -100,6 +100,8 @@ def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
     ided_features = get_spec_catnames(spec_manager.get_feature_spec_list(), True)
     ided_packages = get_spec_catnames(spec_manager.get_package_spec_list(), True)
 
+    not_founds = []
+
     def get_replace_link(link, spec):
         last_7 = link.path[-7:]
         zip_id = None
@@ -148,6 +150,8 @@ def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
                             data_links.append(download)
                         else:
                             print 'not found:', link.path
+                            if link.packaged:
+                                not_founds.append(link.name)
                             print path
 
                     lines.append(replace_line)
@@ -172,6 +176,8 @@ def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
                 preview_count += 1
             data_paths.extend(links)
 
+    # for n in not_founds:
+    #     print n
     return data_paths
 
 
@@ -272,7 +278,7 @@ if __name__ == '__main__':
     os.makedirs('data/ftplinktest/replaces_preview')
     print 'Temp directory removed'
 
-    data_dir = '/Users/kwalker/Documents/repos/gis.utah.gov/data/farming'
+    data_dir = '/Users/kwalker/Documents/repos/gis.utah.gov/data/geoscience'
 
     paths = replace_ftp_links(data_dir, rewrite_source=False)
     print 'UPDATED'

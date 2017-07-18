@@ -9,7 +9,8 @@
         "SGID10.ENVIRONMENT.TIER2", 
         "SGID10.ENVIRONMENT.TRI", 
         "SGID10.ENVIRONMENT.VCP", 
-        "SGID10.ENVIRONMENT.FACILITYUST"
+        "SGID10.ENVIRONMENT.FACILITYUST", 
+        "SGID10.ENVIRONMENT.DWMRCSolidWasteFacilities"
     ], 
     "gdb_id": "0ByStJjVZ7c7ma3RpRTN1bUpMQW8", 
     "hash_id": "", 

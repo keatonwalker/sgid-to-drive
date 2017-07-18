@@ -4,7 +4,8 @@
     "hash_id": "0ByStJjVZ7c7mMmN0TnJqTS04SEU", 
     "name": "DWQGroundWaterPermits", 
     "packages": [
-        "DEQLandRelatedSites"
+        "DEQLandRelatedSites", 
+        "DEQWaterMonitoring"
     ], 
     "parent_ids": [
         "0ByStJjVZ7c7mbWUxS0lfdjhfdUU"

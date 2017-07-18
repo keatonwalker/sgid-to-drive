@@ -1,13 +1,15 @@
 {
     "category": "ENVIRONMENT", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mZTdkU2JWY1pwdTQ", 
+    "hash_id": "0ByStJjVZ7c7mWmJpQ1Z3cVFUMW8", 
     "name": "TRI", 
     "packages": [
         "DEQLand", 
         "DEQLandRelatedContaminantAndCleanupSites"
     ], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mQTRIZFlrV005dWc"
+    ], 
     "sgid_name": "SGID10.ENVIRONMENT.TRI", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mLXBmWjh6cVVWQ3c"
 }

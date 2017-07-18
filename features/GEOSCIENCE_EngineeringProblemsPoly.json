@@ -1,10 +1,12 @@
 {
     "category": "GEOSCIENCE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mYm55RU9IYl9NLUk", 
+    "hash_id": "0ByStJjVZ7c7mRVM0eWl5VkFFcUk", 
     "name": "EngineeringProblemsPoly", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mVFpkV1pmS3NHUDQ"
+    ], 
     "sgid_name": "SGID10.GEOSCIENCE.EngineeringProblemsPoly", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7ma0t5eWFFYzBtcmc"
 }

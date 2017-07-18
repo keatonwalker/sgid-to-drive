@@ -321,7 +321,7 @@ def update_package(workspace, package_name, output_directory, load_to_drive=True
     spec_manager.save_spec_json(os.path.join('packages', package['name'] + '.json'), package)
 
 
-def run_features(workspace, output_directory, feature_list_json=None, load=True, force=False, category=None):
+def run_features(workspace, output_directory, feature_list_json=None, load=True, force=False, category=None, skip_packages=False):
     """
     CLI option to update all features in spec_manager.FEATURE_SPEC_FOLDER or just those in feature_list_json.
 
@@ -345,8 +345,9 @@ def run_features(workspace, output_directory, feature_list_json=None, load=True,
     packages = []
     for feature in features:
         packages.extend(update_feature(workspace, feature, output_directory, load_to_drive=True, force_update=force))
-    # for package in set(packages):
-    #     update_package(workspace, package, temp_package_directory)
+    if not skip_packages:
+        for package in set(packages):
+            update_package(workspace, package, temp_package_directory)
 
 
 def run_packages(workspace, output_directory, package_list_json=None, load=True, force=False):
@@ -389,15 +390,16 @@ def run_packages(workspace, output_directory, package_list_json=None, load=True,
         update_package(workspace, package, temp_package_directory, load_to_drive=load)
 
 
-def run_feature(workspace, source_name, output_directory, load=True, force=False):
+def run_feature(workspace, source_name, output_directory, load=True, force=False, skip_packages=False):
     """CLI option to update one feature."""
     packages = update_feature(workspace,
                               source_name,
                               output_directory,
                               load_to_drive=load,
                               force_update=force)
-    for package in set(packages):
-        update_package(workspace, package, temp_package_directory, load_to_drive=load)
+    if not skip_packages:
+        for package in set(packages):
+            update_package(workspace, package, temp_package_directory, load_to_drive=load)
 
 
 def run_package(workspace, package_name, output_directory, load=True, force=False):
@@ -445,6 +447,8 @@ if __name__ == '__main__':
                         help='Force unchanged features and packages to create zip files')
     parser.add_argument('-n', action='store_false', dest='load',
                         help='Do not upload any files to drive')
+    parser.add_argument('-s', action='store_true', dest='skip_packages',
+                        help='Do not run packages features that have changed')
     parser.add_argument('--all', action='store_true', dest='check_features',
                         help='Check all features for changes and update changed features and packages')
     parser.add_argument('--category', action='store', dest='feature_category',
@@ -453,7 +457,7 @@ if __name__ == '__main__':
                         help='Update all packages that have changed features. Equivalent to --all with all features contained in package specs')
     parser.add_argument('--package_list', action='store', dest='package_list',
                         help='Update all packages in a json file with array named "packages".')
-    parser.add_argument('--feature', action='store', dest='feature',
+    parser.add_argument('--re', action='store', dest='feature',
                         help='Check one feature for changes and update if needed. Takes one SGID feature name')
     parser.add_argument('--package', action='store', dest='package',
                         help='Check one package for changes and update if needed. Takes one package name')
@@ -482,7 +486,7 @@ if __name__ == '__main__':
     start_time = clock()
 
     if args.check_features:
-        run_features(workspace, output_directory, load=args.load, force=args.force, category=args.feature_category)
+        run_features(workspace, output_directory, load=args.load, force=args.force, category=args.feature_category, skip_packages=args.skip_packages)
 
     if args.check_packages:
         run_packages(workspace, output_directory, load=args.load, force=args.force)
@@ -490,10 +494,10 @@ if __name__ == '__main__':
         run_packages(workspace, output_directory, package_list_json=args.package_list, load=args.load, force=args.force)
 
     if args.feature:
-        run_feature(workspace, args.feature, output_directory, args.load, args.force)
+        run_feature(workspace, args.feature, output_directory, load=args.load, force=args.force, skip_packages=args.skip_packages)
 
     if args.package:
-        run_package(workspace, args.package, output_directory, args.load, args.force)
+        run_package(workspace, args.package, output_directory, load=args.load, force=args.force)
 
     if args.zip_feature:
         upload_zip(args.zip_feature, output_directory)

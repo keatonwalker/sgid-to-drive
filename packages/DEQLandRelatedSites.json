@@ -5,7 +5,8 @@
         "SGID10.ENVIRONMENT.DWQGroundWaterPermits", 
         "SGID10.ENVIRONMENT.DWQMonitoredLakes132", 
         "SGID10.ENVIRONMENT.LakeMonitoring", 
-        "SGID10.ENVIRONMENT.StreamMonitorSites"
+        "SGID10.ENVIRONMENT.StreamMonitorSites", 
+        "SGID10.ENVIRONMENT.DWMRCSolidWasteFacilities"
     ], 
     "gdb_id": "0ByStJjVZ7c7mYjNXMndRY0Nxd0U", 
     "name": "DEQLandRelatedSites", 
