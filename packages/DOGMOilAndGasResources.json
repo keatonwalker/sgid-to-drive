@@ -3,9 +3,9 @@
     "feature_classes": [
         "SGID10.ENERGY.DNROilGasFields", 
         "SGID10.ENERGY.DNROilGasUnits", 
-        "SGID10.ENERGY.DNROilGasWells", 
-        "SGID10.ENERGY.DNROilGasWells_HDBottom", 
-        "SGID10.ENERGY.DNROilGasWells_HDPath"
+        "SGID10.ENERGY.OilGasWells", 
+        "SGID10.ENERGY.OilGasWells_DownHoles", 
+        "SGID10.ENERGY.OilGasWells_Paths"
     ], 
     "gdb_id": "0ByStJjVZ7c7mRlU4QjVGelp3M1E", 
     "name": "DOGMOilAndGasResources", 
