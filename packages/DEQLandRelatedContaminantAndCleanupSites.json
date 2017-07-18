@@ -12,7 +12,8 @@
         "SGID10.ENVIRONMENT.ICBUFFERZONES", 
         "SGID10.ENVIRONMENT.FUD", 
         "SGID10.ENVIRONMENT.FACILITYUST", 
-        "SGID10.ENVIRONMENT.EWA", 
+        "SGID10.ENVIRONMENT.EWA",
+        "SGID10.ENVIRONMENT.DWMRCHazWasteUsedOilFacilities",
         "SGID10.ENVIRONMENT.DWMRCSolidWasteFacilities"
     ], 
     "gdb_id": "0ByStJjVZ7c7mT3BYNndwVUNCc1U", 
