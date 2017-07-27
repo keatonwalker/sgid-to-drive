@@ -1,10 +1,12 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mUW5IeHVSVWtmWVk", 
+    "hash_id": "0ByStJjVZ7c7mbUJJQjd2cWx3Mlk", 
     "name": "Stations", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mVlY1TEh1SEs0R1E"
+    ], 
     "sgid_name": "SGID10.WATER.Stations", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mcGZuZ29BZC1abVE"
 }

@@ -6,5 +6,6 @@
     "packages": [], 
     "parent_ids": [], 
     "sgid_name": "SGID10.ELEVATION.Contours_2Meter_SLCounty", 
-    "shape_id": ""
+    "shape_id": "", 
+    "update_cycle": "never"
 }

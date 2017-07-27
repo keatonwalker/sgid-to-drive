@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mQWRla3NwaWZ3eXc"
     ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase1_WindZones", 
-    "shape_id": "0ByStJjVZ7c7mQWVqVnhOa1NOcVE"
+    "shape_id": "0ByStJjVZ7c7mQWVqVnhOa1NOcVE", 
+    "update_cycle": "never"
 }

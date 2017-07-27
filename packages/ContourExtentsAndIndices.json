@@ -1,0 +1,12 @@
+{
+    "category": "INDICES", 
+    "feature_classes": [
+        "SGID10.INDICES.Contour_Line_Extents"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mam4wSU5vTWxuaTg", 
+    "name": "ContourExtentsAndIndices", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mTjRWQjY4c1g2REk"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mWW5rY1d6NUhGRFE"
+}

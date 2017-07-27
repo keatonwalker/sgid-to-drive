@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7mWDBsNzRMR2o4azA", 
     "hash_id": "0ByStJjVZ7c7mbHo1bEhQY0tVdnc", 
     "name": "DWMRCHazWasteUsedOilFacilities", 
-    "packages": [], 
+    "packages": [
+        "DEQLandRelatedContaminantAndCleanupSites"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mcjlUeURLUkRQVk0"
     ], 

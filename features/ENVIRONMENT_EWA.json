@@ -11,5 +11,6 @@
         "0ByStJjVZ7c7mVldHNzZTTFVsX1U"
     ], 
     "sgid_name": "SGID10.ENVIRONMENT.EWA", 
-    "shape_id": "0ByStJjVZ7c7mVjh2YnBHWlFpVG8"
+    "shape_id": "0ByStJjVZ7c7mVjh2YnBHWlFpVG8", 
+    "update_cycle": "day"
 }

@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7mOEVoYnhtWS1PS3c", 
     "hash_id": "0ByStJjVZ7c7mbVVxLVpEN1RuZjQ", 
     "name": "DebrisFlow_WasatchStudyBoundary", 
-    "packages": [], 
+    "packages": [
+        "DebrisFlow"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mMGt0V2swcWJ5aDg"
     ], 

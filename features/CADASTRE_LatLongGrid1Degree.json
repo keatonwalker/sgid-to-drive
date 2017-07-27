@@ -1,10 +1,13 @@
 {
     "category": "CADASTRE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7maDA3UTlLRVVNZU0", 
+    "hash_id": "0ByStJjVZ7c7mbmFrT0dEV29TdzA", 
     "name": "LatLongGrid1Degree", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7ma2lxdllTc0ZzZVE"
+    ], 
     "sgid_name": "SGID10.CADASTRE.LatLongGrid1Degree", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mRkpqb2JyOGxEcDQ", 
+    "update_cycle": "never"
 }

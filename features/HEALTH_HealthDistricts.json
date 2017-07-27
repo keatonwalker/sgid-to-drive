@@ -1,0 +1,11 @@
+{
+    "category": "HEALTH", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "HealthDistricts", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.HEALTH.HealthDistricts", 
+    "shape_id": "", 
+    "update_cycle": "annual"
+}

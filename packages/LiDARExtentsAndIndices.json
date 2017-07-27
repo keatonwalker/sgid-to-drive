@@ -1,0 +1,22 @@
+{
+    "category": "INDICES", 
+    "feature_classes": [
+        "SGID10.INDICES.LiDAR_Extents", 
+        "SGID10.INDICES.LiDAR2006_1_25m_BareEarth_Extent", 
+        "SGID10.INDICES.LiDAR2006_1_25m_BareEarth_Tiles", 
+        "SGID10.INDICES.LiDAR2006_1m_BareEarth_Tiles", 
+        "SGID10.INDICES.LiDAR2006_1m_Extents", 
+        "SGID10.INDICES.LiDAR2006_1m_FirstReturn_Tiles", 
+        "SGID10.INDICES.LiDAR2006_1m_LastReturn_Tiles", 
+        "SGID10.INDICES.LiDAR2006_2m_BareEarth_Extents", 
+        "SGID10.INDICES.LiDAR2006_2m_BareEarth_Tiles", 
+        "SGID10.INDICES.LiDAR2006_Raw_Extents", 
+        "SGID10.INDICES.LiDAR2006_Raw_Tiles"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mWGJ4M2pzOERoUmc", 
+    "name": "LiDARExtentsAndIndices", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mV3l5cERKdk14NTA"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mVVI5aWxpbHRwQTg"
+}

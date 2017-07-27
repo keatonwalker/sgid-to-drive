@@ -1,10 +1,12 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mM0E1ZE54YXZRcnc", 
+    "hash_id": "0ByStJjVZ7c7mbU8xX3NRZ004Qk0", 
     "name": "Lakes", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7maUkzRVNuazA5ZXc"
+    ], 
     "sgid_name": "SGID10.WATER.Lakes", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mcGl4b3ZXOUF6S2c"
 }

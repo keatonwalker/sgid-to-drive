@@ -1,0 +1,12 @@
+{
+    "category": "ENVIRONMENT", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "GrazingImprovementRegions", 
+    "packages": [
+        "Grazing"
+    ], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.ENVIRONMENT.GrazingImprovementRegions", 
+    "shape_id": ""
+}

@@ -3,10 +3,11 @@ import hashlib
 import re
 import json
 import shutil
+import csv
 
 import spec_manager
 import driver
-user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+# user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
 
 
 class FtpLink(object):
@@ -32,6 +33,73 @@ class FtpLink(object):
                                                                       self.packaged,
                                                                       self.src_dir,
                                                                       self.ext)
+
+
+def get_features_without_cycle():
+    
+
+
+def get_update_cycles(steward_info):
+    update_types = set()
+    with open(steward_info, 'rb') as info:
+        reader = csv.DictReader(info)
+        for row in reader:
+            update_types.add(row['Refresh Cycle (Days)'].lower())
+
+    update_types = list(update_types)
+    update_types.sort()
+    for t in update_types:
+        print t
+
+
+def get_feature_update_cycles(steward_info):
+    features = {}
+    with open(steward_info, 'rb') as info:
+        reader = csv.DictReader(info)
+        for row in reader:
+            feature = 'SGID10.' + row['SGID Data Layer']
+            if feature in features or feature.strip() == '':
+                print 'wtf?'
+                continue
+            update = row['Refresh Cycle (Days)'].lower()
+            features[feature] = update
+
+    return features
+
+
+def set_spec_update_types(feature_name, update_type):
+    import arcpy
+    if not arcpy.Exists(os.path.join(r'Database Connections\Connection to sgid.agrc.utah.gov.sde', feature_name)):
+        print '^Does not exist'
+        return
+    feature = spec_manager.get_feature(feature_name)
+    feature['update_cycle'] = update_type
+    spec_manager.save_spec_json(feature)
+
+
+def package_specs_from_gdbs(directory_path, category):
+    import arcpy
+    arcpy.env.workspace = directory_path
+    gdbs = arcpy.ListWorkspaces('*', 'FileGDB')
+    new_package_paths = []
+    # import pdb; pdb.set_trace()
+    for gdb in gdbs:
+        arcpy.env.workspace = gdb
+        gdb_name = os.path.basename(gdb).replace('.gdb', '')
+        data = []
+        data.extend(arcpy.ListFeatureClasses())
+        data.extend(arcpy.ListTables())
+        sgid_names = ['SGID10.{}.{}'.format(category.upper(), d) for d in data]
+        package_json = spec_manager.create_package_spec(gdb_name,
+                                                        sgid_names,
+                                                        category.upper())
+        print package_json
+        print sgid_names
+        print
+        new_package_paths.append(package_json)
+
+    spec_manager._list_packages_with_nonexistant_features(r'Database Connections\Connection to sgid.agrc.utah.gov.sde',
+                                                          new_package_paths)
 
 
 def get_directory_count(top_dir):
@@ -94,11 +162,40 @@ def get_all_ftp_links(top_dir):
     return data_paths
 
 
+
+def list_ftp_links_by_subfolder(top_dir):
+    ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+?)[\"\)]')
+    data_paths = []
+
+    def get_ftp_link_in_file(path, matcher):
+        data_links = []
+        with open(path, 'r') as search_file:
+            for line in search_file:
+                matches = matcher.findall(line)
+                if len(matches) > 0:
+                    data_links.extend([m[1] for m in matches])
+
+        return data_links
+
+    sub_dir_counts = {}
+    for root, dirs, files in os.walk(top_dir, topdown=True):
+        for d in dirs:
+            if root == top_dir:
+                sub_dir_counts[d] = 0
+
+    for sub_dir in sub_dir_counts:
+        links = get_all_ftp_links(os.path.join(top_dir, sub_dir))
+        print sub_dir, len(links)
+        sub_dir_counts[sub_dir] = len(links)
+
+    return sub_dir_counts
+
+
 def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
     ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+?)[\"\)]')
     data_paths = []
-    ided_features = get_spec_catnames(spec_manager.get_feature_spec_list(), True)
-    ided_packages = get_spec_catnames(spec_manager.get_package_spec_list(), True)
+    ided_features = get_spec_catnames(spec_manager.get_feature_spec_path_list(), True)
+    ided_packages = get_spec_catnames(spec_manager.get_package_spec_path_list(), True)
 
     not_founds = []
 
@@ -126,7 +223,7 @@ def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
                     for m in matches:
                         link = parse_ftp_link(m[1], top_dir)
                         if link is None:
-                            print 'other:'
+                            print 'other:', m[1]
                             print path
                         elif (not link.packaged and link.get_catname() in feature_specs):
                             replace_link = get_replace_link(link, feature_specs[link.get_catname()])
@@ -259,7 +356,7 @@ def get_name_folder_id(name, parent_id):
 
 
 def reassignparents():
-    ided_feature_specs = get_spec_catnames(spec_manager.get_feature_spec_list(), True)
+    ided_feature_specs = get_spec_catnames(spec_manager.get_feature_spec_path_list(), True)
     for spec_name in ided_feature_specs:
         print spec_name
         spec = ided_feature_specs[spec_name]
@@ -268,25 +365,49 @@ def reassignparents():
         user_drive.change_file_parent(spec['gdb_id'], old_parent_id, new_parent_id)
         user_drive.change_file_parent(spec['shape_id'], old_parent_id, new_parent_id)
         spec['parent_ids'] = [new_parent_id]
-        spec_manager.save_spec_json(os.path.join(spec_manager.FEATURE_SPEC_FOLDER, spec_name + '.json'), spec)
+        spec_manager.save_spec_json(spec)
 
 
 if __name__ == '__main__':
+    import argparse
     home_dir = os.path.expanduser('~')
     if os.path.exists('data/ftplinktest/replaces_preview'):
         shutil.rmtree('data/ftplinktest/replaces_preview')
     os.makedirs('data/ftplinktest/replaces_preview')
     print 'Temp directory removed'
 
-    data_dir = '/Users/kwalker/Documents/repos/gis.utah.gov/data/geoscience'
+    parser = argparse.ArgumentParser(description='Update links')
 
-    paths = replace_ftp_links(data_dir, rewrite_source=False)
-    print 'UPDATED'
-    for p in paths:
-        print p
+    parser.add_argument('-r', action='store_true', dest='rewrite_source',
+                        help='Rewrite file in the source directory')
+    parser.add_argument('-c', action='store', dest='feature_category',
+                        help='Looks in data/feature_category')
+    parser.add_argument('--list_by_subdir', action='store', dest='top_dir',
+                        help='Lists ftp links in subdirs')
+    args = parser.parse_args()
 
+    if args.feature_category:
+        data_dir = '/Users/kwalker/Documents/repos/gis.utah.gov/data/' + args.feature_category
+
+        paths = replace_ftp_links(data_dir, rewrite_source=args.rewrite_source)
+        print 'UPDATED'
+        for p in paths:
+            print p
+    if args.top_dir:
+        list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
+
+    get_update_cycles('data/steward_info.csv')
+    feature_update_types = get_feature_update_cycles('data/steward_info.csv')
+    for feature in feature_update_types:
+        update = feature_update_types[feature]
+        if update in ['1', 'constant', 'internal']:
+            print feature
+            set_spec_update_types(feature, 'day')
+
+    # package_specs_from_gdbs(r'C:\GisWork\temp\aaaPackage', 'INDICES')
+
+    #: Find all ftp links
     # data_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/data')
-    # print home_dir
     # datas = get_all_ftp_links(data_dir)
     # post_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/_posts')
     # posts = get_all_ftp_links(post_dir)
@@ -313,7 +434,7 @@ if __name__ == '__main__':
     # spec_catnames = get_feature_catnames()
     # not_found = [ftp_catnames[n] for n in ftp_catnames if n not in spec_catnames]
     # # not_found = create_new_features(spec_catnames, ftp_catnames, r'Database Connections\Connection to sgid.agrc.utah.gov.sde')
-    # package_names = [n.replace('.json', '').lower() for n in spec_manager.get_package_spec_list()]
+    # package_names = [n.replace('.json', '').lower() for n in spec_manager.get_package_spec_path_list()]
     # not_package = get_not_found_packages(not_found, package_names)
     # print 'non-feature, not found packages', len(not_package)
     #

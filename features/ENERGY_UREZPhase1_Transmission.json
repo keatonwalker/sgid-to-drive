@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mcmY2ZGphbUtMQTA"
     ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase1_Transmission", 
-    "shape_id": "0ByStJjVZ7c7meWdtdEZ2bWFVdDQ"
+    "shape_id": "0ByStJjVZ7c7meWdtdEZ2bWFVdDQ", 
+    "update_cycle": "never"
 }

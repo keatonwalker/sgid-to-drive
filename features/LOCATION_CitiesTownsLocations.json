@@ -1,10 +1,12 @@
 {
     "category": "LOCATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mVmdNdUZXdlVlQVE", 
+    "hash_id": "0ByStJjVZ7c7mSW0yR1JBYlNkX3M", 
     "name": "CitiesTownsLocations", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7meDNmdFRpeWVwbTA"
+    ], 
     "sgid_name": "SGID10.LOCATION.CitiesTownsLocations", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mRWFNWUY4c3hHVWM"
 }

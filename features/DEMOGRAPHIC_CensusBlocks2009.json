@@ -1,0 +1,11 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CensusBlocks2009", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.DEMOGRAPHIC.CensusBlocks2009", 
+    "shape_id": "", 
+    "update_cycle": "never"
+}

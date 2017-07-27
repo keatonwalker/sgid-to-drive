@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mUVpza2dIMW1YcUU"
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.CensusTracts2000", 
-    "shape_id": "0ByStJjVZ7c7mQkRYb3prZTVnQm8"
+    "shape_id": "0ByStJjVZ7c7mQkRYb3prZTVnQm8", 
+    "update_cycle": "never"
 }

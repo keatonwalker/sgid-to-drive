@@ -11,5 +11,6 @@
         "0ByStJjVZ7c7mVlJEWnRhdXphQms"
     ], 
     "sgid_name": "SGID10.ENVIRONMENT.FACILITYUST", 
-    "shape_id": "0ByStJjVZ7c7mLUlyNGVxVDhNdG8"
+    "shape_id": "0ByStJjVZ7c7mLUlyNGVxVDhNdG8", 
+    "update_cycle": "day"
 }

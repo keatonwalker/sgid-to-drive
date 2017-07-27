@@ -1,10 +1,14 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mai1vdWFNU09ZQjQ", 
+    "hash_id": "0ByStJjVZ7c7mQVY2aFBOOEJ1Zmc", 
     "name": "Floodplains", 
-    "packages": [], 
-    "parent_ids": [], 
+    "packages": [
+        "FloodAreas"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mZHFBNDZjWkszaVU"
+    ], 
     "sgid_name": "SGID10.WATER.Floodplains", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mSGJMeWpOQU1qOUE"
 }

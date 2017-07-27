@@ -1,10 +1,13 @@
 {
     "category": "TRANSPORTATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mRTJwVU52c1VCNDA", 
+    "hash_id": "0ByStJjVZ7c7mMkx6d1JzT09jOWc", 
     "name": "BusStops_UTA", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mRV9wbDVaNUNRVHc"
+    ], 
     "sgid_name": "SGID10.TRANSPORTATION.BusStops_UTA", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mMF9ZUkdiMEpsb3M", 
+    "update_cycle": "biannual"
 }

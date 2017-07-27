@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7majNHMktSMDZjZEE", 
     "hash_id": "0ByStJjVZ7c7mRWtFNk1id0VIeDA", 
     "name": "Aquifer_BasinFillBoundary", 
-    "packages": [], 
+    "packages": [
+        "Aquifers"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mN0tMbjUzdlQ3UkE"
     ], 

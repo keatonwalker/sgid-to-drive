@@ -9,14 +9,39 @@ FEATURE_SPEC_TEMPLATE = 'templates/feature_template.json'
 PACKAGE_SPEC_TEMPLATE = 'templates/package_template.json'
 
 
+class UPDATE_CYCLES(object):
+    """Update cycle constants."""
+
+    NEVER = 'never'
+    ANNUAL = 'annual'
+    BIANNUAL = 'biannual'
+    QUARTER = 'quarter'
+    MONTH = 'month'
+    WEEK = 'week'
+    DAY = 'day'
+
+
 def valitdate_spec(spec):
     if "" in spec['parent_ids']:
         msg = 'Invalid spec: {}'.format(spec)
         raise Exception(msg)
 
 
-def save_spec_json(json_path, spec):
-    with open(json_path, 'w') as f_out:
+def save_spec_json(spec, json_path=None):
+    save_path = json_path
+    if save_path is None:
+        folder = None
+        file_name = None
+        if 'sgid_name' in spec:
+            folder = FEATURE_SPEC_FOLDER
+            file_name = create_feature_spec_name(spec['sgid_name'])
+        else:
+            folder = PACKAGE_SPEC_FOLDER
+            file_name = spec['name'] + '.json'
+        save_path = os.path.join(folder,
+                                 file_name)
+
+    with open(save_path, 'w') as f_out:
         f_out.write(json.dumps(spec, sort_keys=True, indent=4))
 
 
@@ -33,15 +58,17 @@ def create_feature_spec_name(source_name):
 
 
 def create_package_spec(name, feature_classes, category):
+    json_path = os.path.join(PACKAGE_SPEC_FOLDER, name + '.json')
     if not os.path.exists(os.path.join('packages', name + '.json')):
         empty_spec = PACKAGE_SPEC_TEMPLATE
         package = load_feature_json(empty_spec)
         package['name'] = name
         package['feature_classes'] = feature_classes
         package['category'] = category
-
-        save_spec_json(os.path.join('packages', package['name'] + '.json'),
-                       package)
+        save_spec_json(package)
+        return json_path
+    else:
+        return json_path
 
 
 def get_package(package_name):
@@ -83,7 +110,7 @@ def get_feature(source_name, packages=[]):
             if p not in feature['packages']:
                 feature['packages'].append(p)
     valitdate_spec(feature)
-    save_spec_json(feature_spec, feature)
+    save_spec_json(feature)
     return feature
 
 
@@ -91,16 +118,13 @@ def add_feature_to_package(package_name, feature_source_name):
     package = get_package(package_name)
     if feature_source_name not in package['feature_classes']:
         package['feature_classes'].append(feature_source_name)
-    save_spec_json(os.path.join('packages', package['name'] + '.json'),
-                   package)
+    save_spec_json(package)
 
 
 def add_package_to_feature(source_name, package_name):
     add_feature_to_package(package_name, source_name)
     feature = get_feature(source_name, [package_name])
-    save_spec_json(os.path.join(FEATURE_SPEC_FOLDER,
-                                create_feature_spec_name(source_name)),
-                   feature)
+    save_spec_json(feature)
 
 
 def _create_new_jsons(old_json_path):
@@ -127,7 +151,7 @@ def _create_new_jsons(old_json_path):
         break
 
 
-def get_package_spec_list():
+def get_package_spec_path_list():
     packages = []
     for root, subdirs, files in os.walk(PACKAGE_SPEC_FOLDER):
         for filename in files:
@@ -138,7 +162,7 @@ def get_package_spec_list():
     return packages
 
 
-def get_feature_spec_list():
+def get_feature_spec_path_list():
     features = []
     for root, subdirs, files in os.walk(FEATURE_SPEC_FOLDER):
         for filename in files:
@@ -149,11 +173,32 @@ def get_feature_spec_list():
     return features
 
 
-def _list_packages_with_nonexistant_features(workspace):
+def get_feature_specs(update_cycles=None):
+    selected_cycles = update_cycles
+    if type(selected_cycles) == str:
+        selected_cycles = [update_cycles]
+
+    feature_specs = []
+    for f in get_feature_spec_path_list():
+        spec = load_feature_json(f)
+        if update_cycles is None or spec['update_cycle'] in selected_cycles:
+            feature_specs.append(spec)
+
+
+def add_update():
+    for f in get_feature_spec_path_list():
+        spec = load_feature_json(f)
+        if 'update_cycle' not in spec:
+            spec['update_cycle'] = "" 
+
+
+def _list_packages_with_nonexistant_features(workspace, package_list=None):
     import arcpy
     bad_features = []
     bad_packages = {}
-    packages_to_check = get_package_spec_list()
+    packages_to_check = package_list
+    if package_list is None:
+        packages_to_check = get_package_spec_path_list()
 
     for p in packages_to_check:
         if not p.endswith('.json'):
@@ -182,7 +227,7 @@ def _list_packages_with_nonexistant_features(workspace):
 def _list_nonexistant_features(workspace):
     import arcpy
     bad_features = []
-    features_to_check = get_feature_spec_list()
+    features_to_check = get_feature_spec_path_list()
     for f in features_to_check:
         if not f.endswith('.json'):
             f += '.json'
@@ -204,15 +249,15 @@ def _clear_driveids(path, spec):
     spec['gdb_id'] = ''
     spec['shape_id'] = ''
     spec['parent_ids'] = []
-    save_spec_json(path, spec)
+    save_spec_json(spec)
 
 
 def clear_all_drive_ids():
-    for path in get_feature_spec_list():
+    for path in get_feature_spec_path_list():
         spec = load_feature_json(path)
         _clear_driveids(path, spec)
 
-    for path in get_package_spec_list():
+    for path in get_package_spec_path_list():
         spec = load_feature_json(path)
         _clear_driveids(path, spec)
 
@@ -239,6 +284,9 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    create_package_spec('Grazing',
-                        ['SGID10.ENVIRONMENT.GrazingAllotments', 'SGID10.ENVIRONMENT.GrazingImprovementRegions'],
-                        'FARMING')
+    create_package_spec('FieldStations',
+    ['SGID10.SOCIETY.BLMFieldOffices', 'SGID10.SOCIETY.ForestServiceStations'],
+    'SOCIETY')
+
+    _list_packages_with_nonexistant_features(r'Database Connections\Connection to sgid.agrc.utah.gov.sde',
+                                             ['data/FieldStations.json'])

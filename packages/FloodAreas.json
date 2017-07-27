@@ -1,0 +1,14 @@
+{
+    "category": "WATER", 
+    "feature_classes": [
+        "SGID10.WATER.Floodplains", 
+        "SGID10.WATER.GSLFlooding", 
+        "SGID10.WATER.GSLShorelineFlooding"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mdXJmX3RyaTlTUDQ", 
+    "name": "FloodAreas", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mWjBJbHdWYW5jaFE"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mQWp4akV5NGhqems"
+}

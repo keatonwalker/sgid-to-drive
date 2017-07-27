@@ -1,10 +1,12 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mYjVZWF9vWnhOeW8", 
+    "hash_id": "0ByStJjVZ7c7mdHVtaXR2ZFVkX1k", 
     "name": "ParagonahStructures", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mMzFTYXhsVXowSlk"
+    ], 
     "sgid_name": "SGID10.WATER.ParagonahStructures", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mQWR6VjVWU0hHZTA"
 }

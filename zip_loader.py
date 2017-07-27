@@ -79,13 +79,14 @@ def unzip(zip_path, output_path):
 def get_hash_lookup(hash_path, hash_field):
     """Get the has lookup for change detection."""
     hash_lookup = {}
-    with arcpy.da.SearchCursor(hash_path, [hash_field, 'src_id']) as cursor:
+    with arcpy.da.SearchCursor(hash_path, [hash_field]) as cursor:
         for row in cursor:
-            hash_value, hash_oid = row
+            hash_value = row[0]
+            # hash_value, hash_oid = row
             if hash_value not in hash_lookup:
-                hash_lookup[hash_value] = hash_oid  # hash_oid isn't used for anything yet
+                hash_lookup[hash_value] = 0  # hash_oid isn't used for anything yet
             else:
-                'Hash OID {} is duplicate wtf?'.format(hash_oid)
+                'Hash OID {} is duplicate wtf?'.format(hash_value)
 
     return hash_lookup
 
@@ -106,7 +107,8 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
     with arcpy.da.SearchCursor(data_path, cursor_fields) as cursor, \
             open(hash_store, 'wb') as hash_csv:
             hash_writer = csv.writer(hash_csv)
-            hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
+            hash_writer.writerow(('hash',))
+            # hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
             for row in cursor:
                 hasher = md5()  # Create/reset hash object
                 hasher.update(str(row[:attribute_subindex]))  # Hash only attributes
@@ -123,7 +125,8 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
                     digest = hasher.hexdigest()
 
                 oid = row[attribute_subindex]
-                hash_writer.writerow((oid, digest, str(row[-2])))
+                hash_writer.writerow((digest,))
+                # hash_writer.writerow((oid, digest, str(row[-2])))
 
                 if digest not in past_hashes:
                     changes += 1
@@ -185,6 +188,9 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
     """Update a feature class on drive if it has changed."""
     print '\nStarting feature:', feature_name
     input_feature_path = os.path.join(workspace, feature_name)
+    if not arcpy.Exists(input_feature_path):
+        msg = '{} does not exist'.format(input_feature_path)
+        raise Exception(msg)
 
     feature = spec_manager.get_feature(feature_name)
 
@@ -203,8 +209,8 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
     past_hash_store = os.path.join(past_hash_directory, output_name + '_hash', output_name + '_hashes.csv')
     past_hashes = None
     if feature['hash_id']:
-        print 'Skip'  # TODO come up with some skip logic for failed runs and excepted features
-        return feature['packages']
+        # print 'Skip'  # TODO come up with some skip logic for failed runs and excepted features
+        # return feature['packages']
         drive.download_file(feature['hash_id'], past_hash_zip)
         print 'Past hashes downloaded'
         unzip(past_hash_zip, past_hash_directory)
@@ -252,7 +258,7 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
             load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER])
             print 'All zips loaded'
 
-        spec_manager.save_spec_json(os.path.join('features', spec_manager.create_feature_spec_name(feature_name)), feature)
+        spec_manager.save_spec_json(feature)
 
     return packages
 
@@ -437,18 +443,18 @@ def upload_zip(source_name, output_directory):
     load_zip_to_drive(feature, 'hash_id', new_hash_zip, [HASH_DRIVE_FOLDER])
     print 'Hash loaded'
 
-    spec_manager.save_spec_json(os.path.join('features', spec_manager.create_feature_spec_name(source_name)), feature)
+    spec_manager.save_spec_json(feature)
 
 
 if __name__ == '__main__':
-    parser = tools.argparser  # argparse.ArgumentParser(description='Update zip files on drive', parents=[tools.argparser])
+    parser = argparse.ArgumentParser(description='Update zip files on drive', parents=[tools.argparser])
 
     parser.add_argument('-f', action='store_true', dest='force',
                         help='Force unchanged features and packages to create zip files')
     parser.add_argument('-n', action='store_false', dest='load',
                         help='Do not upload any files to drive')
     parser.add_argument('-s', action='store_true', dest='skip_packages',
-                        help='Do not run packages features that have changed')
+                        help='Do not run packages from features that have changed')
     parser.add_argument('--all', action='store_true', dest='check_features',
                         help='Check all features for changes and update changed features and packages')
     parser.add_argument('--category', action='store', dest='feature_category',
@@ -457,16 +463,17 @@ if __name__ == '__main__':
                         help='Update all packages that have changed features. Equivalent to --all with all features contained in package specs')
     parser.add_argument('--package_list', action='store', dest='package_list',
                         help='Update all packages in a json file with array named "packages".')
-    parser.add_argument('--re', action='store', dest='feature',
+    parser.add_argument('--feature', action='store', dest='feature',
                         help='Check one feature for changes and update if needed. Takes one SGID feature name')
     parser.add_argument('--package', action='store', dest='package',
                         help='Check one package for changes and update if needed. Takes one package name')
     parser.add_argument('--upload_zip', action='store', dest='zip_feature',
-                        help='Upload zip files for provided feature. Will fail if zip files do not exist')
+                        help='Upload zip files for provided feature. Will fail if zip files do not exist in ./package_temp')
     parser.add_argument('workspace', action='store',
                         help='Set the workspace where all features are located')
 
     args = parser.parse_args()
+    flags = args  # flags global required for driver
 
     workspace = args.workspace  # r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
     output_directory = r'package_temp'

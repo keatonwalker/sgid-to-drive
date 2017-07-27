@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mclp4Zkt3SmxDRkU"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.Wilderness_BLMSuitability", 
-    "shape_id": "0ByStJjVZ7c7mWjlKbk00VWJLdWc"
+    "shape_id": "0ByStJjVZ7c7mWjlKbk00VWJLdWc", 
+    "update_cycle": "never"
 }

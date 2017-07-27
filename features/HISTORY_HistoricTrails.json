@@ -1,10 +1,12 @@
 {
     "category": "HISTORY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mTl9BZnFJSThpLTQ", 
+    "hash_id": "0ByStJjVZ7c7mQ09JRzRZNlNCODg", 
     "name": "HistoricTrails", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mRkVZd05fVWUxRmc"
+    ], 
     "sgid_name": "SGID10.HISTORY.HistoricTrails", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mRk9fVWFMS3pveDg"
 }

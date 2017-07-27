@@ -1,10 +1,12 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mR1lMQnQ1LVRMcDQ", 
+    "hash_id": "0ByStJjVZ7c7mNnVBVkpvTFdVS28", 
     "name": "HistoricLakeBonneville", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mUGg2Sy1nZnF0eFk"
+    ], 
     "sgid_name": "SGID10.WATER.HistoricLakeBonneville", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mRUxya1NQVlpZOTQ"
 }

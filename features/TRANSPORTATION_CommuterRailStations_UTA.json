@@ -1,10 +1,12 @@
 {
     "category": "TRANSPORTATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mYzUtd3BFcE5LN3M", 
+    "hash_id": "0ByStJjVZ7c7mSnFtTGd5SC1lUVk", 
     "name": "CommuterRailStations_UTA", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mUnpLakFCM2tMbE0"
+    ], 
     "sgid_name": "SGID10.TRANSPORTATION.CommuterRailStations_UTA", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mSmhydGg1NjVBSXM"
 }

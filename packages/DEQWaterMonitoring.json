@@ -1,0 +1,16 @@
+{
+    "category": "ENVIRONMENT", 
+    "feature_classes": [
+        "SGID10.ENVIRONMENT.DWQAssessmentUnits", 
+        "SGID10.ENVIRONMENT.DWQGroundWaterPermits", 
+        "SGID10.ENVIRONMENT.DWQMonitoredLakes132", 
+        "SGID10.ENVIRONMENT.LakeMonitoring", 
+        "SGID10.ENVIRONMENT.StreamMonitorSites"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mYVNzZnVsZGZRVGc", 
+    "name": "DEQWaterMonitoring", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mVFFHQ1VWU3pHWjA"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mbHBaMDdfdFZWb2s"
+}

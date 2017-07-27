@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mTHcySDZpNmRlS00"
     ], 
     "sgid_name": "SGID10.ELEVATION.HighestPeaks", 
-    "shape_id": "0ByStJjVZ7c7mSmktUE9fOUNkdVk"
+    "shape_id": "0ByStJjVZ7c7mSmktUE9fOUNkdVk", 
+    "update_cycle": "never"
 }

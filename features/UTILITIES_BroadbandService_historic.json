@@ -1,0 +1,11 @@
+{
+    "category": "UTILITIES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "BroadbandService_historic", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.UTILITIES.BroadbandService_historic", 
+    "shape_id": "", 
+    "update_cycle": "biannual"
+}

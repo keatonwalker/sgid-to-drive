@@ -1,10 +1,13 @@
 {
     "category": "TRANSPORTATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mX0FGNGZDeTd0cXM", 
+    "hash_id": "0ByStJjVZ7c7mMmhBMnAySi1ELUk", 
     "name": "LightRail_UTA", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mRkNrQkhjRjFkYms"
+    ], 
     "sgid_name": "SGID10.TRANSPORTATION.LightRail_UTA", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mNGN4aGNicnNEX3M", 
+    "update_cycle": "week"
 }

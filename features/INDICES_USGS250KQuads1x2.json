@@ -1,10 +1,14 @@
 {
     "category": "INDICES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mMF83VXVUUlBMUGM", 
+    "hash_id": "0ByStJjVZ7c7mYU5SUE5fT09jMkk", 
     "name": "USGS250KQuads1x2", 
-    "packages": [], 
-    "parent_ids": [], 
+    "packages": [
+        "USGSurveyTopographicMapIndices"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mMmloWWtXbjcyRkE"
+    ], 
     "sgid_name": "SGID10.INDICES.USGS250KQuads1x2", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mb1ZMUTVKbFdWWjA"
 }

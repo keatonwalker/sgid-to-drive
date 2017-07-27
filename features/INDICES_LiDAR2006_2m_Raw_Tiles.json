@@ -1,0 +1,11 @@
+{
+    "category": "INDICES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "LiDAR2006_2m_Raw_Tiles", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.INDICES.LiDAR2006_2m_Raw_Tiles", 
+    "shape_id": "", 
+    "update_cycle": "never"
+}

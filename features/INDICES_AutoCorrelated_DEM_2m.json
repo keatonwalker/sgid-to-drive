@@ -1,0 +1,11 @@
+{
+    "category": "INDICES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "AutoCorrelated_DEM_2m", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.INDICES.AutoCorrelated_DEM_2m", 
+    "shape_id": "", 
+    "update_cycle": "never"
+}

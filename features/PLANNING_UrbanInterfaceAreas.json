@@ -1,10 +1,12 @@
 {
     "category": "PLANNING", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mZ3dMUTBDeTVZZkE", 
+    "hash_id": "0ByStJjVZ7c7mWVpyYkpNQzlpZE0", 
     "name": "UrbanInterfaceAreas", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mM2tERTRQSXdNclU"
+    ], 
     "sgid_name": "SGID10.PLANNING.UrbanInterfaceAreas", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mdVNNRjNrVm5sZTA"
 }

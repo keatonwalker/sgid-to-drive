@@ -4,11 +4,14 @@
     "hash_id": "0ByStJjVZ7c7mYTZKYzh4bDRkNEE", 
     "name": "Roads", 
     "packages": [
-        "UtahTransitSystems"
+        "UtahTransitSystems", 
+        "LRSRouteCharacteristics", 
+        "UtahRoadAndHighwaySystem"
     ], 
     "parent_ids": [
         "0ByStJjVZ7c7mdlVNWElES0k1dGs"
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.Roads", 
-    "shape_id": "0ByStJjVZ7c7mU05HZkxvZzlfbms"
+    "shape_id": "0ByStJjVZ7c7mU05HZkxvZzlfbms", 
+    "update_cycle": "month"
 }

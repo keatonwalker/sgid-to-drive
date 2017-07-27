@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mLU5hNTFWc2RXNzg"
     ], 
     "sgid_name": "SGID10.LOCATION.AddressPoints", 
-    "shape_id": "0ByStJjVZ7c7mUlFsVlBoSTFhS3M"
+    "shape_id": "0ByStJjVZ7c7mUlFsVlBoSTFhS3M", 
+    "update_cycle": "month"
 }

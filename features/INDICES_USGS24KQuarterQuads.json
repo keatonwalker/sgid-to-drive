@@ -1,0 +1,14 @@
+{
+    "category": "INDICES", 
+    "gdb_id": "0ByStJjVZ7c7mVnZXUlNUaUJSWFU", 
+    "hash_id": "0ByStJjVZ7c7mVmlOMElieWNYRjg", 
+    "name": "USGS24KQuarterQuads", 
+    "packages": [
+        "USGSurveyTopographicMapIndices"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mam1MbjVjNzdDd28"
+    ], 
+    "sgid_name": "SGID10.INDICES.USGS24KQuarterQuads", 
+    "shape_id": "0ByStJjVZ7c7mSnpEbmhhXzB3aXc"
+}

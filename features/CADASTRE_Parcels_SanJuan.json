@@ -1,10 +1,13 @@
 {
     "category": "CADASTRE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mVTRBdHNERExPVk0", 
+    "hash_id": "0ByStJjVZ7c7mRnBOR3pXZ1hDQ2M", 
     "name": "Parcels_SanJuan", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mZXhUcEZsOEdOSWM"
+    ], 
     "sgid_name": "SGID10.CADASTRE.Parcels_SanJuan", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mNHFBMFBHU2FNRVk", 
+    "update_cycle": "biannual"
 }

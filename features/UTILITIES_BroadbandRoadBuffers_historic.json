@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mSUpwUjFwZ3F3Y2s"
     ], 
     "sgid_name": "SGID10.UTILITIES.BroadbandRoadBuffers_historic", 
-    "shape_id": "0ByStJjVZ7c7mN1lpOFg4T2pkUlE"
+    "shape_id": "0ByStJjVZ7c7mN1lpOFg4T2pkUlE", 
+    "update_cycle": "never"
 }

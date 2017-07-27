@@ -1,10 +1,12 @@
 {
     "category": "ECONOMY", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mNkh4Y1FaVlRSaDQ", 
+    "hash_id": "0ByStJjVZ7c7md3lWT19RY0xfU3c", 
     "name": "TaxEntities2011", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mX2VscHFNZDlDcDQ"
+    ], 
     "sgid_name": "SGID10.ECONOMY.TaxEntities2011", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mYlBkTzRMc2xfd0E"
 }

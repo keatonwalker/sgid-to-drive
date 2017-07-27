@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mSGRhbWFSeGxwb2c"
     ], 
     "sgid_name": "SGID10.ENERGY.DNROilGasWells", 
-    "shape_id": "0ByStJjVZ7c7mcXZnVUxHUUZRUWM"
+    "shape_id": "0ByStJjVZ7c7mcXZnVUxHUUZRUWM", 
+    "update_cycle": "day"
 }

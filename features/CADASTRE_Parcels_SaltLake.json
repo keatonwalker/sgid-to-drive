@@ -1,10 +1,13 @@
 {
     "category": "CADASTRE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mdUl4akRQZDk4YTg", 
+    "hash_id": "0ByStJjVZ7c7mYzNqSzdRYUtkV1k", 
     "name": "Parcels_SaltLake", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mb0UtNFlaWjZ1YlE"
+    ], 
     "sgid_name": "SGID10.CADASTRE.Parcels_SaltLake", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mXy1TRF8wZlFCQms", 
+    "update_cycle": "month"
 }

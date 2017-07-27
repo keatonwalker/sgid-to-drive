@@ -1,0 +1,11 @@
+{
+    "category": "DEMOGRAPHIC", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "CensusPlaces2010", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.DEMOGRAPHIC.CensusPlaces2010", 
+    "shape_id": "", 
+    "update_cycle": "never"
+}

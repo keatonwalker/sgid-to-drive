@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7mVFM1b0VpRUVES0E", 
     "hash_id": "0ByStJjVZ7c7melZkbTBEbk80MzA", 
     "name": "ForestServiceStations", 
-    "packages": [], 
+    "packages": [
+        "FieldStations"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mTVZNdko0RHVNclE"
     ], 

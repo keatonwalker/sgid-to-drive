@@ -1,0 +1,11 @@
+{
+    "category": "INDICES", 
+    "gdb_id": "", 
+    "hash_id": "", 
+    "name": "DEM_Extents", 
+    "packages": [], 
+    "parent_ids": [], 
+    "sgid_name": "SGID10.INDICES.DEM_Extents", 
+    "shape_id": "", 
+    "update_cycle": "never"
+}

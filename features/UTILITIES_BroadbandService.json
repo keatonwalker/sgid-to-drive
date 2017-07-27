@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mUFhPcy1xaGo1QXc"
     ], 
     "sgid_name": "SGID10.UTILITIES.BroadbandService", 
-    "shape_id": "0ByStJjVZ7c7ma0tTVVhSWEdfV0U"
+    "shape_id": "0ByStJjVZ7c7ma0tTVVhSWEdfV0U", 
+    "update_cycle": "biannual"
 }

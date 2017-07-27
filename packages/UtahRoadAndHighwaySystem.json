@@ -1,0 +1,17 @@
+{
+    "category": "TRANSPORTATION", 
+    "feature_classes": [
+        "SGID10.TRANSPORTATION.UDOTRoutes_LRS", 
+        "SGID10.TRANSPORTATION.UDOTMileposts", 
+        "SGID10.TRANSPORTATION.RoadsShieldLines", 
+        "SGID10.TRANSPORTATION.Roads", 
+        "SGID10.TRANSPORTATION.Roads_FreewayExits", 
+        "SGID10.TRANSPORTATION.UDOTTenthMileRefPoints"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7maHRCV1R2Xy05SkU", 
+    "name": "UtahRoadAndHighwaySystem", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mN1NtTlRucTZleHc"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mYXRzblhWUVlXdmM"
+}

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mQ05PSC1EUVoxdzA"
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.UrbanAreasCensus2010", 
-    "shape_id": "0ByStJjVZ7c7meDhvNTFaOGQ1YjQ"
+    "shape_id": "0ByStJjVZ7c7meDhvNTFaOGQ1YjQ", 
+    "update_cycle": "never"
 }

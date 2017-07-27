@@ -1,10 +1,13 @@
 {
     "category": "TRANSPORTATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mbC04bUxZSHc2SDg", 
+    "hash_id": "0ByStJjVZ7c7mWG1UN01KWUpnVHc", 
     "name": "Railroads", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mb05pQjd6WFJzWXc"
+    ], 
     "sgid_name": "SGID10.TRANSPORTATION.Railroads", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mUTZSX2pwME1OcTA", 
+    "update_cycle": "annual"
 }

@@ -1,10 +1,12 @@
 {
     "category": "UTILITIES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mTGExakp5MkVSNDg", 
+    "hash_id": "0ByStJjVZ7c7mMDlkUHdQUlk4Umc", 
     "name": "RuralTelcomBoundaries", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mb0hfdDRCaWtlS1U"
+    ], 
     "sgid_name": "SGID10.UTILITIES.RuralTelcomBoundaries", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mOGYweXdvaDU0Vk0"
 }

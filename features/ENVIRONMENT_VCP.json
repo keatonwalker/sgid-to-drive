@@ -11,5 +11,6 @@
         "0ByStJjVZ7c7mT2xWcGJtV1dIWm8"
     ], 
     "sgid_name": "SGID10.ENVIRONMENT.VCP", 
-    "shape_id": "0ByStJjVZ7c7mcllacW5VWXQyZFE"
+    "shape_id": "0ByStJjVZ7c7mcllacW5VWXQyZFE", 
+    "update_cycle": "day"
 }

@@ -1,0 +1,14 @@
+{
+    "category": "SOCIETY", 
+    "gdb_id": "0ByStJjVZ7c7mYmRGcnRBVFBqLTg", 
+    "hash_id": "0ByStJjVZ7c7mQ0dQZVludGMybDg", 
+    "name": "UDOTMap_InterestPoints", 
+    "packages": [
+        "UDOTMapLocations"
+    ], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mMmcwUU5xV3VLUzA"
+    ], 
+    "sgid_name": "SGID10.SOCIETY.UDOTMap_InterestPoints", 
+    "shape_id": "0ByStJjVZ7c7mVXBJUmdBYlhxRzQ"
+}

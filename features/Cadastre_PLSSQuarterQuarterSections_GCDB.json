@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7maHZCVWhkSUFRMFE"
     ], 
     "sgid_name": "SGID10.Cadastre.PLSSQuarterQuarterSections_GCDB", 
-    "shape_id": "0ByStJjVZ7c7mUm1UU0FnVmxiOEU"
+    "shape_id": "0ByStJjVZ7c7mUm1UU0FnVmxiOEU", 
+    "update_cycle": "biannual"
 }

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mQjNFMEVSWTRDWnc"
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.PopBlockAreas2010_Approx", 
-    "shape_id": "0ByStJjVZ7c7mVTBLcmlqVGRSU3c"
+    "shape_id": "0ByStJjVZ7c7mVTBLcmlqVGRSU3c", 
+    "update_cycle": "never"
 }

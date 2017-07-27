@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7mb0xLZHpFNEZqcWs", 
     "hash_id": "0ByStJjVZ7c7mSkhHejREUEF2eVU", 
     "name": "Aquifer_RechargeDischargeAreas", 
-    "packages": [], 
+    "packages": [
+        "Aquifers"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mYzg2cjZLbXdpOXc"
     ], 

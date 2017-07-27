@@ -1,10 +1,12 @@
 {
     "category": "LOCATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mY19CTERxMVBSZVk", 
+    "hash_id": "0ByStJjVZ7c7mbWdsTWZHYWRuUHc", 
     "name": "CartoSITLA_Cities", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mX244Y0dwS3lqYmM"
+    ], 
     "sgid_name": "SGID10.LOCATION.CartoSITLA_Cities", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mX2Zlcmk4MGdHaGc"
 }

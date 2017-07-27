@@ -1,0 +1,13 @@
+{
+    "category": "CADASTRE", 
+    "feature_classes": [
+        "SGID10.CADASTRE.TURN_GPS_BaseLines", 
+        "SGID10.CADASTRE.TURN_GPS_Stations"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mc3J6WlpHVFlhN3c", 
+    "name": "TURNGPS", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mckRXZEl0UE8yZVE"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mTnN2NkM4ankwdEk"
+}

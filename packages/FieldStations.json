@@ -1,0 +1,13 @@
+{
+    "category": "SOCIETY", 
+    "feature_classes": [
+        "SGID10.SOCIETY.BLMFieldOffices", 
+        "SGID10.SOCIETY.ForestServiceStations"
+    ], 
+    "gdb_id": "0ByStJjVZ7c7mcUNkVWxpbkpTZE0", 
+    "name": "FieldStations", 
+    "parent_ids": [
+        "0ByStJjVZ7c7mNXZNYzRiajZPeTQ"
+    ], 
+    "shape_id": "0ByStJjVZ7c7mQmFWaERURUFvT1k"
+}

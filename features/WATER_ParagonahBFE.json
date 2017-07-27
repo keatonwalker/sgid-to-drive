@@ -1,10 +1,12 @@
 {
     "category": "WATER", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7maEFUZnRxaWwzX0U", 
+    "hash_id": "0ByStJjVZ7c7ma25KaHlDWW8xSEk", 
     "name": "ParagonahBFE", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mU1BSZ1dHYzl4QXM"
+    ], 
     "sgid_name": "SGID10.WATER.ParagonahBFE", 
-    "shape_id": ""
+    "shape_id": "0ByStJjVZ7c7mcmdzSnZkREdBUWM"
 }

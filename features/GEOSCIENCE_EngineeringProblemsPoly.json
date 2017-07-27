@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7mYm55RU9IYl9NLUk", 
     "hash_id": "0ByStJjVZ7c7mRVM0eWl5VkFFcUk", 
     "name": "EngineeringProblemsPoly", 
-    "packages": [], 
+    "packages": [
+        "Engineering"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mVFpkV1pmS3NHUDQ"
     ], 

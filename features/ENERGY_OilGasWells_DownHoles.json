@@ -3,7 +3,9 @@
     "gdb_id": "0ByStJjVZ7c7mdzN1REU0SzUxZGM", 
     "hash_id": "0ByStJjVZ7c7mRVNzUmQ1YU5RRlU", 
     "name": "OilGasWells_DownHoles", 
-    "packages": [], 
+    "packages": [
+        "DOGMOilAndGasResources"
+    ], 
     "parent_ids": [
         "0ByStJjVZ7c7mQzM0aWpmNGlSQ0k"
     ], 

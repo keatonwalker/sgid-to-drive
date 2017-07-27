@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mX0tzVG1XOW5PeFE"
     ], 
     "sgid_name": "SGID10.ELEVATION.Contours500Ft", 
-    "shape_id": "0ByStJjVZ7c7mQ0ZDSFBFbE55dzQ"
+    "shape_id": "0ByStJjVZ7c7mQ0ZDSFBFbE55dzQ", 
+    "update_cycle": "never"
 }

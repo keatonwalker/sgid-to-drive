@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mdEFzVEZnem9XdDQ"
     ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase1_GeothermalZones", 
-    "shape_id": "0ByStJjVZ7c7mUldFSnhlSjNxUVE"
+    "shape_id": "0ByStJjVZ7c7mUldFSnhlSjNxUVE", 
+    "update_cycle": "never"
 }

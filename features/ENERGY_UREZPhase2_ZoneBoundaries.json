@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7maGt1TlljVzRwckE"
     ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase2_ZoneBoundaries", 
-    "shape_id": "0ByStJjVZ7c7mVmRySUJjMGJxbkk"
+    "shape_id": "0ByStJjVZ7c7mVmRySUJjMGJxbkk", 
+    "update_cycle": "never"
 }
