@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mRGVkdzFsZWd6ZU0"
     ], 
     "sgid_name": "SGID10.WATER.ParagonahFloodZones", 
-    "shape_id": "0ByStJjVZ7c7mN2R4X2puYkwtR0k"
+    "shape_id": "0ByStJjVZ7c7mN2R4X2puYkwtR0k", 
+    "update_cycle": "day"
 }

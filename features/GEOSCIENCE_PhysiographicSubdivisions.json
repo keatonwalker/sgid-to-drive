@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mRFRPVUMyQTd5aGs"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.PhysiographicSubdivisions", 
-    "shape_id": "0ByStJjVZ7c7mUDhVVVc4dU1CZkk"
+    "shape_id": "0ByStJjVZ7c7mUDhVVVc4dU1CZkk", 
+    "update_cycle": "day"
 }

@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mQmp5Smo5Z1dERFU"
     ], 
     "sgid_name": "SGID10.ENERGY.EnergyCorridorAreas", 
-    "shape_id": "0ByStJjVZ7c7mZlZVQ1cxZU82V3c"
+    "shape_id": "0ByStJjVZ7c7mZlZVQ1cxZU82V3c", 
+    "update_cycle": "day"
 }

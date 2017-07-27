@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mSHFBMlo3WEV5TG8"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.BLMDistricts", 
-    "shape_id": "0ByStJjVZ7c7mZENUNUM2ajNZVUk"
+    "shape_id": "0ByStJjVZ7c7mZENUNUM2ajNZVUk", 
+    "update_cycle": "day"
 }

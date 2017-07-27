@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mdmJrMzNmeVptcUk"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.USFSWildernessAreas", 
-    "shape_id": "0ByStJjVZ7c7mSTdncUFqOWRvYm8"
+    "shape_id": "0ByStJjVZ7c7mSTdncUFqOWRvYm8", 
+    "update_cycle": "day"
 }

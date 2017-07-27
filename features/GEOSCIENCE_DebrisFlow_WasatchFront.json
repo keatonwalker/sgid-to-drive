@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mVnNqSjN1VXNGUDA"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.DebrisFlow_WasatchFront", 
-    "shape_id": "0ByStJjVZ7c7mWF8xcHd2ZVNOaHM"
+    "shape_id": "0ByStJjVZ7c7mWF8xcHd2ZVNOaHM", 
+    "update_cycle": "day"
 }

@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mXzY5enhwaTBQa2s"
     ], 
     "sgid_name": "SGID10.SOCIETY.Cemeteries", 
-    "shape_id": "0ByStJjVZ7c7mNmVtd2tpTGRPVXM"
+    "shape_id": "0ByStJjVZ7c7mNmVtd2tpTGRPVXM", 
+    "update_cycle": "day"
 }

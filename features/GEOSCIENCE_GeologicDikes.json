@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mTk82Q3FkVElheGs"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.GeologicDikes", 
-    "shape_id": "0ByStJjVZ7c7mYmJkR2l5RU5TajQ"
+    "shape_id": "0ByStJjVZ7c7mYmJkR2l5RU5TajQ", 
+    "update_cycle": "day"
 }

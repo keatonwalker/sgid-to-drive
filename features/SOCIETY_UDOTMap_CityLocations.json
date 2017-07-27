@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7maWtwMjBvb2xBYW8"
     ], 
     "sgid_name": "SGID10.SOCIETY.UDOTMap_CityLocations", 
-    "shape_id": "0ByStJjVZ7c7mTlU1T0VaVlltekE"
+    "shape_id": "0ByStJjVZ7c7mTlU1T0VaVlltekE", 
+    "update_cycle": "day"
 }

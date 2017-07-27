@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mWlJMR3VESUtzcWs"
     ], 
     "sgid_name": "SGID10.SOCIETY.BLMFieldOffices", 
-    "shape_id": "0ByStJjVZ7c7mT1BTcTY1S1lYV3M"
+    "shape_id": "0ByStJjVZ7c7mT1BTcTY1S1lYV3M", 
+    "update_cycle": "day"
 }

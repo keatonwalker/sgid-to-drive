@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mMGt0V2swcWJ5aDg"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.DebrisFlow_WasatchStudyBoundary", 
-    "shape_id": "0ByStJjVZ7c7mSlEtZEF2YjdWa3M"
+    "shape_id": "0ByStJjVZ7c7mSlEtZEF2YjdWa3M", 
+    "update_cycle": "day"
 }

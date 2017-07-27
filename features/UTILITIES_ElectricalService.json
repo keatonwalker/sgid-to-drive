@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7meWtxaVRsd2c1UEk"
     ], 
     "sgid_name": "SGID10.UTILITIES.ElectricalService", 
-    "shape_id": "0ByStJjVZ7c7mTUR2Z3dVVjNIOFU"
+    "shape_id": "0ByStJjVZ7c7mTUR2Z3dVVjNIOFU", 
+    "update_cycle": "day"
 }

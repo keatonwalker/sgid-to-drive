@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mc1lnV1J2X0lxVTA"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.Units_MoabSanRafael", 
-    "shape_id": "0ByStJjVZ7c7mc2hZTnRSak9GLW8"
+    "shape_id": "0ByStJjVZ7c7mc2hZTnRSak9GLW8", 
+    "update_cycle": "day"
 }

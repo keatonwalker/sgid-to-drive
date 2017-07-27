@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mMGM0U1RtMGRaTTg"
     ], 
     "sgid_name": "SGID10.INDICES.Contour_Line_Extents", 
-    "shape_id": "0ByStJjVZ7c7mZTR4aFNqNjhpVlU"
+    "shape_id": "0ByStJjVZ7c7mZTR4aFNqNjhpVlU", 
+    "update_cycle": "day"
 }

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mNjdrTGtCTlRkYzg"
     ], 
     "sgid_name": "SGID10.UTILITIES.NaturalGasService_Approx", 
-    "shape_id": "0ByStJjVZ7c7mU0w1Q01oRzZaS00"
+    "shape_id": "0ByStJjVZ7c7mU0w1Q01oRzZaS00", 
+    "update_cycle": "day"
 }

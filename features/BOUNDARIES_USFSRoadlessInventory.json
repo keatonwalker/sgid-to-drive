@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mUUdEUVlyb0VzMk0"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.USFSRoadlessInventory", 
-    "shape_id": "0ByStJjVZ7c7ma2VpWlcyWFY2REU"
+    "shape_id": "0ByStJjVZ7c7ma2VpWlcyWFY2REU", 
+    "update_cycle": "day"
 }

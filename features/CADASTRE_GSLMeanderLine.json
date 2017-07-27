@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mNDRPSEZmTElMS1U"
     ], 
     "sgid_name": "SGID10.CADASTRE.GSLMeanderLine", 
-    "shape_id": "0ByStJjVZ7c7mdlNFNHRVc3NHWkk"
+    "shape_id": "0ByStJjVZ7c7mdlNFNHRVc3NHWkk", 
+    "update_cycle": "day"
 }

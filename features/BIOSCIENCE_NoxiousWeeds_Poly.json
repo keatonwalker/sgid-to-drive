@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mekY1UFFEa0pyMUk"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.NoxiousWeeds_Poly", 
-    "shape_id": "0ByStJjVZ7c7mMnlOdHdTNGk5MEU"
+    "shape_id": "0ByStJjVZ7c7mMnlOdHdTNGk5MEU", 
+    "update_cycle": "day"
 }

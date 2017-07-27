@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mVEYzSFhyWEY5bEE"
     ], 
     "sgid_name": "SGID10.UTILITIES.RetailCulinaryWaterServiceAreas", 
-    "shape_id": "0ByStJjVZ7c7mOTNFSnBaZE4ydmc"
+    "shape_id": "0ByStJjVZ7c7mOTNFSnBaZE4ydmc", 
+    "update_cycle": "day"
 }

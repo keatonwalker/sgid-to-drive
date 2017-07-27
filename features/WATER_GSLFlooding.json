@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7md0N1b2FwWmdLZGM"
     ], 
     "sgid_name": "SGID10.WATER.GSLFlooding", 
-    "shape_id": "0ByStJjVZ7c7mdDhwYW4td0J5VEE"
+    "shape_id": "0ByStJjVZ7c7mdDhwYW4td0J5VEE", 
+    "update_cycle": "day"
 }

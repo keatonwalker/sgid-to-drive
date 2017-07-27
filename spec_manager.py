@@ -38,6 +38,7 @@ def save_spec_json(spec, json_path=None):
         else:
             folder = PACKAGE_SPEC_FOLDER
             file_name = spec['name'] + '.json'
+
         save_path = os.path.join(folder,
                                  file_name)
 
@@ -181,15 +182,20 @@ def get_feature_specs(update_cycles=None):
     feature_specs = []
     for f in get_feature_spec_path_list():
         spec = load_feature_json(f)
-        if update_cycles is None or spec['update_cycle'] in selected_cycles:
+        if update_cycles is None or len(update_cycles) == 0 or spec['update_cycle'] in selected_cycles:
             feature_specs.append(spec)
+
+    # for f in feature_specs:
+    #     print f
+    return feature_specs
 
 
 def add_update():
     for f in get_feature_spec_path_list():
         spec = load_feature_json(f)
         if 'update_cycle' not in spec:
-            spec['update_cycle'] = "" 
+            spec['update_cycle'] = ""
+            save_spec_json(spec)
 
 
 def _list_packages_with_nonexistant_features(workspace, package_list=None):
@@ -284,9 +290,4 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    create_package_spec('FieldStations',
-    ['SGID10.SOCIETY.BLMFieldOffices', 'SGID10.SOCIETY.ForestServiceStations'],
-    'SOCIETY')
-
-    _list_packages_with_nonexistant_features(r'Database Connections\Connection to sgid.agrc.utah.gov.sde',
-                                             ['data/FieldStations.json'])
+    get_feature_specs()

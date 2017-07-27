@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mSmVfa1FWZ3VrNVk"
     ], 
     "sgid_name": "SGID10.POLITICAL.USCongressDistricts2002", 
-    "shape_id": "0ByStJjVZ7c7mbjhQYjItTXZGTG8"
+    "shape_id": "0ByStJjVZ7c7mbjhQYjItTXZGTG8", 
+    "update_cycle": "never"
 }

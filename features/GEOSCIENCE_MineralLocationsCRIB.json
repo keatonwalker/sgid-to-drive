@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mRUpsYXVveTlSSlU"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.MineralLocationsCRIB", 
-    "shape_id": "0ByStJjVZ7c7mWGNPRURKaGdKeDQ"
+    "shape_id": "0ByStJjVZ7c7mWGNPRURKaGdKeDQ", 
+    "update_cycle": "day"
 }

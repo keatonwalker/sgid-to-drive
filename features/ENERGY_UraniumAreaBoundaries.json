@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mbXJHX180SlVTcGs"
     ], 
     "sgid_name": "SGID10.ENERGY.UraniumAreaBoundaries", 
-    "shape_id": "0ByStJjVZ7c7mVHdTX2VUZzJUUFk"
+    "shape_id": "0ByStJjVZ7c7mVHdTX2VUZzJUUFk", 
+    "update_cycle": "day"
 }

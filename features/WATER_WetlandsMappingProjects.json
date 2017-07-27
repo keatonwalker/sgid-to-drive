@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mVHFKZkRUNmxubVE"
     ], 
     "sgid_name": "SGID10.WATER.WetlandsMappingProjects", 
-    "shape_id": "0ByStJjVZ7c7maUhMQWlVZzg1dm8"
+    "shape_id": "0ByStJjVZ7c7maUhMQWlVZzg1dm8", 
+    "update_cycle": "day"
 }

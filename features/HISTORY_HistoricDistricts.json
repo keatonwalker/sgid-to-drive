@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mSUFuT1hSdFVpVWs"
     ], 
     "sgid_name": "SGID10.HISTORY.HistoricDistricts", 
-    "shape_id": "0ByStJjVZ7c7mYWw3U1dRb0F3d2s"
+    "shape_id": "0ByStJjVZ7c7mYWw3U1dRb0F3d2s", 
+    "update_cycle": "day"
 }

@@ -11,5 +11,6 @@
         "0ByStJjVZ7c7mUDNCQWxQX0M0QjA"
     ], 
     "sgid_name": "SGID10.ENVIRONMENT.LakeMonitoring", 
-    "shape_id": "0ByStJjVZ7c7mSGJ0MFdvdE4zSUU"
+    "shape_id": "0ByStJjVZ7c7mSGJ0MFdvdE4zSUU", 
+    "update_cycle": "day"
 }

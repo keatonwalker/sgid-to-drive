@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mRjFUa0FGcURtRW8"
     ], 
     "sgid_name": "SGID10.Transportation.LRSRouteCharacteristics", 
-    "shape_id": "0ByStJjVZ7c7mcWxlTmpwUGtWaXc"
+    "shape_id": "0ByStJjVZ7c7mcWxlTmpwUGtWaXc", 
+    "update_cycle": "day"
 }

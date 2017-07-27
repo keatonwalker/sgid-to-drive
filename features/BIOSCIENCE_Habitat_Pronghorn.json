@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mNDVrNm42SjlKX2s"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_Pronghorn", 
-    "shape_id": "0ByStJjVZ7c7mRUgwREo0ektjZXM"
+    "shape_id": "0ByStJjVZ7c7mRUgwREo0ektjZXM", 
+    "update_cycle": "day"
 }

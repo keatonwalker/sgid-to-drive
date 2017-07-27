@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mQ0xKRDhuWDJlams"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.LandslideInventoryMappedAreas", 
-    "shape_id": "0ByStJjVZ7c7mdTFORUZsSVhBZjQ"
+    "shape_id": "0ByStJjVZ7c7mdTFORUZsSVhBZjQ", 
+    "update_cycle": "day"
 }

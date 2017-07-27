@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mNVR0OTFlRElpZDA"
     ], 
     "sgid_name": "SGID10.RECREATION.SkiLifts", 
-    "shape_id": "0ByStJjVZ7c7mR0tPV3cwLWRkTlk"
+    "shape_id": "0ByStJjVZ7c7mR0tPV3cwLWRkTlk", 
+    "update_cycle": "day"
 }

@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mX0hWdE5KdTAyMEU"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.PotentialLiquefaction_WasatchFront", 
-    "shape_id": "0ByStJjVZ7c7meWd6cjVodUUtSXc"
+    "shape_id": "0ByStJjVZ7c7meWd6cjVodUUtSXc", 
+    "update_cycle": "day"
 }

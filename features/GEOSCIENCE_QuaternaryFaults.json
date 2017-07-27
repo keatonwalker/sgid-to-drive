@@ -11,5 +11,6 @@
         "0ByStJjVZ7c7mUVFWSVNEOTViN0k"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.QuaternaryFaults", 
-    "shape_id": "0ByStJjVZ7c7mUHVuQkgtbG4wZG8"
+    "shape_id": "0ByStJjVZ7c7mUHVuQkgtbG4wZG8", 
+    "update_cycle": "day"
 }

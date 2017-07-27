@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mYUNNcTE5WnVaeG8"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_CaliforniaBigHornSheep", 
-    "shape_id": "0ByStJjVZ7c7mYkpzcUR1NlBfTlU"
+    "shape_id": "0ByStJjVZ7c7mYkpzcUR1NlBfTlU", 
+    "update_cycle": "day"
 }

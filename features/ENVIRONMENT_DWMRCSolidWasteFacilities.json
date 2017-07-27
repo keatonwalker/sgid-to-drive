@@ -12,5 +12,6 @@
         "0ByStJjVZ7c7mWjlkekxfc1FXMUU"
     ], 
     "sgid_name": "SGID10.ENVIRONMENT.DWMRCSolidWasteFacilities", 
-    "shape_id": "0ByStJjVZ7c7mNl9qSl9uWjgwM00"
+    "shape_id": "0ByStJjVZ7c7mNl9qSl9uWjgwM00", 
+    "update_cycle": "day"
 }

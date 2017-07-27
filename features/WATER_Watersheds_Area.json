@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mTjFaU0hXdXpOTDQ"
     ], 
     "sgid_name": "SGID10.WATER.Watersheds_Area", 
-    "shape_id": "0ByStJjVZ7c7malloNjBSeERLNTA"
+    "shape_id": "0ByStJjVZ7c7malloNjBSeERLNTA", 
+    "update_cycle": "day"
 }

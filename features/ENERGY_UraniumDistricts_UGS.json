@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mSnZOQzBRT2dYQk0"
     ], 
     "sgid_name": "SGID10.ENERGY.UraniumDistricts_UGS", 
-    "shape_id": "0ByStJjVZ7c7mMXoyQ200TlRaTGM"
+    "shape_id": "0ByStJjVZ7c7mMXoyQ200TlRaTGM", 
+    "update_cycle": "day"
 }

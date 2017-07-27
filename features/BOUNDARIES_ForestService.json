@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mUlBqanFidWg5RkE"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.ForestService", 
-    "shape_id": "0ByStJjVZ7c7maXJNRnBITGM2VTQ"
+    "shape_id": "0ByStJjVZ7c7maXJNRnBITGM2VTQ", 
+    "update_cycle": "day"
 }

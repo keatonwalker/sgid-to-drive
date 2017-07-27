@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mXzY5YW9mdVVDRHc"
     ], 
     "sgid_name": "SGID10.LOCATION.CartoSITLA_AdminNames_Multi", 
-    "shape_id": "0ByStJjVZ7c7mcklDZzNvd0RsQTQ"
+    "shape_id": "0ByStJjVZ7c7mcklDZzNvd0RsQTQ", 
+    "update_cycle": "day"
 }

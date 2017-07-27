@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mREVHdkk5UGpQcG8"
     ], 
     "sgid_name": "SGID10.WATER.StationsBio", 
-    "shape_id": "0ByStJjVZ7c7mNERRREh4LVpJR3M"
+    "shape_id": "0ByStJjVZ7c7mNERRREh4LVpJR3M", 
+    "update_cycle": "day"
 }

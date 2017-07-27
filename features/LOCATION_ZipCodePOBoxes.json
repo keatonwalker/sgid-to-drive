@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mSU5kbUZmQkx1aGs"
     ], 
     "sgid_name": "SGID10.LOCATION.ZipCodePOBoxes", 
-    "shape_id": "0ByStJjVZ7c7majhvdXRQSy1XVVk"
+    "shape_id": "0ByStJjVZ7c7majhvdXRQSy1XVVk", 
+    "update_cycle": "day"
 }

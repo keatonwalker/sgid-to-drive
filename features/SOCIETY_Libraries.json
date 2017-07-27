@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mS0JPeTJ0YjMyeUE"
     ], 
     "sgid_name": "SGID10.SOCIETY.Libraries", 
-    "shape_id": "0ByStJjVZ7c7mN3ZLT0l5dk8xa2s"
+    "shape_id": "0ByStJjVZ7c7mN3ZLT0l5dk8xa2s", 
+    "update_cycle": "day"
 }

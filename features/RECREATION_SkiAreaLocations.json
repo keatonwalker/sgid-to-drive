@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mbGgtbFc4VkpQZ28"
     ], 
     "sgid_name": "SGID10.RECREATION.SkiAreaLocations", 
-    "shape_id": "0ByStJjVZ7c7maHk0SV9yaGt3VjA"
+    "shape_id": "0ByStJjVZ7c7maHk0SV9yaGt3VjA", 
+    "update_cycle": "day"
 }

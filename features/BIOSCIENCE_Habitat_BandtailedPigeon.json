@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mVE5VWnl3bFZIQ28"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_BandtailedPigeon", 
-    "shape_id": "0ByStJjVZ7c7mRm9GNDgyTWNXSlk"
+    "shape_id": "0ByStJjVZ7c7mRm9GNDgyTWNXSlk", 
+    "update_cycle": "day"
 }

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mcGdkUzh5SUlrRGs"
     ], 
     "sgid_name": "SGID10.PLANNING.SemiPrimativeProp_EmeryCo", 
-    "shape_id": "0ByStJjVZ7c7maDZaU1ZaZjkxZnM"
+    "shape_id": "0ByStJjVZ7c7maDZaU1ZaZjkxZnM", 
+    "update_cycle": "day"
 }

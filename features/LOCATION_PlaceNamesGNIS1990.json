@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mVlZZMExWNjF6Rm8"
     ], 
     "sgid_name": "SGID10.LOCATION.PlaceNamesGNIS1990", 
-    "shape_id": "0ByStJjVZ7c7mVUtTN1hKeWdCdjQ"
+    "shape_id": "0ByStJjVZ7c7mVUtTN1hKeWdCdjQ", 
+    "update_cycle": "never"
 }

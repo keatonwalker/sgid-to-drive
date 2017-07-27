@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7meDNmdFRpeWVwbTA"
     ], 
     "sgid_name": "SGID10.LOCATION.CitiesTownsLocations", 
-    "shape_id": "0ByStJjVZ7c7mRWFNWUY4c3hHVWM"
+    "shape_id": "0ByStJjVZ7c7mRWFNWUY4c3hHVWM", 
+    "update_cycle": "day"
 }

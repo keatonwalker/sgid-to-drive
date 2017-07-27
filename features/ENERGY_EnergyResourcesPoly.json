@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mcWxfN0hYaDg1a1E"
     ], 
     "sgid_name": "SGID10.ENERGY.EnergyResourcesPoly", 
-    "shape_id": "0ByStJjVZ7c7mRGxMSFFobmlId0U"
+    "shape_id": "0ByStJjVZ7c7mRGxMSFFobmlId0U", 
+    "update_cycle": "day"
 }

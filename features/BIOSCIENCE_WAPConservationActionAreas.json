@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mWUtTUG5xUDlVNDg"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.WAPConservationActionAreas", 
-    "shape_id": "0ByStJjVZ7c7mT0s5THNXaS0zRGs"
+    "shape_id": "0ByStJjVZ7c7mT0s5THNXaS0zRGs", 
+    "update_cycle": "day"
 }

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mMmloWWtXbjcyRkE"
     ], 
     "sgid_name": "SGID10.INDICES.USGS250KQuads1x2", 
-    "shape_id": "0ByStJjVZ7c7mb1ZMUTVKbFdWWjA"
+    "shape_id": "0ByStJjVZ7c7mb1ZMUTVKbFdWWjA", 
+    "update_cycle": "day"
 }

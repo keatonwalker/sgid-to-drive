@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mN1hjVjMzckhRRm8"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.UtahConservationZones", 
-    "shape_id": "0ByStJjVZ7c7mV3ZTV2RBTk5UUHc"
+    "shape_id": "0ByStJjVZ7c7mV3ZTV2RBTk5UUHc", 
+    "update_cycle": "day"
 }

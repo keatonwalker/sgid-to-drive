@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mZmdhbVRUdnlBeHc"
     ], 
     "sgid_name": "SGID10.RECREATION.GolfCourses", 
-    "shape_id": "0ByStJjVZ7c7mUFV5NWZMd3BRa1E"
+    "shape_id": "0ByStJjVZ7c7mUFV5NWZMd3BRa1E", 
+    "update_cycle": "day"
 }

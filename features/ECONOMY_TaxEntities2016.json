@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mWUdrZ3hPdFFCcjA"
     ], 
     "sgid_name": "SGID10.ECONOMY.TaxEntities2016", 
-    "shape_id": "0ByStJjVZ7c7mQ1labUhyWW52c3M"
+    "shape_id": "0ByStJjVZ7c7mQ1labUhyWW52c3M", 
+    "update_cycle": "never"
 }

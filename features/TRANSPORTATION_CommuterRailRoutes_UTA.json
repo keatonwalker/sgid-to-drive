@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mcDB2Z1kycjdneGc"
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.CommuterRailRoutes_UTA", 
-    "shape_id": "0ByStJjVZ7c7mOTdYaXkxMWNtYzA"
+    "shape_id": "0ByStJjVZ7c7mOTdYaXkxMWNtYzA", 
+    "update_cycle": "day"
 }

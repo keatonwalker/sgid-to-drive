@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mcGpHRGZkTFNWUzA"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.AssociationOfGovernments", 
-    "shape_id": "0ByStJjVZ7c7mWGtQU01faUJEWjA"
+    "shape_id": "0ByStJjVZ7c7mWGtQU01faUJEWjA", 
+    "update_cycle": "day"
 }

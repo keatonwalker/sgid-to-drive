@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mWUozRldDZnhCOFU"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.EpicentersModern", 
-    "shape_id": "0ByStJjVZ7c7mcnpsWXlTVVBVWk0"
+    "shape_id": "0ByStJjVZ7c7mcnpsWXlTVVBVWk0", 
+    "update_cycle": "day"
 }

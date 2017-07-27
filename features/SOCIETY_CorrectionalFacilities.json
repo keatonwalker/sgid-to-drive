@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mSFNocXh1Z2pQSzQ"
     ], 
     "sgid_name": "SGID10.SOCIETY.CorrectionalFacilities", 
-    "shape_id": "0ByStJjVZ7c7mTkZtMy12VUtodXc"
+    "shape_id": "0ByStJjVZ7c7mTkZtMy12VUtodXc", 
+    "update_cycle": "day"
 }

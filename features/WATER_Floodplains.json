@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mZHFBNDZjWkszaVU"
     ], 
     "sgid_name": "SGID10.WATER.Floodplains", 
-    "shape_id": "0ByStJjVZ7c7mSGJMeWpOQU1qOUE"
+    "shape_id": "0ByStJjVZ7c7mSGJMeWpOQU1qOUE", 
+    "update_cycle": "day"
 }

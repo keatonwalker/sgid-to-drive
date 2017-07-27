@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mdDA4SEpOVmI2YTQ"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_RuffedGrouse", 
-    "shape_id": "0ByStJjVZ7c7mMkpJMVFxN0xCWGc"
+    "shape_id": "0ByStJjVZ7c7mMkpJMVFxN0xCWGc", 
+    "update_cycle": "day"
 }

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mMmcwUU5xV3VLUzA"
     ], 
     "sgid_name": "SGID10.SOCIETY.UDOTMap_InterestPoints", 
-    "shape_id": "0ByStJjVZ7c7mVXBJUmdBYlhxRzQ"
+    "shape_id": "0ByStJjVZ7c7mVXBJUmdBYlhxRzQ", 
+    "update_cycle": "day"
 }

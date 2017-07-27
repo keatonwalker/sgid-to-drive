@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mMUdLTngxVnVfUmc"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_GambelsQuail", 
-    "shape_id": "0ByStJjVZ7c7mdW5RY1NSRHIwcms"
+    "shape_id": "0ByStJjVZ7c7mdW5RY1NSRHIwcms", 
+    "update_cycle": "day"
 }

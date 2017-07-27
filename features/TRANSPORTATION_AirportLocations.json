@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mR1plQW45Zm1KRUU"
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.AirportLocations", 
-    "shape_id": "0ByStJjVZ7c7mZGZ5LUlBNlRJRHc"
+    "shape_id": "0ByStJjVZ7c7mZGZ5LUlBNlRJRHc", 
+    "update_cycle": "day"
 }

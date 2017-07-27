@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mbnZ2emxQVHcxaVk"
     ], 
     "sgid_name": "SGID10.UTILITIES.BroadbandCAInstitutions", 
-    "shape_id": "0ByStJjVZ7c7mZC1DNjc1ZDBBcEE"
+    "shape_id": "0ByStJjVZ7c7mZC1DNjc1ZDBBcEE", 
+    "update_cycle": "day"
 }

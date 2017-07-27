@@ -1,11 +1,13 @@
 {
     "category": "BOUNDARIES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mUGdTU0t1NWJjMm8", 
+    "hash_id": "0ByStJjVZ7c7mNFN4Y1ZMOF92X0k", 
     "name": "Counties_Modifications", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mTHZwZjBOQ1J3RlE"
+    ], 
     "sgid_name": "SGID10.BOUNDARIES.Counties_Modifications", 
-    "shape_id": "", 
+    "shape_id": "0ByStJjVZ7c7mM3dvZFpLQWlyM2c", 
     "update_cycle": "day"
 }

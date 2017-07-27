@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mRGhxb2o1OEJ4NFU"
     ], 
     "sgid_name": "SGID10.RECREATION.Trailheads", 
-    "shape_id": "0ByStJjVZ7c7mRVBNd2Z4U0RwN3M"
+    "shape_id": "0ByStJjVZ7c7mRVBNd2Z4U0RwN3M", 
+    "update_cycle": "day"
 }

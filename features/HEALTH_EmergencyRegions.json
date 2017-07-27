@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mX21VVGtBRkdaTlE"
     ], 
     "sgid_name": "SGID10.HEALTH.EmergencyRegions", 
-    "shape_id": "0ByStJjVZ7c7mbjZRNHBCSko0ZTA"
+    "shape_id": "0ByStJjVZ7c7mbjZRNHBCSko0ZTA", 
+    "update_cycle": "day"
 }

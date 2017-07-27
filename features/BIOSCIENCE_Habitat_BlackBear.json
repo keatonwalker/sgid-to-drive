@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mQktvWVY0YkUwU0U"
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_BlackBear", 
-    "shape_id": "0ByStJjVZ7c7mTjBFVDlkQ1plUDg"
+    "shape_id": "0ByStJjVZ7c7mTjBFVDlkQ1plUDg", 
+    "update_cycle": "day"
 }

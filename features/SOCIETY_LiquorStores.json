@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mRkNtU2ladDVtVW8"
     ], 
     "sgid_name": "SGID10.SOCIETY.LiquorStores", 
-    "shape_id": "0ByStJjVZ7c7makMyNVlQdDJtNXc"
+    "shape_id": "0ByStJjVZ7c7makMyNVlQdDJtNXc", 
+    "update_cycle": "day"
 }

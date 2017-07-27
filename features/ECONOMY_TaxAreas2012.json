@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mV1E4c0VUYnhPRkE"
     ], 
     "sgid_name": "SGID10.ECONOMY.TaxAreas2012", 
-    "shape_id": "0ByStJjVZ7c7mY3doQTFVYnR3TEk"
+    "shape_id": "0ByStJjVZ7c7mY3doQTFVYnR3TEk", 
+    "update_cycle": "never"
 }

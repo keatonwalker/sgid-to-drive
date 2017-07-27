@@ -324,10 +324,10 @@ def update_package(workspace, package_name, output_directory, load_to_drive=True
         load_zip_to_drive(package, 'shape_id', new_shape_zip, package['parent_ids'])
         print 'All zips loaded'
 
-    spec_manager.save_spec_json(os.path.join('packages', package['name'] + '.json'), package)
+    spec_manager.save_spec_json(package)
 
 
-def run_features(workspace, output_directory, feature_list_json=None, load=True, force=False, category=None, skip_packages=False):
+def run_features(workspace, output_directory, feature_list_json=None, load=True, force=False, category=None, skip_packages=False, update_cycles=None):
     """
     CLI option to update all features in spec_manager.FEATURE_SPEC_FOLDER or just those in feature_list_json.
 
@@ -336,13 +336,13 @@ def run_features(workspace, output_directory, feature_list_json=None, load=True,
     run_all_lists = None
     features = []
     if not feature_list_json:
-        for root, subdirs, files in os.walk(spec_manager.FEATURE_SPEC_FOLDER):
-            for filename in files:
-                feature_spec = spec_manager.load_feature_json(os.path.join(root, filename))
-                if feature_spec['sgid_name'] != '' and\
-                        (category is None or category.upper() == feature_spec['category'].upper()):
-                    features.append(feature_spec['sgid_name'])
-            break
+        for feature_spec in spec_manager.get_feature_specs(update_cycles):
+        # for root, subdirs, files in os.walk(spec_manager.FEATURE_SPEC_FOLDER):
+        #     for filename in files:
+        #         feature_spec = spec_manager.load_feature_json(os.path.join(root, filename))
+            if feature_spec['sgid_name'] != '' and\
+                    (category is None or category.upper() == feature_spec['category'].upper()):
+                features.append(feature_spec['sgid_name'])
     else:
         with open(feature_list_json, 'r') as json_file:
             run_all_lists = json.load(json_file)
@@ -350,10 +350,10 @@ def run_features(workspace, output_directory, feature_list_json=None, load=True,
 
     packages = []
     for feature in features:
-        packages.extend(update_feature(workspace, feature, output_directory, load_to_drive=True, force_update=force))
+        packages.extend(update_feature(workspace, feature, output_directory, load_to_drive=load, force_update=force))
     if not skip_packages:
         for package in set(packages):
-            update_package(workspace, package, temp_package_directory)
+            update_package(workspace, package, temp_package_directory, load_to_drive=load)
 
 
 def run_packages(workspace, output_directory, package_list_json=None, load=True, force=False):
@@ -459,6 +459,18 @@ if __name__ == '__main__':
                         help='Check all features for changes and update changed features and packages')
     parser.add_argument('--category', action='store', dest='feature_category',
                         help='Limits --all to specified category')
+    # Update cycle to run
+    parser.add_argument('-d', action='store_true', dest='daily',
+                        help='Limits --all to daily updated features')
+    parser.add_argument('-w', action='store_true', dest='weekly',
+                        help='Limits --all to weekly updated features')
+    parser.add_argument('-m', action='store_true', dest='monthly',
+                        help='Limits --all to monthly updated features')
+    parser.add_argument('-q', action='store_true', dest='quarterly',
+                        help='Limits --all to quarterly updated features')
+    parser.add_argument('-y', action='store_true', dest='yearly',
+                        help='Limits --all to yearly updated features')
+
     parser.add_argument('--all_packages', action='store_true', dest='check_packages',
                         help='Update all packages that have changed features. Equivalent to --all with all features contained in package specs')
     parser.add_argument('--package_list', action='store', dest='package_list',
@@ -493,7 +505,25 @@ if __name__ == '__main__':
     start_time = clock()
 
     if args.check_features:
-        run_features(workspace, output_directory, load=args.load, force=args.force, category=args.feature_category, skip_packages=args.skip_packages)
+        update_cycles = []
+        if args.daily:
+            update_cycles.append(spec_manager.UPDATE_CYCLES.DAY)
+        if args.weekly:
+            update_cycles.append(spec_manager.UPDATE_CYCLES.WEEK)
+        if args.monthly:
+            update_cycles.append(spec_manager.UPDATE_CYCLES.MONTH)
+        if args.quarterly:
+            update_cycles.append(spec_manager.UPDATE_CYCLES.QUARTER)
+        if args.yearly:
+            update_cycles.append(spec_manager.UPDATE_CYCLES.YEAR)
+
+        run_features(workspace,
+                     output_directory,
+                     load=args.load,
+                     force=args.force,
+                     category=args.feature_category,
+                     skip_packages=args.skip_packages,
+                     update_cycles=update_cycles)
 
     if args.check_packages:
         run_packages(workspace, output_directory, load=args.load, force=args.force)

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mclNoenp2cEE0dVU"
     ], 
     "sgid_name": "SGID10.ENERGY.CoalLeases", 
-    "shape_id": "0ByStJjVZ7c7mbVIxa2VBcUJBVHc"
+    "shape_id": "0ByStJjVZ7c7mbVIxa2VBcUJBVHc", 
+    "update_cycle": "day"
 }

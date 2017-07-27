@@ -4,6 +4,7 @@ import re
 import json
 import shutil
 import csv
+import time
 
 import spec_manager
 import driver
@@ -36,7 +37,7 @@ class FtpLink(object):
 
 
 def get_features_without_cycle():
-    
+    pass
 
 
 def get_update_cycles(steward_info):
@@ -368,6 +369,50 @@ def reassignparents():
         spec_manager.save_spec_json(spec)
 
 
+def get_hash_size_csv():
+    features = spec_manager.get_feature_specs()
+    out_csv = 'data/hash_sizes'
+    hash_size_records = [['name', 'hash_size', 'cycle']]
+    for feature in features:
+        if feature['hash_id'] == "":
+            continue
+        name = feature['sgid_name']
+        print name
+        size = user_drive.get_size(feature['hash_id'])
+        time.sleep(0.5)
+        cycle = feature['update_cycle']
+        print '\t', size
+        hash_size_records.append([name, size, cycle])
+
+    with open(out_csv, 'wb') as out_table:
+        table = csv.writer(out_table)
+        table.writerows(hash_size_records)
+
+
+def set_cycle_by_hash_size():
+    hash_sizes = 'data/hash_sizes.csv'
+    with open(hash_sizes, 'rb') as info:
+        reader = csv.DictReader(info)
+        for row in reader:
+            if int(row['hash_size']) < 1000000 and row['cycle'] == "":
+                print row['name']
+                feature = spec_manager.get_feature(row['name'])
+                feature['update_cycle'] = spec_manager.UPDATE_CYCLES.DAY
+                spec_manager.save_spec_json(feature)
+
+
+def set_cycle_by_date_in_name():
+    dated = re.compile(r'\d{4}')
+    for feature in spec_manager.get_feature_specs():
+        sgid_name = feature['sgid_name']
+        matches = dated.findall(sgid_name)
+        if len(matches) == 1 and feature['update_cycle'] == 'day':
+            print sgid_name, matches
+            feature['update_cycle'] = spec_manager.UPDATE_CYCLES.NEVER
+            spec_manager.save_spec_json(feature)
+
+
+
 if __name__ == '__main__':
     import argparse
     home_dir = os.path.expanduser('~')
@@ -396,13 +441,29 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    get_update_cycles('data/steward_info.csv')
-    feature_update_types = get_feature_update_cycles('data/steward_info.csv')
-    for feature in feature_update_types:
-        update = feature_update_types[feature]
-        if update in ['1', 'constant', 'internal']:
-            print feature
-            set_spec_update_types(feature, 'day')
+    print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
+    print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
+    print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
+    print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
+    print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
+    print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
+    print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
+
+    # for f in [s['sgid_name'] for s in spec_manager.get_feature_specs('') if s['update_cycle'] == '']:
+    #     print f
+    packages = set()
+    for f in spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY):
+        packages.update(f['packages'])
+    for p in packages:
+        print p
+
+    # get_update_cycles('data/steward_info.csv')
+    # feature_update_types = get_feature_update_cycles('data/steward_info.csv')
+    # for feature in feature_update_types:
+    #     update = feature_update_types[feature]
+    #     if update in ['1', 'constant', 'internal']:
+    #         print feature
+    #         set_spec_update_types(feature, 'day')
 
     # package_specs_from_gdbs(r'C:\GisWork\temp\aaaPackage', 'INDICES')
 

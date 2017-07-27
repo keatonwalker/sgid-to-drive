@@ -8,5 +8,6 @@
         "0ByStJjVZ7c7mdkhHMjZvVnA3eDg"
     ], 
     "sgid_name": "SGID10.ENERGY.GeothermalLeases_Utah", 
-    "shape_id": "0ByStJjVZ7c7mYk1jSm1YcnZmcEE"
+    "shape_id": "0ByStJjVZ7c7mYk1jSm1YcnZmcEE", 
+    "update_cycle": "day"
 }

@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mVWJDNUpILTkyNDQ"
     ], 
     "sgid_name": "SGID10.BOUNDARIES.Utah", 
-    "shape_id": "0ByStJjVZ7c7mRkJJaDBSZm9YSXc"
+    "shape_id": "0ByStJjVZ7c7mRkJJaDBSZm9YSXc", 
+    "update_cycle": "day"
 }

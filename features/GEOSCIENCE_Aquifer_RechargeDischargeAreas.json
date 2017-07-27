@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mYzg2cjZLbXdpOXc"
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.Aquifer_RechargeDischargeAreas", 
-    "shape_id": "0ByStJjVZ7c7mRXg2ODRwazIzQm8"
+    "shape_id": "0ByStJjVZ7c7mRXg2ODRwazIzQm8", 
+    "update_cycle": "day"
 }

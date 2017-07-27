@@ -10,5 +10,6 @@
         "0ByStJjVZ7c7mRG1jV2p3bVlDTnM"
     ], 
     "sgid_name": "SGID10.PLANNING.UtahPLI_Lines_Proposal_Jan16", 
-    "shape_id": "0ByStJjVZ7c7mQ0loVDNMeEZhQm8"
+    "shape_id": "0ByStJjVZ7c7mQ0loVDNMeEZhQm8", 
+    "update_cycle": "day"
 }
