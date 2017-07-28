@@ -453,9 +453,9 @@ if __name__ == '__main__':
     #     print f
     packages = set()
     for f in spec_manager.get_feature_specs():
-        p = f['packages']
+        p = f['parent_ids']
         packages.update(p)
-        if 'LRSRouteCharacteristics' in p:
+        if len(p) > 1:
             print f['sgid_name']
 
 
