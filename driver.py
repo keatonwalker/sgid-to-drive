@@ -175,7 +175,7 @@ class AgrcDriver(object):
                     sleep(backoff)
                     backoff += backoff
                 else:
-                    msg = "Upload Failed {}".format(e.msg)
+                    msg = "Upload Failed \n{}".format(e)
                     raise Exception(msg)
         # keep_version(response.get('id'), drive_service)
 
@@ -271,7 +271,7 @@ class AgrcDriver(object):
                     sleep(backoff)
                     backoff += backoff
                 else:
-                    msg = "Upload Failed {}".format(e.msg)
+                    msg = "Upload Failed \n{}".format(e)
                     raise Exception(msg)
         # keep_version(response.get('id'), drive_service)
 
