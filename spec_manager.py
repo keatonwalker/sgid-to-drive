@@ -190,6 +190,17 @@ def get_feature_specs(update_cycles=None):
     return feature_specs
 
 
+def get_package_specs():
+    package_specs = []
+    for p in get_package_spec_path_list():
+        spec = load_feature_json(p)
+        package_specs.append(spec)
+
+    # for f in feature_specs:
+    #     print f
+    return package_specs
+
+
 def add_update():
     for f in get_feature_spec_path_list():
         spec = load_feature_json(f)

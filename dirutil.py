@@ -8,7 +8,7 @@ import time
 
 import spec_manager
 import driver
-# user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
 
 
 class FtpLink(object):
@@ -389,6 +389,38 @@ def get_hash_size_csv():
         table.writerows(hash_size_records)
 
 
+def get_total_data_size():
+    features = spec_manager.get_feature_specs()
+    sizes =[]
+    for feature in features:
+        if feature['gdb_id'] == "" or feature['shape_id'] == "":
+            continue
+        name = feature['sgid_name']
+        print name
+        size = user_drive.get_size(feature['gdb_id']) * 0.000001
+        size += user_drive.get_size(feature['shape_id']) * 0.000001
+        time.sleep(0.1)
+        print '\t', size
+        sizes.append(size)
+
+    print 'Total feature MBs:', sum(sizes)
+    packages = spec_manager.get_package_specs()
+    for package in packages:
+        if package['gdb_id'] == "" or package['shape_id'] == "":
+            continue
+        name = package['name']
+        print name
+        size = user_drive.get_size(package['gdb_id']) * 0.000001
+        size += user_drive.get_size(package['shape_id']) * 0.000001
+        time.sleep(0.1)
+        print '\t', size
+        sizes.append(size)
+
+    print 'total specs:', len(features) + len(packages)
+    print 'total sizes:', len(sizes)
+    print 'Total MBs:', sum(sizes)
+
+
 def set_cycle_by_hash_size():
     hash_sizes = 'data/hash_sizes.csv'
     with open(hash_sizes, 'rb') as info:
@@ -441,22 +473,27 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
-    print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
-    print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
-    print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
-    print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
-    print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
-    print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
+
+    get_total_data_size()
+
+
+    # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
+    # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
+    # print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
+    # print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
+    # print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
+    # print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
+    # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
+
 
     # for f in [s['sgid_name'] for s in spec_manager.get_feature_specs('') if s['update_cycle'] == '']:
     #     print f
-    packages = set()
-    for f in spec_manager.get_feature_specs():
-        p = f['parent_ids']
-        packages.update(p)
-        if len(p) > 1:
-            print f['sgid_name']
+    # packages = set()
+    # for f in spec_manager.get_feature_specs():
+    #     p = f['parent_ids']
+    #     packages.update(p)
+    #     if len(p) > 1:
+    #         print f['sgid_name']
 
 
     # for p in packages:

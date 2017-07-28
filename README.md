@@ -1,1 +1,1 @@
-Quick and dirty transfer of SGID from FTP to google drive
+Application to update Google Drive files with SGID data.

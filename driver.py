@@ -231,7 +231,7 @@ class AgrcDriver(object):
     def get_size(self, file_id):
         file_size = self.service.files().get(fileId=file_id,
                                              fields='size').execute()
-        return file_size.get('size')
+        return int(file_size.get('size'))
 
     def create_drive_folder(self, name, parent_ids):
         # existing_file_id = get_file_id_by_name_and_directory(name, parent_ids[0], service)
