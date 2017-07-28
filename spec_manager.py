@@ -290,4 +290,10 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    get_feature_specs()
+    create_package_spec('LRSRouteCharacteristics',
+    ['SGID10.TRANSPORTATION.Roads',
+'SGID10.TRANSPORTATION.Roads_FreewayExits',
+'SGID10.TRANSPORTATION.RoadsShieldLines',
+'SGID10.TRANSPORTATION.UDOTMileposts',
+'SGID10.TRANSPORTATION.UDOTRoutes_LRS',
+'SGID10.TRANSPORTATION.UDOTTenthMileRefPoints'], 'TRANSPORTATION')

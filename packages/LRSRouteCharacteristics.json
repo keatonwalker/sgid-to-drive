@@ -1,0 +1,15 @@
+{
+    "category": "TRANSPORTATION", 
+    "feature_classes": [
+        "SGID10.TRANSPORTATION.Roads", 
+        "SGID10.TRANSPORTATION.Roads_FreewayExits", 
+        "SGID10.TRANSPORTATION.RoadsShieldLines", 
+        "SGID10.TRANSPORTATION.UDOTMileposts", 
+        "SGID10.TRANSPORTATION.UDOTRoutes_LRS", 
+        "SGID10.TRANSPORTATION.UDOTTenthMileRefPoints"
+    ], 
+    "gdb_id": "", 
+    "name": "LRSRouteCharacteristics", 
+    "parent_ids": [], 
+    "shape_id": ""
+}

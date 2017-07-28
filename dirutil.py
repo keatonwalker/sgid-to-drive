@@ -452,10 +452,16 @@ if __name__ == '__main__':
     # for f in [s['sgid_name'] for s in spec_manager.get_feature_specs('') if s['update_cycle'] == '']:
     #     print f
     packages = set()
-    for f in spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY):
-        packages.update(f['packages'])
-    for p in packages:
-        print p
+    for f in spec_manager.get_feature_specs():
+        p = f['packages']
+        packages.update(p)
+        if 'LRSRouteCharacteristics' in p:
+            print f['sgid_name']
+
+
+    # for p in packages:
+    #     if not os.path.exists(os.path.join('packages', p + '.json')):
+    #         print p
 
     # get_update_cycles('data/steward_info.csv')
     # feature_update_types = get_feature_update_cycles('data/steward_info.csv')
