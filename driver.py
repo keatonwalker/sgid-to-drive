@@ -18,6 +18,7 @@ OAUTH_CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Drive API Python Quickstart'
 
 class AgrcDriver(object):
+    flags = None
 
     def __init__(self, secrets=SERVICE_ACCOUNT_SECRET_FILE, scopes=SCOPES, use_oauth=False):
         self.service = None
@@ -50,7 +51,7 @@ class AgrcDriver(object):
             flow.user_agent = application_name
             # if flags:
             #     credentials = tools.run_flow(flow, store, flags)
-            credentials = tools.run_flow(flow, store)
+            credentials = tools.run_flow(flow, store, AgrcDriver.flags)
             print('Storing credentials to ' + credential_path)
 
         return credentials

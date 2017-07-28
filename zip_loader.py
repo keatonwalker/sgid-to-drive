@@ -4,8 +4,8 @@ import os
 import zipfile
 import csv
 from time import clock, strftime, sleep
-from hashlib import md5
-# from xxhash import xxh32
+# from hashlib import md5
+from xxhash import xxh64
 import json
 import ntpath
 import argparse
@@ -110,7 +110,7 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
             hash_writer.writerow(('hash',))
             # hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
             for row in cursor:
-                hasher = md5()  # Create/reset hash object
+                hasher = xxh64()  # Create/reset hash object
                 hasher.update(str(row[:attribute_subindex]))  # Hash only attributes
                 if shape_token:
                     shape_string = row[-1]
@@ -238,6 +238,7 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
     if changed or force_update:
         packages = feature['packages']
         # Copy data local
+        print 'Copying...'
         fc_directory, shape_directory = create_outputs(
                                                      output_directory,
                                                      input_feature_path,
@@ -277,11 +278,12 @@ def update_package(workspace, package_name, output_directory, load_to_drive=True
     package_gdb = arcpy.CreateFileGDB_management(output_directory, package['name'])[0]
     package_shape = os.path.join(output_directory, package['name'])
     os.makedirs(package_shape)
-
+    print 'Copying...'
     for feature_class in package['feature_classes']:
         spec_name = spec_manager.create_feature_spec_name(feature_class)
         feature_spec = os.path.join('features', spec_name)
         if not os.path.exists(feature_spec):
+            print 'New feature'
             update_feature(workspace, feature_class, os.path.join(output_directory, '..'), load_to_drive, force_update)
 
         spec = spec_manager.get_feature(feature_class, [package_name])
@@ -485,7 +487,7 @@ if __name__ == '__main__':
                         help='Set the workspace where all features are located')
 
     args = parser.parse_args()
-    flags = args  # flags global required for driver
+    driver.AgrcDriver.flags = args  # flags global required for driver
 
     workspace = args.workspace  # r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
     output_directory = r'package_temp'
