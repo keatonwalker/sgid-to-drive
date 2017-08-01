@@ -9,6 +9,7 @@ from xxhash import xxh64
 import json
 import ntpath
 import argparse
+import re
 
 import spec_manager
 from oauth2client import tools
@@ -93,6 +94,7 @@ def get_hash_lookup(hash_path, hash_field):
 
 def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=None):
     """Detect any changes and create a new hash store for uploading."""
+    float_subber = re.compile(r'(\d+\.\d{4})(\d+)')
     hash_store = output_hashes
     cursor_fields = list(fields)
     attribute_subindex = -1
@@ -114,6 +116,7 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
                 hasher.update(str(row[:attribute_subindex]))  # Hash only attributes
                 if shape_token:
                     shape_string = row[-1]
+                    shape_string = float_subber.sub(r'\1', shape_string)
                     if shape_string:  # None object won't hash
                         hasher.update(shape_string)
                     else:
