@@ -113,7 +113,7 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
             # hash_writer.writerow(('src_id', 'hash', 'centroidxy'))
             for row in cursor:
                 hasher = xxh64()  # Create/reset hash object
-                hasher.update(str(row[:attribute_subindex]))  # Hash only attributes
+                hasher.update(float_subber.sub(r'\1', str(row[:attribute_subindex])))  # Hash only attributes
                 if shape_token:
                     shape_string = row[-1]
                     shape_string = float_subber.sub(r'\1', shape_string)
