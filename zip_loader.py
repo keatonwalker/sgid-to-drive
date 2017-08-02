@@ -116,8 +116,8 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
                 hasher.update(float_subber.sub(r'\1', str(row[:attribute_subindex])))  # Hash only attributes
                 if shape_token:
                     shape_string = row[-1]
-                    shape_string = float_subber.sub(r'\1', shape_string)
                     if shape_string:  # None object won't hash
+                        shape_string = float_subber.sub(r'\1', shape_string)
                         hasher.update(shape_string)
                     else:
                         hasher.update('No shape')  # Add something to the hash to represent None geometry object
