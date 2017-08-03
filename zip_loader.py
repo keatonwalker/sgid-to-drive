@@ -501,6 +501,8 @@ if __name__ == '__main__':
                         help='Limits --all to monthly updated features')
     parser.add_argument('-q', action='store_true', dest='quarterly',
                         help='Limits --all to quarterly updated features')
+    parser.add_argument('-b', action='store_true', dest='biannual',
+                        help='Limits --all to yearly updated features')
     parser.add_argument('-y', action='store_true', dest='yearly',
                         help='Limits --all to yearly updated features')
 
@@ -547,8 +549,10 @@ if __name__ == '__main__':
             update_cycles.append(spec_manager.UPDATE_CYCLES.MONTH)
         if args.quarterly:
             update_cycles.append(spec_manager.UPDATE_CYCLES.QUARTER)
+        if args.biannual:
+            update_cycles.append(spec_manager.UPDATE_CYCLES.BIANNUAL)
         if args.yearly:
-            update_cycles.append(spec_manager.UPDATE_CYCLES.YEAR)
+            update_cycles.append(spec_manager.UPDATE_CYCLES.ANNUAL)
 
         run_features(workspace,
                      output_directory,
