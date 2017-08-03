@@ -525,7 +525,6 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    get_total_data_size()
 
     # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
     # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
@@ -536,14 +535,10 @@ if __name__ == '__main__':
     # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
 
 
-    # for f in [s['sgid_name'] for s in spec_manager.get_feature_specs('') if s['update_cycle'] == '']:
-    #     print f
-    # packages = set()
-    # for f in spec_manager.get_feature_specs():
-    #     p = f['parent_ids']
-    #     packages.update(p)
-    #     if len(p) > 1:
-    #         print f['sgid_name']
+    for f in [s for s in spec_manager.get_feature_specs('') if s['update_cycle'] == '']:
+        print f['sgid_name']
+        f['update_cycle'] = 'week'
+        spec_manager.save_spec_json(f)
 
 
     # for p in packages:
