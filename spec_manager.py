@@ -210,6 +210,7 @@ def add_update():
 
 
 def _list_packages_with_nonexistant_features(workspace, package_list=None):
+    """List packages with features that do not exist in the workspace."""
     import arcpy
     bad_features = []
     bad_packages = {}
@@ -224,9 +225,6 @@ def _list_packages_with_nonexistant_features(workspace, package_list=None):
         fcs = packages_spec['feature_classes']
         if fcs != '' and len(fcs) > 0:
             for f in fcs:
-                if f == 'SGID10.ENERGY.CoalLeases':
-                    print f
-                    print 'exists: ', arcpy.Exists(os.path.join(workspace, f))
                 if f in bad_features or not arcpy.Exists(os.path.join(workspace, f)):
                     if f not in bad_features:
                         print f
@@ -242,17 +240,15 @@ def _list_packages_with_nonexistant_features(workspace, package_list=None):
 
 
 def _list_nonexistant_features(workspace):
+    """List features that do not exist in the workspace."""
     import arcpy
     bad_features = []
-    features_to_check = get_feature_spec_path_list()
-    for f in features_to_check:
-        if not f.endswith('.json'):
-            f += '.json'
-        feature_spec = load_feature_json(f)
+    features_to_check = get_feature_specs()
+    for feature_spec in features_to_check:
         fc = feature_spec['sgid_name']
         if fc in bad_features or not arcpy.Exists(os.path.join(workspace, fc)):
             if fc in bad_features:
-                print 'TWICE!!!!', f
+                print 'TWICE!!!!', fc
             bad_features.append(fc)
 
     for f in bad_features:
@@ -301,5 +297,4 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    create_package_spec('Zzzz',
-    ['SGID10.BIOSCIENCE.BeaverRestorationAssessment'], 'BIOSCIENCE')
+    _list_nonexistant_features('Database Connections\Connection to sgid.agrc.utah.gov.sde')

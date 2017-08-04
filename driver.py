@@ -367,6 +367,6 @@ def get_webview_link(file_id):
     return url_formatter.format(file_id)
 
 
+
 if __name__ == '__main__':
-    drive = AgrcDriver()
-    drive.delete_file()
+    pass
