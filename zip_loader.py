@@ -16,7 +16,8 @@ from oauth2client import tools
 import driver
 # from driver import AgrcDriver
 
-drive = driver.AgrcDriver()
+api_service = driver.ApiService((driver.APIS.drive, ))
+drive = driver.AgrcDriver(api_service.services[0])
 user_drive = None
 
 
@@ -26,7 +27,8 @@ UTM_DRIVE_FOLDER = '0ByStJjVZ7c7mNlZRd2ZYOUdyX2M'
 
 def get_user_drive(user_drive=user_drive):
     if user_drive is None:
-        user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+        user_services = driver.ApiService((driver.APIS.drive, ), secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+        user_drive = driver.AgrcDriver(user_services.services[0])
         return user_drive
     else:
         return user_drive
@@ -520,7 +522,7 @@ if __name__ == '__main__':
                         help='Set the workspace where all features are located')
 
     args = parser.parse_args()
-    driver.AgrcDriver.flags = args  # flags global required for driver
+    driver.flags = args  # flags global required for driver
 
     workspace = args.workspace  # r'Database Connections\Connection to sgid.agrc.utah.gov.sde'
     output_directory = r'package_temp'

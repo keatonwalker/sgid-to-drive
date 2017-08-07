@@ -8,7 +8,9 @@ import time
 
 import spec_manager
 import driver
-user_drive = driver.AgrcDriver(secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+user_drive = driver.AgrcDriver(driver.ApiService((driver.APIS.drive, ),
+                                                 secrets=driver.OAUTH_CLIENT_SECRET_FILE,
+                                                 use_oauth=True).services[0])
 
 
 class FtpLink(object):
@@ -533,7 +535,6 @@ if __name__ == '__main__':
     print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
     print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
     print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
-
 
 
     # for p in packages:
