@@ -23,6 +23,7 @@ flags = None
 
 class APIS(object):
     drive = ('drive', 'v3')
+    sheets = ('sheets', 'v4')
 
 
 
@@ -96,6 +97,7 @@ class ApiService(object):
 
 
 class AgrcDriver(object):
+    FULL_SCOPE = 'https://www.googleapis.com/auth/drive'
 
     def __init__(self, api_service):
         self.service = api_service
@@ -409,11 +411,7 @@ class AgrcDriver(object):
         print self.service.files().delete(fileId=file_id).execute()
 
 
-class SgidDriver(AgrcDriver):
 
-    def __init__(self, secrets=SERVICE_ACCOUNT_SECRET_FILE, scopes=SCOPES):
-        """Ctor."""
-        super(SgidDriver, self).__init__(secrets, scopes)
 
 
 def get_download_link(file_id):
@@ -428,6 +426,36 @@ def get_webview_link(file_id):
 
 class AgrcSheets(object):
     FULL_SCOPE = 'https://www.googleapis.com/auth/spreadsheets'
+
+    def __init__(self, api_service):
+        self.service = api_service
+
+    def append_row(self, spreadsheet_id, row_values):
+        # The ID of the spreadsheet to update.
+        spreadsheet_id = '1FnEaykCFkg6WbFzSoHCZqABAdepJbhxJqiEUa6Fe0bU'  # TODO: Update placeholder value.
+
+        # The A1 notation of a range to search for a logical table of data.
+        # Values will be appended after the last row of the table.
+        range_ = 'Sheet1'  # TODO: Update placeholder value.
+
+        # How the input data should be interpreted.
+        value_input_option = 'RAW'  # TODO: Update placeholder value.
+
+        # How the input data should be inserted.
+        insert_data_option = 'INSERT_ROWS'  # TODO: Update placeholder value.
+
+        value_range_body = {
+            'values': row_values
+        }
+
+        request = self.service.spreadsheets().values().append(spreadsheetId=spreadsheet_id,
+                                                              range=range_,
+                                                              valueInputOption=value_input_option,
+                                                              insertDataOption=insert_data_option,
+                                                              fields='spreadsheetId,updates(updatedRange)',
+                                                              body=value_range_body)
+        response = request.execute()
+        print response
 
 
 if __name__ == '__main__':

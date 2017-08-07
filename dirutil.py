@@ -8,9 +8,12 @@ import time
 
 import spec_manager
 import driver
-user_drive = driver.AgrcDriver(driver.ApiService((driver.APIS.drive, ),
-                                                 secrets=driver.OAUTH_CLIENT_SECRET_FILE,
-                                                 use_oauth=True).services[0])
+api_services = driver.ApiService((driver.APIS.drive, driver.APIS.sheets),
+                                 secrets=driver.OAUTH_CLIENT_SECRET_FILE,
+                                 scopes=' '.join((driver.AgrcDriver.FULL_SCOPE, driver.AgrcSheets.FULL_SCOPE)),
+                                 use_oauth=True)
+user_drive = driver.AgrcDriver(api_services.services[0])
+user_sheets = driver.AgrcSheets(api_services.services[1])
 
 
 class FtpLink(object):
@@ -36,6 +39,17 @@ class FtpLink(object):
                                                                       self.packaged,
                                                                       self.src_dir,
                                                                       self.ext)
+
+
+
+def test_sheets(sheets_service=user_sheets):
+    """Shows basic usage of the Sheets API."""
+    values = [
+        ['work',
+         'please',
+         123]
+    ]
+    sheets_service.append_row('ff', values)
 
 
 def get_features_without_cycle():
@@ -527,14 +541,15 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
+    test_sheets()
 
-    print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
-    print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
-    print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
-    print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
-    print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
-    print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
-    print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
+    # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
+    # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
+    # print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
+    # print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
+    # print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
+    # print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
+    # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
 
 
     # for p in packages:
