@@ -141,7 +141,8 @@ class AgrcDriver(object):
                     sleep(backoff + uniform(.001, .999))
                     backoff += backoff
                 else:
-                    raise Exception('download Failed')
+                    msg = "Download Failed \n{}".format(e)
+                    raise Exception(msg)
 
         fh.seek(0)
         with open(output, 'wb') as out_zip:
@@ -430,19 +431,19 @@ class AgrcSheets(object):
     def __init__(self, api_service):
         self.service = api_service
 
-    def append_row(self, spreadsheet_id, row_values):
+    def append_row(self, spreadsheet_id, sheet_name, row_values):
         # The ID of the spreadsheet to update.
-        spreadsheet_id = '1FnEaykCFkg6WbFzSoHCZqABAdepJbhxJqiEUa6Fe0bU'  # TODO: Update placeholder value.
+        spreadsheet_id = spreadsheet_id
 
         # The A1 notation of a range to search for a logical table of data.
         # Values will be appended after the last row of the table.
-        range_ = 'Sheet1'  # TODO: Update placeholder value.
+        range_ = sheet_name
 
         # How the input data should be interpreted.
-        value_input_option = 'RAW'  # TODO: Update placeholder value.
+        value_input_option = 'RAW'
 
         # How the input data should be inserted.
-        insert_data_option = 'INSERT_ROWS'  # TODO: Update placeholder value.
+        insert_data_option = 'INSERT_ROWS'
 
         value_range_body = {
             'values': row_values
@@ -455,7 +456,6 @@ class AgrcSheets(object):
                                                               fields='spreadsheetId,updates(updatedRange)',
                                                               body=value_range_body)
         response = request.execute()
-        print response
 
 
 if __name__ == '__main__':
