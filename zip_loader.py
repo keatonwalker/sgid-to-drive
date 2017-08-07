@@ -16,8 +16,9 @@ from oauth2client import tools
 import driver
 # from driver import AgrcDriver
 
-api_service = driver.ApiService((driver.APIS.drive, ))
-drive = driver.AgrcDriver(api_service.services[0])
+api_services = driver.ApiService((driver.APIS.drive, driver.APIS.sheets),
+                                 scopes=' '.join((driver.AgrcDriver.FULL_SCOPE, driver.AgrcSheets.FULL_SCOPE)))
+drive = driver.AgrcDriver(api_services.services[0])
 user_drive = None
 
 
@@ -27,7 +28,11 @@ UTM_DRIVE_FOLDER = '0ByStJjVZ7c7mNlZRd2ZYOUdyX2M'
 
 def get_user_drive(user_drive=user_drive):
     if user_drive is None:
-        user_services = driver.ApiService((driver.APIS.drive, ), secrets=driver.OAUTH_CLIENT_SECRET_FILE, use_oauth=True)
+        user_services = driver.ApiService((driver.APIS.drive, driver.APIS.sheets),
+                                          secrets=driver.OAUTH_CLIENT_SECRET_FILE,
+                                          scopes=' '.join((driver.AgrcDriver.FULL_SCOPE,
+                                                           driver.AgrcSheets.FULL_SCOPE)),
+                                          use_oauth=True)
         user_drive = driver.AgrcDriver(user_services.services[0])
         return user_drive
     else:
