@@ -1,5 +1,5 @@
 from apiclient import errors
-from apiclient.http import MediaFileUpload, MediaIoBaseDownload
+from apiclient.http import MediaFileUpload, MediaIoBaseDownload, MediaIoBaseUpload
 import httplib2
 from apiclient import discovery
 from oauth2client import client
@@ -18,72 +18,91 @@ SERVICE_ACCOUNT_SECRET_FILE = 'service_secret.json'
 OAUTH_CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'SGID on Drive'
 
-
-def get_oauth_credentials(secrets, scopes, application_name=APPLICATION_NAME):
-    """
-    Get valid user credentials from storage.
-
-    If nothing has been stored, or if the stored credentials are invalid,
-    the OAuth2 flow is completed to obtain the new credentials.
-    Returns:
-        Credentials, the obtained credential.
-
-    """
-    home_dir = os.path.expanduser('~')
-    credential_dir = os.path.join(home_dir, '.credentials')
-    if not os.path.exists(credential_dir):
-        os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'sgid-drive-loader.json')
-
-    store = Storage(credential_path)
-    credentials = store.get()
-    if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(secrets, scopes)
-        flow.user_agent = application_name
-        # if flags:
-        #     credentials = tools.run_flow(flow, store, flags)
-        credentials = tools.run_flow(flow, store, AgrcDriver.flags)
-        print('Storing credentials to ' + credential_path)
-
-    return credentials
+flags = None
 
 
-def get_credentials(secrets, scopes):
-    """Get service account credentials from json key file."""
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(secrets, scopes)
-
-    return credentials
+class APIS(object):
+    drive = ('drive', 'v3')
 
 
-class AgrcDriver(object):
-    flags = None
 
-    def __init__(self, secrets=SERVICE_ACCOUNT_SECRET_FILE, scopes=SCOPES, use_oauth=False):
-        self.service = None
-        if use_oauth:
-            self.service = self.setup_oauth_service(secrets, scopes)
-        else:
-            self.service = self.setup_drive_service(secrets, scopes)
+class flags_shim(object):
 
-    def setup_oauth_service(self, secrets, scopes):
-        credentials = get_oauth_credentials(secrets, scopes)
+    def __init__(self):
+        self.auth_host_name = 'localhost'
+        self.noauth_local_webserver = False
+        self.auth_host_port = [8080, 8090]
+        self.logging_level = 'ERROR'
+
+
+class ApiService(object):
+    def __init__(self, apis, secrets=SERVICE_ACCOUNT_SECRET_FILE, scopes=SCOPES, use_oauth=False):
+        self.services = []
+        for api_name, api_version in apis:
+            if use_oauth:
+                self.services.append(self.setup_oauth_service(secrets, scopes, api_name, api_version))
+            else:
+                self.services.append(self.setup_account_service(secrets, scopes, api_name, api_version))
+
+    def get_oauth_credentials(self, secrets, scopes, application_name=APPLICATION_NAME, flags=flags):
+        """
+        Get valid user credentials from storage.
+
+        If nothing has been stored, or if the stored credentials are invalid,
+        the OAuth2 flow is completed to obtain the new credentials.
+        Returns:
+            Credentials, the obtained credential.
+
+        """
+        home_dir = os.path.expanduser('~')
+        credential_dir = os.path.join(home_dir, '.credentials')
+        if not os.path.exists(credential_dir):
+            os.makedirs(credential_dir)
+        credential_path = os.path.join(credential_dir,
+                                       'sgid-drive-loader.json')
+
+        store = Storage(credential_path)
+        credentials = store.get()
+        if not credentials or credentials.invalid:
+            flow = client.flow_from_clientsecrets(secrets, scopes)
+            flow.user_agent = application_name
+            if flags is None:
+                flags = flags_shim()
+            credentials = tools.run_flow(flow, store, flags)
+            print('Storing credentials to ' + credential_path)
+
+        return credentials
+
+    def get_credentials(self, secrets, scopes):
+        """Get service account credentials from json key file."""
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(secrets, scopes)
+
+        return credentials
+
+    def setup_oauth_service(self, secrets, scopes, api_name, api_version):
+        credentials = self.get_oauth_credentials(secrets, scopes)
         http = credentials.authorize(httplib2.Http())
-        service = discovery.build('drive', 'v3', http=http)
+        service = discovery.build(api_name, api_version, http=http)
 
         return service
 
-    def setup_drive_service(self, secrets, scopes):
+    def setup_account_service(self, secrets, scopes, api_name, api_version):
         # get auth
-        credentials = get_credentials(secrets, scopes)
+        credentials = self.get_credentials(secrets, scopes)
         http = credentials.authorize(httplib2.Http())
-        self.service = discovery.build('drive', 'v3', http=http)
+        service = discovery.build(api_name, api_version, http=http)
 
-        return self.service
+        return service
+
+
+class AgrcDriver(object):
+
+    def __init__(self, api_service):
+        self.service = api_service
 
     def set_property(self, file_id, property_dict):
         if not self.service:
-            self.service = self.setup_drive_service()
+            self.service = self.setup_account_service()
         file_name = self.service.files().update(fileId=file_id,
                                                 fields='name',
                                                 body={'properties': property_dict}).execute()
@@ -91,7 +110,7 @@ class AgrcDriver(object):
 
     def get_property(self, file_id, property_name):
         if not self.service:
-            self.service = self.setup_drive_service()
+            self.service = self.setup_account_service()
         file_property = self.service.files().get(fileId=file_id,
                                                  fields='properties({})'.format(property_name)).execute()
         return file_property['properties'][property_name]
@@ -181,6 +200,46 @@ class AgrcDriver(object):
                 else:
                     msg = "Upload Failed \n{}".format(e)
                     raise Exception(msg)
+
+        return response.get('id')
+
+
+    def create_drive_file_from_io(self, name, parent_ids, io_bytes, mime_type, description=None, propertyDict=None):
+        file_metadata = {'name': name,
+                         'description': description,
+                         'mimeType': mime_type,
+                         'parents': parent_ids}
+
+        media_body = MediaIoBaseUpload(io_bytes,
+                                       chunksize=-1,
+                                       mimetype=mime_type,
+                                       resumable=True)
+        request = self.service.files().create(body=file_metadata,
+                                              media_body=media_body,
+                                              fields="id")
+
+        response = None
+        backoff = 1
+        while response is None:
+            try:
+                status, response = request.next_chunk()
+                # if status:
+                #     print('{} percent {}'.format(name, int(status.progress() * 100)))
+            except errors.HttpError, e:
+                if e.resp.status in [404]:
+                    # Start the upload all over again or error.
+                    raise Exception('Upload Failed 404')
+                elif e.resp.status in [500, 502, 503, 504]:
+                    if backoff > 8:
+                        raise Exception('Upload Failed: {}'.format(e))
+                    print 'Retrying upload in: {} seconds'.format(backoff)
+                    sleep(backoff + uniform(.001, .999))
+                    backoff += backoff
+                else:
+                    msg = 'Upload Failed\n{}'.format(e)
+                    raise Exception(msg)
+        if propertyDict:
+            self.set_property(response.get('id'), propertyDict)
 
         return response.get('id')
 
@@ -366,6 +425,9 @@ def get_webview_link(file_id):
     url_formatter = 'https://drive.google.com/drive/folders/{}'
     return url_formatter.format(file_id)
 
+
+class AgrcSheets(object):
+    FULL_SCOPE = 'https://www.googleapis.com/auth/spreadsheets'
 
 
 if __name__ == '__main__':
