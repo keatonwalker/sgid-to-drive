@@ -3,7 +3,8 @@ import shutil
 import os
 import zipfile
 import csv
-from time import clock, strftime, sleep
+from time import clock, sleep
+from datetime import datetime
 # from hashlib import md5
 from xxhash import xxh64
 import json
@@ -19,11 +20,14 @@ import driver
 api_services = driver.ApiService((driver.APIS.drive, driver.APIS.sheets),
                                  scopes=' '.join((driver.AgrcDriver.FULL_SCOPE, driver.AgrcSheets.FULL_SCOPE)))
 drive = driver.AgrcDriver(api_services.services[0])
+sheets = driver.AgrcSheets(api_services.services[1])
 user_drive = None
 
 
 HASH_DRIVE_FOLDER = '0ByStJjVZ7c7mMVRpZjlVdVZ5Y0E'
 UTM_DRIVE_FOLDER = '0ByStJjVZ7c7mNlZRd2ZYOUdyX2M'
+LOG_SHEET_ID = '11ASS7LnxgpnD0jN4utzklREgMf1pcvYjcXcIcESHweQ'
+LOG_SHEET_NAME = 'Drive Update'
 
 
 def get_user_drive(user_drive=user_drive):
@@ -143,7 +147,7 @@ def detect_changes(data_path, fields, past_hashes, output_hashes, shape_token=No
 
     print 'Total changes: {}'.format(changes)
 
-    return changes > 0
+    return changes
 
 
 def _get_copier(is_table):
@@ -230,6 +234,7 @@ def sync_feature_and_package(feature_spec, package_spec):
 def update_feature(workspace, feature_name, output_directory, load_to_drive=True, force_update=False):
     """Update a feature class on drive if it has changed."""
     print '\nStarting feature:', feature_name
+    feature_time = clock()
     input_feature_path = os.path.join(workspace, feature_name)
     if not arcpy.Exists(input_feature_path):
         msg = '{} does not exist'.format(input_feature_path)
@@ -280,10 +285,10 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
     if not arcpy.Describe(input_feature_path).datasetType.lower() == 'table':
         shape_token = 'SHAPE@WKT'
 
-    changed = detect_changes(input_feature_path, fields, past_hashes, hash_store, shape_token)
+    change_count = detect_changes(input_feature_path, fields, past_hashes, hash_store, shape_token)
 
     packages = []
-    if changed or force_update:
+    if change_count > 0 or force_update:
         packages = feature['packages']
         # Copy data local
         print 'Copying...'
@@ -308,6 +313,13 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
             print 'All zips loaded'
 
         spec_manager.save_spec_json(feature)
+        now = datetime.now()
+        log_sheet_values = [['{}.{}'.format(feature['category'], feature['name']),
+                            change_count,
+                            now.strftime('%m/%d/%Y'),
+                            now.strftime('%H:%M:%S.%f'),
+                            clock() - feature_time]]
+        sheets.append_row(LOG_SHEET_ID, LOG_SHEET_NAME, log_sheet_values)
 
     return packages
 
