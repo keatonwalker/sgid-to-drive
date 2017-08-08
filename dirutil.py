@@ -41,17 +41,6 @@ class FtpLink(object):
                                                                       self.ext)
 
 
-
-def test_sheets(sheets_service=user_sheets):
-    """Shows basic usage of the Sheets API."""
-    values = [
-        ['work',
-         'please',
-         123]
-    ]
-    sheets_service.append_row('ff', values)
-
-
 def get_features_without_cycle():
     pass
 
@@ -455,6 +444,30 @@ def get_hash_size_csv():
         table.writerows(hash_size_records)
 
 
+def get_spec_property_csv(properties):
+    features = spec_manager.get_feature_specs()
+    output_rows = []
+    out_csv = 'data/properties.csv'
+    count = 0
+    for feature in features:
+        if count % 50 == 0:
+            print count
+        count += 1
+        out_row = [feature[p] for p in properties]
+        if feature['gdb_id'] == "":
+            print feature['sgid_name']
+            continue
+        out_row.append(user_drive.get_size(feature['gdb_id']))
+        time.sleep(0.01)
+        output_rows.append(out_row)
+
+    print count
+    with open(out_csv, 'wb') as out_table:
+        table = csv.writer(out_table)
+        table.writerow(properties)
+        table.writerows(output_rows)
+
+
 def get_total_data_size():
     features = spec_manager.get_feature_specs()
     sizes =[]
@@ -513,6 +526,26 @@ def set_cycle_by_date_in_name():
 
 
 
+def check_empty_gdb_ids():
+    features = spec_manager.get_feature_specs()
+    for feature in features:
+        if feature['gdb_id'] == "":
+            cat_id = user_drive.get_file_id_by_name_and_directory(feature['category'], '0ByStJjVZ7c7mNlZRd2ZYOUdyX2M')
+            f_id = user_drive.get_file_id_by_name_and_directory(feature['name'], cat_id)
+            time.sleep(0.01)
+            if f_id is None:
+                print "'{}',".format(feature['sgid_name'])
+
+
+def check_feature_in_packages(sgid_name_list):
+    packages = spec_manager.get_package_specs()
+    for package in packages:
+        print package['name']
+        for f in package['feature_classes']:
+            if f in packages:
+                print '\t', f
+
+
 if __name__ == '__main__':
     import argparse
     home_dir = os.path.expanduser('~')
@@ -541,13 +574,51 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
-    print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
-    print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
-    print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
-    print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
-    print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
-    print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
+    # get_spec_property_csv(['sgid_name', 'update_cycle'])
+    # check_empty_gdb_ids()
+    fl = [
+    'SGID10.BOUNDARIES.Counties_AsPuzzle',
+'SGID10.BOUNDARIES.Counties_AsPuzzleParts',
+'SGID10.BOUNDARIES.USStates',
+'SGID10.CADASTRE.UtahControl_HRO',
+'SGID10.CADASTRE.UtahControl_NAIP',
+'SGID10.DEMOGRAPHIC.CensusBlocks2009',
+'SGID10.DEMOGRAPHIC.CensusPlacePoints2010',
+'SGID10.DEMOGRAPHIC.CensusPlaces2010',
+'SGID10.DEMOGRAPHIC.UnIncorpAreas2010_Approx',
+'SGID10.DEMOGRAPHIC.UnPopUtah_Approx',
+'SGID10.ELEVATION.AvalancheRose_TriCanyons',
+'SGID10.ELEVATION.Contours_2Meter_SLCounty',
+'SGID10.HEALTH.HealthDistricts',
+'SGID10.INDICES.AutoCorrelated_DEM_2m',
+'SGID10.INDICES.AutoCorrelated_DEM_2m_Extent',
+'SGID10.INDICES.AutoCorrelated_DEM_5m',
+'SGID10.INDICES.AutoCorrelated_DEM_5m_Extent',
+'SGID10.INDICES.DEM_Extents',
+'SGID10.INDICES.HRO2012',
+'SGID10.INDICES.HRO2012_Outline',
+'SGID10.INDICES.LiDAR2006_1_25m_Raw_Tiles',
+'SGID10.INDICES.LiDAR2006_1m_Raw_Tiles',
+'SGID10.INDICES.LiDAR2006_2m_Raw_Tiles',
+'SGID10.INDICES.LiDAR2013_2014_50cm_WasatchFront_DSM_Tiles',
+'SGID10.INDICES.LiDAR2013_2014_50cm_WasatchFront_DTM_Tiles',
+'SGID10.INDICES.LiDAR2013_2014_8ppm_WasatchFront_LAS_Tiles',
+'SGID10.INDICES.NAIP2014_4_Band_QQuads',
+'SGID10.INDICES.NAIP2014_Band4_QQuads',
+'SGID10.INDICES.NAIP2014_County',
+'SGID10.INDICES.NAIP2014_QQuads_Outline',
+'SGID10.INDICES.NAIP2014_RGB_QQuads',
+'SGID10.UTILITIES.BroadbandService_historic'
+    ]
+    check_feature_in_packages(fl)
+
+    # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
+    # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
+    # print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
+    # print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
+    # print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
+    # print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
+    # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
 
 
     # for p in packages:
