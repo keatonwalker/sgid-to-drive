@@ -231,16 +231,36 @@ def sync_feature_and_package(feature_spec, package_spec):
     spec_manager.save_spec_json(package_spec)
 
 
+def src_data_exists(data_path):
+    if not arcpy.Exists(data_path):
+        msg = '{} does not exist'.format(data_path)
+        return False
+    try:
+        with arcpy.da.SearchCursor(data_path, 'OID@') as cursor:
+            pass
+    except RuntimeError, e:
+        return False
+
+    return True
+
+
 def update_feature(workspace, feature_name, output_directory, load_to_drive=True, force_update=False):
     """Update a feature class on drive if it has changed."""
     print '\nStarting feature:', feature_name
     feature_time = clock()
+
     input_feature_path = os.path.join(workspace, feature_name)
-    if not arcpy.Exists(input_feature_path):
-        msg = '{} does not exist'.format(input_feature_path)
-        raise Exception(msg)
 
     feature = spec_manager.get_feature(feature_name)
+    if not src_data_exists(input_feature_path):
+        now = datetime.now()
+        log_sheet_values = [['{}.{}'.format(feature['category'], feature['name']),
+                             'Does not exist',
+                             now.strftime('%m/%d/%Y'),
+                             now.strftime('%H:%M:%S.%f'),
+                             clock() - feature_time]]
+        sheets.append_row(LOG_SHEET_ID, LOG_SHEET_NAME, log_sheet_values)
+        return []
     # Handle new packages and changes to feature['packages'] list
     for package in [spec_manager.get_package(p) for p in feature['packages']]:
         if len(package['parent_ids']) == 0 or package['gdb_id'] == '' or package['shape_id'] == '':
@@ -528,9 +548,11 @@ if __name__ == '__main__':
     parser.add_argument('--all_packages', action='store_true', dest='check_packages',
                         help='Update all packages that have changed features. Equivalent to --all with all features contained in package specs')
     parser.add_argument('--package_list', action='store', dest='package_list',
-                        help='Update all packages in a json file with array named "packages".')
+                        help='Check all packages in a json file with array named "packages".')
     parser.add_argument('--feature', action='store', dest='feature',
                         help='Check one feature for changes and update if needed. Takes one SGID feature name')
+    parser.add_argument('--feature_list', action='store', dest='feature_list',
+                        help='Check all features in a json file with array named "features".')
     parser.add_argument('--package', action='store', dest='package',
                         help='Check one package for changes and update if needed. Takes one package name')
     parser.add_argument('--upload_zip', action='store', dest='zip_feature',
@@ -580,6 +602,13 @@ if __name__ == '__main__':
                      category=args.feature_category,
                      skip_packages=args.skip_packages,
                      update_cycles=update_cycles)
+    elif args.feature_list:
+        run_features(workspace,
+                     output_directory,
+                     load=args.load,
+                     force=args.force,
+                     feature_list_json=args.feature_list,
+                     skip_packages=args.skip_packages)
 
     if args.check_packages:
         run_packages(workspace, output_directory, load=args.load, force=args.force)

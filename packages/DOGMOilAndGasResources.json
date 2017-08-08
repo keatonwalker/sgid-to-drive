@@ -5,7 +5,8 @@
         "SGID10.ENERGY.DNROilGasUnits", 
         "SGID10.ENERGY.OilGasWells", 
         "SGID10.ENERGY.OilGasWells_DownHoles", 
-        "SGID10.ENERGY.OilGasWells_Paths"
+        "SGID10.ENERGY.OilGasWells_Paths", 
+        "SGID10.ENERGY.DNROilGasWells"
     ], 
     "gdb_id": "0ByStJjVZ7c7mbUV5Q0R5YWRPdEE", 
     "name": "DOGMOilAndGasResources", 

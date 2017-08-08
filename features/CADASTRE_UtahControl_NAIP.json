@@ -1,11 +1,13 @@
 {
     "category": "CADASTRE", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mN2kwaGxXYjhOa0k", 
+    "hash_id": "0ByStJjVZ7c7mVEFmSFpTeWFUSWM", 
     "name": "UtahControl_NAIP", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mUmhSdGNoRVBOeEE"
+    ], 
     "sgid_name": "SGID10.CADASTRE.UtahControl_NAIP", 
-    "shape_id": "", 
+    "shape_id": "0ByStJjVZ7c7mempqUHAwWlVuMHc", 
     "update_cycle": "never"
 }
