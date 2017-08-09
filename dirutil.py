@@ -197,6 +197,52 @@ def list_ftp_links_by_subfolder(top_dir):
     return sub_dir_counts
 
 
+def replace_ftp_link(ftp_path, feature_specs, package_specs):
+
+    def get_replace_link(link, spec):
+        last_7 = link.path[-7:]
+        zip_id = None
+        if link.ext == '.zip' and last_7 in ['shp.zip', 'gdb.zip']:
+            if 'shp' in last_7:
+                if link.packaged:
+                    zip_id = driver.get_webview_link(spec['shape_id'])
+                    print 'package direct', link.path
+                else:
+                    zip_id = driver.get_download_link(spec['shape_id'])
+            elif 'gdb' in last_7:
+                if link.packaged:
+                    zip_id = driver.get_webview_link(spec['gdb_id'])
+                    print 'package direct', link.path
+                else:
+                    zip_id = driver.get_download_link(spec['gdb_id'])
+            return '{}'.format(zip_id)
+        elif link.ext is None:
+            return '{}'.format(driver.get_webview_link(spec['parent_ids'][0]))
+
+    ftp_link_matcher = re.compile(r'(ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+)')
+    matches = ftp_link_matcher.findall(ftp_path)
+    if len(matches) > 0:
+        for m in matches:
+            link = parse_ftp_link(m[1], '')
+            if link is None:
+                print 'other:', m[1]
+                print ftp_path
+            elif (not link.packaged and link.get_catname() in feature_specs):
+                replace_link = get_replace_link(link, feature_specs[link.get_catname()])
+                if replace_link is None:
+                    print 'other:', link.path
+                    continue
+                return replace_link
+            elif (link.packaged and link.get_catname() in package_specs):
+                replace_link = get_replace_link(link, package_specs[link.get_catname()])
+                if replace_link is None:
+                    print 'other:', link.path
+                    continue
+                return replace_link
+            else:
+                print 'not found in specs:', link.path, ftp_path
+
+
 def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
     ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+?)[\"\)]')
     data_paths = []
@@ -546,6 +592,36 @@ def check_feature_in_packages(sgid_name_list):
                 print '\t', f
 
 
+def test_sheets():
+    spreadsheet = '11ASS7LnxgpnD0jN4utzklREgMf1pcvYjcXcIcESHweQ'
+    sheet = 'SGID Stewardship Info'
+    column = 'k'
+    user_sheets.get_column(spreadsheet, sheet, column)
+
+
+def replace_paths_in_stewardship():
+    spreadsheet = '11ASS7LnxgpnD0jN4utzklREgMf1pcvYjcXcIcESHweQ'
+    sheet = 'SGID Stewardship Info'
+    column = 'k'
+    paths = user_sheets.get_column(spreadsheet, sheet, column)
+
+    ided_features = get_spec_catnames(spec_manager.get_feature_spec_path_list(), True)
+    ided_packages = get_spec_catnames(spec_manager.get_package_spec_path_list(), True)
+    drive_paths = []
+    for i, path in enumerate(paths):
+        drive_link = replace_ftp_link(path, ided_features, ided_packages)
+        if drive_link is not None:
+            paths[i] = drive_link
+            drive_paths.append(drive_link)
+        else:
+            paths[i] = None
+
+    print len(drive_paths)
+    user_sheets.replace_column(spreadsheet, sheet, column, paths)
+    # for i, path in enumerate(paths, start=2):
+    #     print i, path
+
+
 if __name__ == '__main__':
     import argparse
     home_dir = os.path.expanduser('~')
@@ -574,43 +650,8 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
+    replace_paths_in_stewardship()
     # get_spec_property_csv(['sgid_name', 'update_cycle'])
-    # check_empty_gdb_ids()
-    fl = [
-    'SGID10.BOUNDARIES.Counties_AsPuzzle',
-'SGID10.BOUNDARIES.Counties_AsPuzzleParts',
-'SGID10.BOUNDARIES.USStates',
-'SGID10.CADASTRE.UtahControl_HRO',
-'SGID10.CADASTRE.UtahControl_NAIP',
-'SGID10.DEMOGRAPHIC.CensusBlocks2009',
-'SGID10.DEMOGRAPHIC.CensusPlacePoints2010',
-'SGID10.DEMOGRAPHIC.CensusPlaces2010',
-'SGID10.DEMOGRAPHIC.UnIncorpAreas2010_Approx',
-'SGID10.DEMOGRAPHIC.UnPopUtah_Approx',
-'SGID10.ELEVATION.AvalancheRose_TriCanyons',
-'SGID10.ELEVATION.Contours_2Meter_SLCounty',
-'SGID10.HEALTH.HealthDistricts',
-'SGID10.INDICES.AutoCorrelated_DEM_2m',
-'SGID10.INDICES.AutoCorrelated_DEM_2m_Extent',
-'SGID10.INDICES.AutoCorrelated_DEM_5m',
-'SGID10.INDICES.AutoCorrelated_DEM_5m_Extent',
-'SGID10.INDICES.DEM_Extents',
-'SGID10.INDICES.HRO2012',
-'SGID10.INDICES.HRO2012_Outline',
-'SGID10.INDICES.LiDAR2006_1_25m_Raw_Tiles',
-'SGID10.INDICES.LiDAR2006_1m_Raw_Tiles',
-'SGID10.INDICES.LiDAR2006_2m_Raw_Tiles',
-'SGID10.INDICES.LiDAR2013_2014_50cm_WasatchFront_DSM_Tiles',
-'SGID10.INDICES.LiDAR2013_2014_50cm_WasatchFront_DTM_Tiles',
-'SGID10.INDICES.LiDAR2013_2014_8ppm_WasatchFront_LAS_Tiles',
-'SGID10.INDICES.NAIP2014_4_Band_QQuads',
-'SGID10.INDICES.NAIP2014_Band4_QQuads',
-'SGID10.INDICES.NAIP2014_County',
-'SGID10.INDICES.NAIP2014_QQuads_Outline',
-'SGID10.INDICES.NAIP2014_RGB_QQuads',
-'SGID10.UTILITIES.BroadbandService_historic'
-    ]
-    check_feature_in_packages(fl)
 
     # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
     # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
@@ -619,21 +660,6 @@ if __name__ == '__main__':
     # print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
     # print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
     # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
-
-
-    # for p in packages:
-    #     if not os.path.exists(os.path.join('packages', p + '.json')):
-    #         print p
-
-    # get_update_cycles('data/steward_info.csv')
-    # feature_update_types = get_feature_update_cycles('data/steward_info.csv')
-    # for feature in feature_update_types:
-    #     update = feature_update_types[feature]
-    #     if update in ['1', 'constant', 'internal']:
-    #         print feature
-    #         set_spec_update_types(feature, 'day')
-
-    # package_specs_from_gdbs(r'C:\GisWork\temp\aaaPackage', 'INDICES')
 
     #: Find all ftp links
     # data_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/data')

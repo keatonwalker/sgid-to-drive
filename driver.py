@@ -440,7 +440,7 @@ class AgrcSheets(object):
         range_ = sheet_name
 
         # How the input data should be interpreted.
-        value_input_option = 'RAW'
+        value_input_option = 'USER_ENTERED'
 
         # How the input data should be inserted.
         insert_data_option = 'INSERT_ROWS'
@@ -456,6 +456,42 @@ class AgrcSheets(object):
                                                               fields='spreadsheetId,updates(updatedRange)',
                                                               body=value_range_body)
         response = request.execute()
+
+    def get_column(self, spreadsheet_id, sheet_name, column_letter):
+        # The ID of the spreadsheet to update.
+        spreadsheet_id = spreadsheet_id
+
+        # The A1 notation of a range to search for a logical table of data.
+        # Values will be appended after the last row of the table.
+        range_ = '{0}!{1}2:{1}'.format(sheet_name, column_letter)
+
+        request = self.service.spreadsheets().values().get(spreadsheetId=spreadsheet_id,
+                                                           range=range_,
+                                                           majorDimension='COLUMNS')
+        return request.execute()['values'][0]
+
+    def replace_column(self, spreadsheet_id, sheet_name, column_letter, values):
+        # The ID of the spreadsheet to update.
+        spreadsheet_id = spreadsheet_id
+
+        # The A1 notation of a range to search for a logical table of data.
+        # Values will be appended after the last row of the table.
+        range_ = '{0}!{1}2:{1}'.format(sheet_name, column_letter)
+
+        # How the input data should be interpreted.
+        value_input_option = 'USER_ENTERED'
+
+        value_range_body = {
+            'majorDimension': 'COLUMNS',
+            'values': [values]
+        }
+
+        request = self.service.spreadsheets().values().update(spreadsheetId=spreadsheet_id,
+                                                              range=range_,
+                                                              valueInputOption=value_input_option,
+                                                              body=value_range_body)
+        response = request.execute()
+        print response
 
 
 if __name__ == '__main__':
