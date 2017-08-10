@@ -503,14 +503,14 @@ def get_spec_property_csv(properties):
         if feature['gdb_id'] == "":
             print feature['sgid_name']
             continue
-        out_row.append(user_drive.get_size(feature['gdb_id']))
+        out_row.append(float(user_drive.get_size(feature['gdb_id'])) / 1048576)
         time.sleep(0.01)
         output_rows.append(out_row)
 
     print count
     with open(out_csv, 'wb') as out_table:
         table = csv.writer(out_table)
-        table.writerow(properties)
+        table.writerow(properties + ['MB'])
         table.writerows(output_rows)
 
 
@@ -650,8 +650,7 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    replace_paths_in_stewardship()
-    # get_spec_property_csv(['sgid_name', 'update_cycle'])
+    get_spec_property_csv(['sgid_name', 'update_cycle'])
 
     # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
     # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
