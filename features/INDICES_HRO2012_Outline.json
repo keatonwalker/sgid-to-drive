@@ -1,11 +1,13 @@
 {
     "category": "INDICES", 
-    "gdb_id": "", 
-    "hash_id": "", 
+    "gdb_id": "0ByStJjVZ7c7mSjhQQ2x6N1hmRE0", 
+    "hash_id": "0ByStJjVZ7c7mSjhUUjNCUVJjb1U", 
     "name": "HRO2012_Outline", 
     "packages": [], 
-    "parent_ids": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mLXBvRWdTVHFMUzg"
+    ], 
     "sgid_name": "SGID10.INDICES.HRO2012_Outline", 
-    "shape_id": "", 
+    "shape_id": "0ByStJjVZ7c7ma3RhbmRmV2Uza2M", 
     "update_cycle": "never"
 }
