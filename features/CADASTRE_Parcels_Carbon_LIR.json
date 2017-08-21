@@ -1,0 +1,13 @@
+{
+    "category": "CADASTRE",
+    "gdb_id": "0ByStJjVZ7c7mWkluMTRlMklYeWc",
+    "hash_id": "0ByStJjVZ7c7mRGM4QVRENWRSX28",
+    "name": "Parcels_Carbon_LIR",
+    "packages": [],
+    "parent_ids": [
+        "0ByStJjVZ7c7mYnJCb0VaQTRWWFk"
+    ],
+    "sgid_name": "SGID10.CADASTRE.Parcels_Carbon_LIR",
+    "shape_id": "0ByStJjVZ7c7meWRfUGozc2RPZWM",
+    "update_cycle": "annual"
+}
