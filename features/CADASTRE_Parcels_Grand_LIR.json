@@ -1,0 +1,13 @@
+{
+    "category": "CADASTRE", 
+    "gdb_id": "0ByStJjVZ7c7mU2s1RDlJTjlqQWM", 
+    "hash_id": "0ByStJjVZ7c7mcnZVbFkyMHZrYW8", 
+    "name": "Parcels_Grand_LIR", 
+    "packages": [], 
+    "parent_ids": [
+        "0ByStJjVZ7c7mT1VZSUg1VmlmaFU"
+    ], 
+    "sgid_name": "SGID10.CADASTRE.Parcels_Grand_LIR", 
+    "shape_id": "0ByStJjVZ7c7mbEtNZkhLeUlUN28", 
+    "update_cycle": ""
+}
