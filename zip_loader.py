@@ -313,10 +313,13 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
     if not arcpy.Describe(input_feature_path).datasetType.lower() == 'table':
         shape_token = 'SHAPE@WKT'
 
-    change_count = detect_changes(input_feature_path, fields, past_hashes, hash_store, shape_token)
+    try:
+        change_count = detect_changes(input_feature_path, fields, past_hashes, hash_store, shape_token)
+    except RuntimeError:
+        change_count = -1
 
     packages = []
-    if change_count > 0 or force_update:
+    if change_count != 0 or force_update:
         packages = feature['packages']
         # Copy data local
         print 'Copying...'
@@ -342,6 +345,8 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
 
         spec_manager.save_spec_json(feature)
         now = datetime.now()
+        if change_count == -1:
+            change_count = 'Change detection error'
         log_sheet_values = [['{}.{}'.format(feature['category'], feature['name']),
                             change_count,
                             now.strftime('%m/%d/%Y'),
