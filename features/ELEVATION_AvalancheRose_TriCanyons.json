@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.ELEVATION.AvalancheRose_TriCanyons", 
     "shape_id": "0ByStJjVZ7c7meXgyVEZwOFFrOUE", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

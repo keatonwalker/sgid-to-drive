@@ -1,11 +1,11 @@
 {
-    "category": "ELEVATION", 
-    "gdb_id": "", 
-    "hash_id": "", 
-    "name": "Contours_2Meter_SLCounty", 
-    "packages": [], 
-    "parent_ids": [], 
-    "sgid_name": "SGID10.ELEVATION.Contours_2Meter_SLCounty", 
-    "shape_id": "", 
-    "update_cycle": "never"
+    "category": "ELEVATION",
+    "gdb_id": "",
+    "hash_id": "",
+    "name": "Contours_2Meter_SLCounty",
+    "packages": [],
+    "parent_ids": [],
+    "sgid_name": "SGID10.ELEVATION.Contours_2Meter_SLCounty",
+    "shape_id": "",
+    "update_cycle": "demand"
 }

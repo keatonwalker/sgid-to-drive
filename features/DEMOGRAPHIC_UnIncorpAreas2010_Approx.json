@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.UnIncorpAreas2010_Approx", 
     "shape_id": "0ByStJjVZ7c7mVDNycmhMNmZIUGc", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

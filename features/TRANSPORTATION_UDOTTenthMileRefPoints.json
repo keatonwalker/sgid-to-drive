@@ -12,5 +12,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.UDOTTenthMileRefPoints", 
     "shape_id": "0ByStJjVZ7c7mbVZ3bmVmLV9yemM", 
-    "update_cycle": "week"
+    "update_cycle": "demand"
 }

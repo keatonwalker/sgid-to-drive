@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.HRO2006", 
     "shape_id": "0ByStJjVZ7c7mMGZNOHU1ZjZGdG8", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

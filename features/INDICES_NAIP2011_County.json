@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NAIP2011_County", 
     "shape_id": "0ByStJjVZ7c7mZXZDU1EwSXlDUlU", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

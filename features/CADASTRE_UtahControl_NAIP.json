@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.CADASTRE.UtahControl_NAIP", 
     "shape_id": "0ByStJjVZ7c7mempqUHAwWlVuMHc", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

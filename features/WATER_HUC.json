@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.HUC", 
     "shape_id": "0ByStJjVZ7c7mZVJYT2M5akh1NFU", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NAIP2006_CIR_County", 
     "shape_id": "0ByStJjVZ7c7mSUxpb1Z2RmFvNk0", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

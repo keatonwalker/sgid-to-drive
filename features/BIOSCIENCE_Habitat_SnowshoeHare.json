@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.BIOSCIENCE.Habitat_SnowshoeHare", 
     "shape_id": "0ByStJjVZ7c7mQ3VVMWpDNGhRc3M", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

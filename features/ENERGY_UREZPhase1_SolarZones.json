@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase1_SolarZones", 
     "shape_id": "0ByStJjVZ7c7mUzJHOThlZ1Q5UE0", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

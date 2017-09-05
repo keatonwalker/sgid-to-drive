@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.RECREATION.SkiAreaBoundaries", 
     "shape_id": "0ByStJjVZ7c7ma1NnUFpMYWxGU2c", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

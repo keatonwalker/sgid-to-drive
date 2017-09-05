@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.DOQ_Quads_Outline", 
     "shape_id": "0ByStJjVZ7c7mby1XZTZaRmZjQ0k", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

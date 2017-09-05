@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.WeberCoFloodZones", 
     "shape_id": "0ByStJjVZ7c7mZDB4V1g3QWh1UDg", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

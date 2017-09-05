@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.CADASTRE.Parcels_Cache", 
     "shape_id": "0ByStJjVZ7c7mV2VIY2dVVndscXc", 
-    "update_cycle": "biannual"
+    "update_cycle": "month"
 }

@@ -12,5 +12,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NED10_Quads", 
     "shape_id": "0ByStJjVZ7c7mNFlGM09YTUE0TFE", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

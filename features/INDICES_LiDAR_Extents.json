@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.LiDAR_Extents", 
     "shape_id": "0ByStJjVZ7c7meTFOUGRocUZLOE0", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

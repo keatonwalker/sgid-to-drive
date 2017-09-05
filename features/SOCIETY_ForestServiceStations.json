@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.SOCIETY.ForestServiceStations", 
     "shape_id": "0ByStJjVZ7c7mblZBWFlkcV8zM28", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

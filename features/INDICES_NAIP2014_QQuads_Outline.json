@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NAIP2014_QQuads_Outline", 
     "shape_id": "0ByStJjVZ7c7mVVNwQzVDQkFLT00", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

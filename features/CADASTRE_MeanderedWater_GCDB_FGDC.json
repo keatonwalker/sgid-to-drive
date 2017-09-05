@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.CADASTRE.MeanderedWater_GCDB_FGDC", 
     "shape_id": "0ByStJjVZ7c7mZTdON0hBaUpia0U", 
-    "update_cycle": "annual"
+    "update_cycle": "demand"
 }

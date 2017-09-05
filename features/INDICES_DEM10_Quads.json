@@ -12,5 +12,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.DEM10_Quads", 
     "shape_id": "0ByStJjVZ7c7mZXZLTWVZRGx4Njg", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

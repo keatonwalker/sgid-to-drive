@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.SOCIETY.PlacesOfWorship", 
     "shape_id": "0ByStJjVZ7c7mU1RYS2lEdGhpeTQ", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

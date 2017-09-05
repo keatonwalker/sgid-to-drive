@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.EnergyResourcesPoly", 
     "shape_id": "0ByStJjVZ7c7mRGxMSFFobmlId0U", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

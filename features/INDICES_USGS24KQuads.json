@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.USGS24KQuads", 
     "shape_id": "0ByStJjVZ7c7mVDlfMndnVzMzaVU", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

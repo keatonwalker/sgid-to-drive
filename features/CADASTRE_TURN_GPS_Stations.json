@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.CADASTRE.TURN_GPS_Stations", 
     "shape_id": "0ByStJjVZ7c7mRHo4ajhnVFVTUGc", 
-    "update_cycle": "day"
+    "update_cycle": "annual"
 }

@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.POLITICAL.UtahSenateDistricts2002", 
     "shape_id": "0ByStJjVZ7c7mNlpxWkFZSUM1Vnc", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

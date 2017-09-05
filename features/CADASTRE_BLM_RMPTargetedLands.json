@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.CADASTRE.BLM_RMPTargetedLands", 
     "shape_id": "0ByStJjVZ7c7mOHFnY2N2U0VFdlE", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

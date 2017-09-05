@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.LOCATION.CartoSITLA_Hydrology_600k", 
     "shape_id": "0ByStJjVZ7c7mWXhUNDV1b2RWY3c", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

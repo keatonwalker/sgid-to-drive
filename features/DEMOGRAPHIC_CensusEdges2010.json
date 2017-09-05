@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.CensusEdges2010", 
     "shape_id": "0ByStJjVZ7c7maWNQdXdOMlppSjA", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

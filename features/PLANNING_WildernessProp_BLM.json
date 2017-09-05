@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.PLANNING.WildernessProp_BLM", 
     "shape_id": "0ByStJjVZ7c7md1Z6eE9kZkdZUTA", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

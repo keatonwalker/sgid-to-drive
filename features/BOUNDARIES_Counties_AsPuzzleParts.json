@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.BOUNDARIES.Counties_AsPuzzleParts", 
     "shape_id": "0ByStJjVZ7c7mT0xNbzRLSUc2bDg", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

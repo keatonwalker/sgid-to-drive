@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.ECONOMY.TaxAreas2015", 
     "shape_id": "0ByStJjVZ7c7mbi1jby1FOFIyVEE", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.RECREATION.ParksLocal", 
     "shape_id": "0ByStJjVZ7c7mVXNtVUVpdTVFbW8", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

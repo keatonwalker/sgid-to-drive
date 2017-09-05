@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.WATER.SpringsNHDHighRes", 
     "shape_id": "0ByStJjVZ7c7mVFVTU1hHUWtQTzA", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.WeberCoStructures", 
     "shape_id": "0ByStJjVZ7c7mVVpqZmoyaXl2Ymc", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

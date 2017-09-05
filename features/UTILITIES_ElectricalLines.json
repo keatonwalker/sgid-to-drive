@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.UTILITIES.ElectricalLines", 
     "shape_id": "0ByStJjVZ7c7mVHNqUFd1Sk5mX1U", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

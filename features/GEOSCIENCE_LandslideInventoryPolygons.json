@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.LandslideInventoryPolygons", 
     "shape_id": "0ByStJjVZ7c7mQUhCWGhRcGZ5X3M", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

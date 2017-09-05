@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.POLITICAL.UtahHouseDistricts2012", 
     "shape_id": "0ByStJjVZ7c7maWctb3BOcVduekU", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

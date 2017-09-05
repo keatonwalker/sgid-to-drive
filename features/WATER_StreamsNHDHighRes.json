@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.WATER.StreamsNHDHighRes", 
     "shape_id": "0ByStJjVZ7c7ma2k3blloOUNfaDA", 
-    "update_cycle": "week"
+    "update_cycle": "annual"
 }

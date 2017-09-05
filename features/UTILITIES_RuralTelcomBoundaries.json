@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.UTILITIES.RuralTelcomBoundaries", 
     "shape_id": "0ByStJjVZ7c7mOGYweXdvaDU0Vk0", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

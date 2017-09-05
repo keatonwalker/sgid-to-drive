@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.AirportLocations", 
     "shape_id": "0ByStJjVZ7c7mZGZ5LUlBNlRJRHc", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

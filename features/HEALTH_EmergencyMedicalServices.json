@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.HEALTH.EmergencyMedicalServices", 
     "shape_id": "0ByStJjVZ7c7memtEYXpyeWR1eUk", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

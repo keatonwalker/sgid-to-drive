@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.CoalDepositAreas1988", 
     "shape_id": "0ByStJjVZ7c7mbDB2TllJVVB4dGs", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

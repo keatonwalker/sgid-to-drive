@@ -9,5 +9,5 @@
     ],
     "sgid_name": "SGID10.CADASTRE.Parcels_Carbon_LIR",
     "shape_id": "0ByStJjVZ7c7meWRfUGozc2RPZWM",
-    "update_cycle": "annual"
+    "update_cycle": "demand"
 }

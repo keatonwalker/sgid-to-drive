@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.POLITICAL.JudicialDistricts", 
     "shape_id": "0ByStJjVZ7c7mRXhGeWJYMjZPeG8", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

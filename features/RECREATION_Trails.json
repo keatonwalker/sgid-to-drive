@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.RECREATION.Trails", 
     "shape_id": "0ByStJjVZ7c7mWUY0eVpWemo4alk", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

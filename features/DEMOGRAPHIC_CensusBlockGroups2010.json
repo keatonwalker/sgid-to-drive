@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.CensusBlockGroups2010", 
     "shape_id": "0ByStJjVZ7c7mSG5iWENKcnFleXM", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

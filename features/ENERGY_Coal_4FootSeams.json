@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.Coal_4FootSeams", 
     "shape_id": "0ByStJjVZ7c7mU0ZYWDJ6c3Y2aGM", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

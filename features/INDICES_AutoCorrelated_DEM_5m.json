@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.AutoCorrelated_DEM_5m", 
     "shape_id": "0ByStJjVZ7c7mUTNHYVBRcTcxclE", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

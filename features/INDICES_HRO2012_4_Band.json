@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.HRO2012_4_Band", 
     "shape_id": "0ByStJjVZ7c7mRmZWR0RCRjlpR1k", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

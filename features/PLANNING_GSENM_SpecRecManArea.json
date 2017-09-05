@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.PLANNING.GSENM_SpecRecManArea", 
     "shape_id": "0ByStJjVZ7c7mNFJDbFY4TE8zbDQ", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

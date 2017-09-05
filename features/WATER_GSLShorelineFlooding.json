@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.WATER.GSLShorelineFlooding", 
     "shape_id": "0ByStJjVZ7c7mcHlJaW9pRkRZcWs", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

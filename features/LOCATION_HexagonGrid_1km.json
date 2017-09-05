@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.LOCATION.HexagonGrid_1km", 
     "shape_id": "0ByStJjVZ7c7mN2NwVDM3VnBXRjA", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

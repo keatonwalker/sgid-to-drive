@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.Transportation.LRSRouteCharacteristics", 
     "shape_id": "0ByStJjVZ7c7mcWxlTmpwUGtWaXc", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NAIP2006_CIR_QQuads_Outline", 
     "shape_id": "0ByStJjVZ7c7mNS14aDc3WjA0cU0", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

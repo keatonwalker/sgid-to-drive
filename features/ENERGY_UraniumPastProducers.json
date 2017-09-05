@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.UraniumPastProducers", 
     "shape_id": "0ByStJjVZ7c7mY2ZWckxvT1NpUzQ", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

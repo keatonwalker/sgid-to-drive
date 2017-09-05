@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.Aquifer_BasinFillBoundary", 
     "shape_id": "0ByStJjVZ7c7mbW5qeFVtZUE0YlE", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

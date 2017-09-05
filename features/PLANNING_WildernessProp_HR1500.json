@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.PLANNING.WildernessProp_HR1500", 
     "shape_id": "0ByStJjVZ7c7mTWlhR2xlNjhGX0U", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

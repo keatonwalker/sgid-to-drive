@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.POLITICAL.DistrictCombinationAreas2012", 
     "shape_id": "0ByStJjVZ7c7mVWlBUVlZZkN6WDA", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

@@ -12,5 +12,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.DEM30_Statewide", 
     "shape_id": "0ByStJjVZ7c7mN2w4U3FoVTR5Qkk", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

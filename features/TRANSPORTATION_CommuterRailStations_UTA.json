@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.CommuterRailStations_UTA", 
     "shape_id": "0ByStJjVZ7c7mSmhydGg1NjVBSXM", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

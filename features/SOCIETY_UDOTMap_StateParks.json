@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.SOCIETY.UDOTMap_StateParks", 
     "shape_id": "0ByStJjVZ7c7mZFpIdHhvdTRTTkE", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

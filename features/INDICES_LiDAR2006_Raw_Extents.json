@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.LiDAR2006_Raw_Extents", 
     "shape_id": "0ByStJjVZ7c7mamk5Ui1pVUl4WG8", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NAIP2003_QQuads", 
     "shape_id": "0ByStJjVZ7c7mY3JHM3FWSElxZ0U", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

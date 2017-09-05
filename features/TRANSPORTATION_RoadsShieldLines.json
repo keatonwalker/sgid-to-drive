@@ -12,5 +12,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.RoadsShieldLines", 
     "shape_id": "0ByStJjVZ7c7mOVNuSlBGU1k5aUU", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

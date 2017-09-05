@@ -12,5 +12,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NED30_County", 
     "shape_id": "0ByStJjVZ7c7mQXVlSXpDeEdYUWs", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

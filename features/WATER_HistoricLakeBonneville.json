@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.HistoricLakeBonneville", 
     "shape_id": "0ByStJjVZ7c7mRUxya1NQVlpZOTQ", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

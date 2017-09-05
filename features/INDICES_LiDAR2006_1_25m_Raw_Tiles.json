@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.LiDAR2006_1_25m_Raw_Tiles", 
     "shape_id": "0ByStJjVZ7c7mMklLRTM1V3dtZkk", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

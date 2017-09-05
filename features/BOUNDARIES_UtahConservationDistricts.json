@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.BOUNDARIES.UtahConservationDistricts", 
     "shape_id": "0ByStJjVZ7c7mTlRGOVV3V3BpbzA", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

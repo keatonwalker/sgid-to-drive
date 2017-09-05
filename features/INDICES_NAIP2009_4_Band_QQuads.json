@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.NAIP2009_4_Band_QQuads", 
     "shape_id": "0ByStJjVZ7c7mMjBva05ZcW1lTGs", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

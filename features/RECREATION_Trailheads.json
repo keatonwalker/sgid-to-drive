@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.RECREATION.Trailheads", 
     "shape_id": "0ByStJjVZ7c7mRVBNd2Z4U0RwN3M", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

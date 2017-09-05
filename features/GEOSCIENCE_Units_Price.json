@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.Units_Price", 
     "shape_id": "0ByStJjVZ7c7mdHhvbzBuQnZXQVU", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

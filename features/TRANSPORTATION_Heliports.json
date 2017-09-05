@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.Heliports", 
     "shape_id": "0ByStJjVZ7c7mblZMTkw2RnEzWEk", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

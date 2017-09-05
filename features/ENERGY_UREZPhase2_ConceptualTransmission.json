@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.UREZPhase2_ConceptualTransmission", 
     "shape_id": "0ByStJjVZ7c7mTkNBT3VsQ0RPX2s", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

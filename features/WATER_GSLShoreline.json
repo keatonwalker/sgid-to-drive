@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.GSLShoreline", 
     "shape_id": "0ByStJjVZ7c7mTjlGOE5SRnF1Z0E", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

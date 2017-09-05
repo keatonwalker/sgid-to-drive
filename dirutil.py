@@ -571,6 +571,27 @@ def set_cycle_by_date_in_name():
             spec_manager.save_spec_json(feature)
 
 
+def set_cycle_by_csv():
+    update_csv = 'data/update_cycle.csv'
+    update_cycles = {}
+
+    with open(update_csv, 'rb') as cycles:
+        reader = csv.DictReader(cycles)
+        for row in reader:
+            name = row['SGID name']
+            update = row['Update frequency']
+            if update == 'on-demand':
+                update = 'demand'
+            update_cycles[name] = update
+
+    for feature in spec_manager.get_feature_specs():
+        sgid_name = feature['sgid_name']
+        if sgid_name in update_cycles:
+            feature['update_cycle'] = update_cycles[sgid_name]
+            spec_manager.save_spec_json(feature)
+            # print sgid_name, feature['update_cycle'], update_cycles[sgid_name]
+        else:
+            print sgid_name, 'not found!!!'
 
 def check_empty_gdb_ids():
     features = spec_manager.get_feature_specs()
@@ -650,15 +671,15 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    get_spec_property_csv(['sgid_name', 'update_cycle'])
+    # set_cycle_by_csv()
 
-    # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
-    # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
-    # print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
-    # print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
-    # print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
-    # print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
-    # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
+    print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
+    print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
+    print 'month', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.MONTH))
+    print 'quarter', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.QUARTER))
+    print 'biannual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.BIANNUAL))
+    print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
+    print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
 
     #: Find all ftp links
     # data_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/data')

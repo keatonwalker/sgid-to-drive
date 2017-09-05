@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.StreamGaugesNHD", 
     "shape_id": "0ByStJjVZ7c7mbkRFUlp2QzRTalE", 
-    "update_cycle": "day"
+    "update_cycle": "annual"
 }

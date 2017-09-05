@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.WATER.SummitCoStructures", 
     "shape_id": "0ByStJjVZ7c7mX2VBYllmdERFa2s", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

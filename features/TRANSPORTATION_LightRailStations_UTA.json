@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.LightRailStations_UTA", 
     "shape_id": "0ByStJjVZ7c7mNGpwWExjY1IwTkE", 
-    "update_cycle": "week"
+    "update_cycle": "demand"
 }

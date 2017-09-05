@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.BOUNDARIES.UDOTMap_NeighborCounties", 
     "shape_id": "0ByStJjVZ7c7mdjQyVHpxNGNMWmM", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

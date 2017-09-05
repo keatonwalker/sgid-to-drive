@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.ECONOMY.TaxEntities2011", 
     "shape_id": "0ByStJjVZ7c7mYlBkTzRMc2xfd0E", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

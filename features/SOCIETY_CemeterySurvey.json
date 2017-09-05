@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.SOCIETY.CemeterySurvey", 
     "shape_id": "0ByStJjVZ7c7mbE41SGEyRkMyekk", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

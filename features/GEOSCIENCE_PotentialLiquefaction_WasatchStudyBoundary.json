@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.PotentialLiquefaction_WasatchStudyBoundary", 
     "shape_id": "0ByStJjVZ7c7meVVJcjFsNm02blE", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

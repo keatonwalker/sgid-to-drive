@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.CensusCounties2010", 
     "shape_id": "0ByStJjVZ7c7mUXRfR1pPejJrbzg", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

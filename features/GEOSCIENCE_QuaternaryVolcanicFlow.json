@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.QuaternaryVolcanicFlow", 
     "shape_id": "0ByStJjVZ7c7mS3dPeWdBNzhtZTQ", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

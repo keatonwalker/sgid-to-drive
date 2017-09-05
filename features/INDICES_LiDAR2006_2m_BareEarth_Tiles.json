@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.LiDAR2006_2m_BareEarth_Tiles", 
     "shape_id": "0ByStJjVZ7c7mSk53U3ZYYVpjTmc", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

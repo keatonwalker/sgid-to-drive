@@ -12,7 +12,7 @@ PACKAGE_SPEC_TEMPLATE = 'templates/package_template.json'
 class UPDATE_CYCLES(object):
     """Update cycle constants."""
 
-    NEVER = 'never'
+    NEVER = 'demand'
     ANNUAL = 'annual'
     BIANNUAL = 'biannual'
     QUARTER = 'quarter'

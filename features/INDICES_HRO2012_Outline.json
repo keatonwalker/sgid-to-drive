@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.HRO2012_Outline", 
     "shape_id": "0ByStJjVZ7c7ma3RhbmRmV2Uza2M", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

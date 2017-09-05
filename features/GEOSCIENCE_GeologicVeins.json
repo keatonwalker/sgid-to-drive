@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.GeologicVeins", 
     "shape_id": "0ByStJjVZ7c7mcVRDSXJUbm9HMG8", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

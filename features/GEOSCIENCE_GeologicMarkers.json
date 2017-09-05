@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.GEOSCIENCE.GeologicMarkers", 
     "shape_id": "0ByStJjVZ7c7mZl9YNE56QzBRMXM", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

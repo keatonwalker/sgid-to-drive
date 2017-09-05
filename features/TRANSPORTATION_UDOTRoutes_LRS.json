@@ -13,5 +13,5 @@
     ], 
     "sgid_name": "SGID10.TRANSPORTATION.UDOTRoutes_LRS", 
     "shape_id": "0ByStJjVZ7c7mV2VRNTduVXNyMjg", 
-    "update_cycle": "month"
+    "update_cycle": "demand"
 }

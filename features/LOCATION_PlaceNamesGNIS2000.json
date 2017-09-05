@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.LOCATION.PlaceNamesGNIS2000", 
     "shape_id": "0ByStJjVZ7c7mOVdDYnVxUl9KNVE", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

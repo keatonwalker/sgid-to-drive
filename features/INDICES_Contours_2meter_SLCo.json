@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.INDICES.Contours_2meter_SLCo", 
     "shape_id": "0ByStJjVZ7c7mMDVIakhMNzVQWFk", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

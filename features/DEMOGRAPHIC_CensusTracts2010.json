@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.DEMOGRAPHIC.CensusTracts2010", 
     "shape_id": "0ByStJjVZ7c7mYjdqeHZpR1NmTmM", 
-    "update_cycle": "never"
+    "update_cycle": "demand"
 }

@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.LOCATION.ZoomLocations", 
     "shape_id": "0ByStJjVZ7c7mTy1ObWs1U1VXUkU", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

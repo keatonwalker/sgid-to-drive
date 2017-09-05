@@ -11,5 +11,5 @@
     ], 
     "sgid_name": "SGID10.WATER.UtahMajorRiversPoly", 
     "shape_id": "0ByStJjVZ7c7mUDZqb0ZxbEdROXM", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }

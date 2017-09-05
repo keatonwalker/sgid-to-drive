@@ -9,5 +9,5 @@
     ], 
     "sgid_name": "SGID10.ENERGY.PowerPlants_CO2", 
     "shape_id": "0ByStJjVZ7c7mUEFGc0dJdUVPTnM", 
-    "update_cycle": "day"
+    "update_cycle": "demand"
 }
