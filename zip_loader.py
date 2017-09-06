@@ -16,12 +16,21 @@ import spec_manager
 from oauth2client import tools
 import driver
 # from driver import AgrcDriver
+api_secrets = driver.SERVICE_ACCOUNT_SECRET_FILE
+api_oauth = False
+if not os.path.exists(api_secrets):
+    api_secrets = driver.OAUTH_CLIENT_SECRET_FILE
+    api_oauth = True
 
 api_services = driver.ApiService((driver.APIS.drive, driver.APIS.sheets),
-                                 scopes=' '.join((driver.AgrcDriver.FULL_SCOPE, driver.AgrcSheets.FULL_SCOPE)))
+                                 secrets=api_secrets,
+                                 scopes=' '.join((driver.AgrcDriver.FULL_SCOPE, driver.AgrcSheets.FULL_SCOPE)),
+                                 use_oauth=api_oauth)
 drive = driver.AgrcDriver(api_services.services[0])
 sheets = driver.AgrcSheets(api_services.services[1])
 user_drive = None
+if api_secrets == driver.OAUTH_CLIENT_SECRET_FILE:
+    user_drive = drive
 
 
 HASH_DRIVE_FOLDER = '0ByStJjVZ7c7mMVRpZjlVdVZ5Y0E'
@@ -546,12 +555,12 @@ def delete_feature(source_name):
         print 'Quitting without delete'
         return None
 
-    user_drive = get_user_drive()
+    drive_delete_user = get_user_drive()
     print 'Deleting drive files'
-    user_drive.delete_file(feature['gdb_id'])
-    user_drive.delete_file(feature['hash_id'])
-    user_drive.delete_file(feature['shape_id'])
-    user_drive.delete_file(feature['parent_ids'][0])
+    drive_delete_user.delete_file(feature['gdb_id'])
+    drive_delete_user.delete_file(feature['hash_id'])
+    drive_delete_user.delete_file(feature['shape_id'])
+    drive_delete_user.delete_file(feature['parent_ids'][0])
 
     for package_name in feature['packages']:
         print 'Deleting from package', package_name

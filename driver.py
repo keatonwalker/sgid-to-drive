@@ -392,7 +392,7 @@ class AgrcDriver(object):
 
         return response.get('id')
 
-    def create_owner(self, file_id='0B3yp_Bjfi5sXVDZFWWc0b2dGVkU', email='kwalker@utah.gov'):
+    def create_owner(self, file_id, email='kwalker@utah.gov'):
         domain_permission = {
             'type': 'user',
             'role': 'owner',
@@ -407,6 +407,23 @@ class AgrcDriver(object):
         )
 
         req.execute()
+
+    def add_editor(self, file_id, email):
+        domain_permission = {
+            'type': 'user',
+            'role': 'writer',
+            'emailAddress': email
+        }
+
+        req = self.service.permissions().create(
+            fileId=file_id,
+            sendNotificationEmail=False,
+            body=domain_permission,
+            fields="id"
+        )
+
+        return req.execute()
+
 
     def delete_file(self, file_id):
         try:

@@ -643,6 +643,20 @@ def replace_paths_in_stewardship():
     #     print i, path
 
 
+def add_permissions(category, user_email):
+    features = spec_manager.get_feature_specs()
+    for feature in features:
+        if category is None or category.upper() == feature['category'].upper():
+            ids = [
+                feature['gdb_id'],
+                feature['hash_id'],
+                feature['shape_id']
+            ]
+            for file_id in ids:
+                print user_drive.add_editor(file_id, user_email), feature['name']
+                time.sleep(0.2)
+
+
 def find_id(drive_id):
     features = spec_manager.get_feature_specs()
     for feature in features:
@@ -688,9 +702,7 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    # set_cycle_by_csv()
-
-    find_id('0ByStJjVZ7c7mc0FQdEU0RXRvSUE')
+    add_permissions('FARMING', 'kwalker@utah.gov')
 
     # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
     # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
