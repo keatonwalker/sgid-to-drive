@@ -531,6 +531,31 @@ def upload_zip(source_name, output_directory):
     spec_manager.save_spec_json(feature)
 
 
+def delete_feature(source_name):
+    """Delete a feature, remove it from packages and delete all it's files on drive."""
+    print 'Deleting', source_name
+    confirm_delete = raw_input('Are you sure you want to permanently delete files (yes, no): ')
+    feature = spec_manager.get_feature(source_name)
+    if 'y' not in confirm_delete.lower():
+        print 'Quitting without delete'
+        return None
+
+    user_drive = get_user_drive()
+    print 'Deleting drive files'
+    user_drive.delete_file(feature['gdb_id'])
+    user_drive.delete_file(feature['hash_id'])
+    user_drive.delete_file(feature['shape_id'])
+    user_drive.delete_file(feature['parent_ids'][0])
+
+    for package_name in feature['packages']:
+        print 'Deleting from package', package_name
+        spec_manager.remove_feature_from_package(package_name, feature['sgid_name'])
+
+    print 'Deleting json file'
+    spec_manager.delete_spec_json(feature)
+
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Update zip files on drive', parents=[tools.argparser])
 
@@ -566,6 +591,8 @@ if __name__ == '__main__':
                         help='Check one feature for changes and update if needed. Takes one SGID feature name')
     parser.add_argument('--feature_list', action='store', dest='feature_list',
                         help='Check all features in a json file with array named "features".')
+    parser.add_argument('--delete_feature', action='store', dest='delete_feature',
+                        help='Delete feature from drive and json files.')
     parser.add_argument('--package', action='store', dest='package',
                         help='Check one package for changes and update if needed. Takes one package name')
     parser.add_argument('--upload_zip', action='store', dest='zip_feature',
@@ -636,5 +663,8 @@ if __name__ == '__main__':
 
     if args.zip_feature:
         upload_zip(args.zip_feature, output_directory)
+
+    if args.delete_feature:
+        delete_feature(args.delete_feature)
 
     print '\nComplete!', clock() - start_time

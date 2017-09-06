@@ -408,8 +408,16 @@ class AgrcDriver(object):
 
         req.execute()
 
-    def delete_file(self, file_id='0B3yp_Bjfi5sXVDZFWWc0b2dGVkU'):
-        print self.service.files().delete(fileId=file_id).execute()
+    def delete_file(self, file_id):
+        try:
+            self.service.files().delete(fileId=file_id).execute()
+            return True
+        except errors.HttpError as e:
+            if e.resp.status in [404]:
+                return None
+            else:
+                raise (e)
+
 
 
 

@@ -53,6 +53,21 @@ def load_feature_json(json_path):
     return feature
 
 
+def delete_spec_json(spec):
+    folder = None
+    file_name = None
+    if 'sgid_name' in spec:
+        folder = FEATURE_SPEC_FOLDER
+        file_name = create_feature_spec_name(spec['sgid_name'])
+    else:
+        folder = PACKAGE_SPEC_FOLDER
+        file_name = spec['name'] + '.json'
+
+    delete_path = os.path.join(folder,
+                               file_name)
+    os.remove(delete_path)
+
+
 def create_feature_spec_name(source_name):
     spec_name = '_'.join(source_name.split('.')[-2:]) + '.json'
     return spec_name
@@ -122,6 +137,13 @@ def add_feature_to_package(package_name, feature_source_name):
     save_spec_json(package)
 
 
+def remove_feature_from_package(package_name, feature_source_name):
+    package = get_package(package_name)
+    if feature_source_name in package['feature_classes']:
+        package['feature_classes'].remove(feature_source_name)
+        save_spec_json(package)
+
+
 def add_package_to_feature(source_name, package_name):
     add_feature_to_package(package_name, source_name)
     feature = get_feature(source_name, [package_name])
@@ -133,7 +155,7 @@ def _create_new_jsons(old_json_path):
         for filename in files:
             try:
                 feature_spec = load_feature_json(os.path.join(root, filename))
-            except ValueError, e:
+            except ValueError as e:
                 print filename
                 continue
 
