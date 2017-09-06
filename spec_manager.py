@@ -105,7 +105,7 @@ def get_package(package_name):
     return package
 
 
-def get_feature(source_name, packages=[]):
+def get_feature(source_name, packages=[], create=False):
     empty_spec = FEATURE_SPEC_TEMPLATE
     spec_name = create_feature_spec_name(source_name)
     feature_spec = os.path.join(FEATURE_SPEC_FOLDER, spec_name)
@@ -146,32 +146,8 @@ def remove_feature_from_package(package_name, feature_source_name):
 
 def add_package_to_feature(source_name, package_name):
     add_feature_to_package(package_name, source_name)
-    feature = get_feature(source_name, [package_name])
+    feature = get_feature(source_name, [package_name], create=True)
     save_spec_json(feature)
-
-
-def _create_new_jsons(old_json_path):
-    for root, subdirs, files in os.walk(old_json_path):
-        for filename in files:
-            try:
-                feature_spec = load_feature_json(os.path.join(root, filename))
-            except ValueError as e:
-                print filename
-                continue
-
-            if len(feature_spec) > 1:
-                print filename
-
-            feature_spec = feature_spec[0]
-            feature_list = feature_spec['FeatureClasses']
-            if "" in feature_list:
-                feature_list.remove("")
-            if len(feature_list) > 1:
-                for fc in feature_list:
-                    create_package_spec(feature_spec['Name'], feature_list, feature_spec['Category'])
-            else:
-                get_feature(feature_list[0])
-        break
 
 
 def get_package_spec_path_list():
@@ -207,8 +183,6 @@ def get_feature_specs(update_cycles=None):
         if update_cycles is None or len(update_cycles) == 0 or spec['update_cycle'] in selected_cycles:
             feature_specs.append(spec)
 
-    # for f in feature_specs:
-    #     print f
     return feature_specs
 
 
@@ -218,8 +192,6 @@ def get_package_specs():
         spec = load_feature_json(p)
         package_specs.append(spec)
 
-    # for f in feature_specs:
-    #     print f
     return package_specs
 
 
@@ -309,7 +281,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     if args.create:
-        get_feature(args.source_name)
+        get_feature(args.source_name, create=True)
 
     if args.package_name:
         feature_spec_path = os.path.join(FEATURE_SPEC_FOLDER, create_feature_spec_name(args.source_name))
@@ -319,4 +291,4 @@ if __name__ == '__main__':
             msg = "Feature does not exist at {}".format(feature_spec_path)
             raise Exception(msg)
 
-    _list_nonexistant_features('Database Connections\Connection to sgid.agrc.utah.gov.sde')
+    # _list_nonexistant_features('Database Connections\Connection to sgid.agrc.utah.gov.sde')

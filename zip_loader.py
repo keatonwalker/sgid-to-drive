@@ -261,7 +261,7 @@ def update_feature(workspace, feature_name, output_directory, load_to_drive=True
 
     input_feature_path = os.path.join(workspace, feature_name)
 
-    feature = spec_manager.get_feature(feature_name)
+    feature = spec_manager.get_feature(feature_name, create=True)
     if not src_data_exists(input_feature_path):
         now = datetime.now()
         log_sheet_values = [['{}.{}'.format(feature['category'], feature['name']),
@@ -379,7 +379,7 @@ def update_package(workspace, package_name, output_directory, load_to_drive=True
             print 'New feature'
             update_feature(workspace, feature_class, os.path.join(output_directory, '..'), load_to_drive, force_update)
 
-        spec = spec_manager.get_feature(feature_class, [package_name])
+        spec = spec_manager.get_feature(feature_class, [package_name], create=True)
 
         is_table = arcpy.Describe(os.path.join(workspace, feature_class)).datasetType.lower() == 'table'
         copier = _get_copier(is_table)
@@ -469,8 +469,11 @@ def run_packages(workspace, output_directory, package_list_json=None, load=True,
         fcs = packages_spec['feature_classes']
         if fcs != '' and len(fcs) > 0:
             for f in fcs:
-                spec_manager.add_package_to_feature(f, p['name'])
-                features.append(f)
+                if src_data_exists(os.path.join(workspace, f)):
+                    spec_manager.add_package_to_feature(f, p['name'])
+                    features.append(f)
+                else:
+                    print 'Package {}, feature {} does not exist'.format(p, f)
 
     features = set(features)
     packages = []
@@ -481,13 +484,16 @@ def run_packages(workspace, output_directory, package_list_json=None, load=True,
 
 def run_feature(workspace, source_name, output_directory, load=True, force=False, skip_packages=False):
     """CLI option to update one feature."""
-    packages = update_feature(workspace,
-                              source_name,
-                              output_directory,
-                              load_to_drive=load,
-                              force_update=force)
-    for p in packages:
-        print 'Package updated: {}'.format(p)
+    if src_data_exists(os.path.join(workspace, source_name)):
+        packages = update_feature(workspace,
+                                  source_name,
+                                  output_directory,
+                                  load_to_drive=load,
+                                  force_update=force)
+        for p in packages:
+            print 'Package updated: {}'.format(p)
+    else:
+        print '{} does not exist in workspace'.format(source_name)
     # if not skip_packages:
     #     for package in set(packages):
     #         update_package(workspace, package, temp_package_directory, load_to_drive=load)
