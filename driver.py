@@ -424,7 +424,6 @@ class AgrcDriver(object):
 
         return req.execute()
 
-
     def delete_file(self, file_id):
         try:
             self.service.files().delete(fileId=file_id).execute()
@@ -434,10 +433,6 @@ class AgrcDriver(object):
                 return None
             else:
                 raise (e)
-
-
-
-
 
 
 def get_download_link(file_id):

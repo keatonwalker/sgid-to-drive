@@ -146,7 +146,8 @@ def hash_files(file_list):
 
 
 def get_all_ftp_links(top_dir):
-    ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+?)[\"\)]')
+    ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/SGID93_Vector/NAD83/MetadataHTML)(.+?)[\"\)]')
+    # ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+?)[\"\)]')
     data_paths = []
 
     def get_ftp_link_in_file(path, matcher):
@@ -243,6 +244,77 @@ def replace_ftp_link(ftp_path, feature_specs, package_specs):
                 print 'not found in specs:', link.path, ftp_path
 
 
+def replace_metadata_links(top_dir='data/ftplinktest', rewrite_source=False):
+    ftp_link_matcher = ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/SGID93_Vector/NAD83/MetadataHTML)(.+?)[\"\)]')
+    data_paths = []
+    not_founds = []
+
+    def get_replace_link(link):
+        new_prefix = 'ftp://ftp.agrc.utah.gov/UtahSGID_Vector/UTM12_NAD83/Metadata/'
+        new_html_file_path = '/Volumes/ftp/UtahSGID_Vector/UTM12_NAD83/Metadata/'
+        if not os.path.exists(new_html_file_path + 'SGID10.' + link + '.xml'):
+            print link, 'does not exist as new'
+            return None
+        else:
+            return new_prefix + 'SGID10.' + link + '.xml'
+
+    def check_ftp_links_in_file(path, matcher, preview_name):
+        data_links = []
+        lines = []
+        re_write = False
+        with open(path, 'r') as search_file:
+            for line in search_file:
+                matches = matcher.findall(line)
+                if len(matches) > 0:
+                    replace_line = line
+                    c = 1
+                    for m in matches:
+                        re_write = True
+                        link = parse_metadata_link(m[1])
+                        if link is None:
+                            print 'other:', m[1]
+                            print path
+                        else:
+                            replace_link = get_replace_link(link)
+                            if replace_link is None:
+                                not_founds.append(m[0] + m[1])
+                                continue
+                            download = m[0] + m[1]
+                            replacer = re.compile(download)
+                            replace_line = replacer.sub(replace_link, replace_line)
+                            c += 1
+                            data_links.append(download)
+
+                    lines.append(replace_line)
+                else:
+                    lines.append(line)
+        if re_write:
+            with open('data/ftplinktest/replaces_preview/preview' + str(preview_name) + '.html', 'w') as re_file:
+                for line in lines:
+                    re_file.write(line)
+            if rewrite_source:
+                with open(path, 'w') as re_file:
+                    for line in lines:
+                        re_file.write(line)
+
+        return data_links
+
+    preview_count = 0
+    for root, dirs, files in os.walk(top_dir, topdown=True):
+        for name in files:
+            dir_path = os.path.join(root, name)
+            links = check_ftp_links_in_file(dir_path, ftp_link_matcher, preview_count)
+            if links > 0:
+                preview_count += 1
+            data_paths.extend(links)
+
+    # for n in not_founds:
+    #     print n
+    print len(set(data_paths))
+    print len(set(not_founds))
+    return set(data_paths)
+
+
 def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
     ftp_link_matcher = re.compile(r'[\"\(](ftp://ftp\.agrc\.utah\.gov/UtahSGID_Vector/UTM12_NAD83)(.+?)[\"\)]')
     data_paths = []
@@ -329,6 +401,12 @@ def replace_ftp_links(top_dir='data/ftplinktest', rewrite_source=False):
     #     print n
     return data_paths
 
+
+def parse_metadata_link(link):
+    link_parts = link.split('_')[1:]
+    category = link_parts[0].upper()
+    name = '_'.join(link_parts[1:]).replace('.html', '')
+    return '{}.{}'.format(category, name)
 
 def parse_ftp_link(link, src_dir):
     link_parts = link.split('/')[1:]
@@ -420,20 +498,6 @@ def reassign_feature_parents():
         spec_manager.save_spec_json(spec)
 
 
-def reassign_package_parents():
-    """store all zipped packages in folder for backup in preperation for package folder views."""
-    package_specs = spec_manager.get_package_specs()
-    for spec in package_specs:
-        old_parent_id = spec['parent_ids'][0]
-        new_parent_id = '0ByStJjVZ7c7mVHp0V2lfVWgxdFU'
-        time.sleep(0.1)
-        user_drive.change_file_parent(spec['gdb_id'], old_parent_id, new_parent_id)
-        user_drive.change_file_parent(spec['shape_id'], old_parent_id, new_parent_id)
-        spec['gdb_id'] = ''
-        spec['shape_id'] = ''
-        spec_manager.save_spec_json(spec)
-
-
 def get_folder_id(name, parent_id):
     """Get drive id for a folder with name of name and in parent_id drive folder."""
     name_id = user_drive.get_file_id_by_name_and_directory(name, parent_id)
@@ -442,32 +506,6 @@ def get_folder_id(name, parent_id):
         name_id = user_drive.create_drive_folder(name, [parent_id])
 
     return name_id
-
-
-def add_features_to_package_folder():
-    """store all zipped packages in folder for backup in preperation for package folder views."""
-    package_specs = spec_manager.get_package_specs()
-    for spec in package_specs:
-        if spec['gdb_id'] != '':
-            print 'skip', spec['name']
-            continue
-        package_folder_id = spec['parent_ids'][0]
-        package_name = spec['name']
-        print package_name
-        gdb_folder_id = get_folder_id(package_name + '_gdb', package_folder_id)
-        shp_folder_id = get_folder_id(package_name + '_shp', package_folder_id)
-        spec['gdb_id'] = gdb_folder_id
-        spec['shape_id'] = shp_folder_id
-        spec_manager.save_spec_json(spec)
-
-        feature_names = spec['feature_classes']
-        for name in feature_names:
-            print '\t', name
-            feature = spec_manager.get_feature(name)
-            time.sleep(0.02)
-            user_drive.add_file_parent(feature['gdb_id'], gdb_folder_id)
-            time.sleep(0.02)
-            user_drive.add_file_parent(feature['shape_id'], shp_folder_id)
 
 
 def get_hash_size_csv():
@@ -548,18 +586,6 @@ def get_total_data_size():
     print 'Total MBs:', sum(sizes)
 
 
-def set_cycle_by_hash_size():
-    hash_sizes = 'data/hash_sizes.csv'
-    with open(hash_sizes, 'rb') as info:
-        reader = csv.DictReader(info)
-        for row in reader:
-            if int(row['hash_size']) < 1000000 and row['cycle'] == "":
-                print row['name']
-                feature = spec_manager.get_feature(row['name'])
-                feature['update_cycle'] = spec_manager.UPDATE_CYCLES.DAY
-                spec_manager.save_spec_json(feature)
-
-
 def set_cycle_by_date_in_name():
     dated = re.compile(r'\d{4}')
     for feature in spec_manager.get_feature_specs():
@@ -611,13 +637,6 @@ def check_feature_in_packages(sgid_name_list):
         for f in package['feature_classes']:
             if f in packages:
                 print '\t', f
-
-
-def test_sheets():
-    spreadsheet = '11ASS7LnxgpnD0jN4utzklREgMf1pcvYjcXcIcESHweQ'
-    sheet = 'SGID Stewardship Info'
-    column = 'k'
-    user_sheets.get_column(spreadsheet, sheet, column)
 
 
 def replace_paths_in_stewardship():
@@ -674,6 +693,81 @@ def find_id(drive_id):
             print feature['name']
 
 
+def write_new_page(old_html, new_xml_url):
+    new_page = """
+    <!DOCTYPE html>
+    <html>
+        <body>
+
+        <h1>This file has moved</h1>
+        <a href="{}">New FGDC metadata</a>
+
+        </body>
+    </html>
+    """.format(new_xml_url)
+    with open(old_html, 'w') as old_file:
+        old_file.write(new_page)
+
+
+def get_new_metadata_url(old_metadata_url):
+    metadata_link_matcher = re.compile(r'[\"\(]?(ftp://ftp\.agrc\.utah\.gov/SGID93_Vector/NAD83/MetadataHTML)(.+)[\"\)]?')
+    matches = metadata_link_matcher.findall(old_metadata_url)
+    if len(matches) > 0:
+        link = matches[0][1]
+        l = parse_metadata_link(link)
+        ftp_metadata = 'ftp://ftp.agrc.utah.gov/UtahSGID_Vector/UTM12_NAD83/Metadata/'
+        new_xml_path = os.path.join(ftp_metadata, 'SGID10.' + l + '.xml')
+        return new_xml_path
+    else:
+        raise(Exception('url parse error'))
+
+def find_old_metadata():
+    # : Find all ftp Metadata links
+    all_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov')
+    all_ftp_paths = get_all_ftp_links(all_dir)
+    ftp_metadata = []
+    old_html_prefix = '/Volumes/ftp/SGID93_Vector/NAD83/MetadataHTML'
+    for path in all_ftp_paths:
+        # print old_html_prefix + path
+        ftp_metadata.append(path.strip())
+
+    # with open('data/not_found_meta.csv', 'wb')
+    ftp_metadata = set(ftp_metadata)
+    print 'Old links on site', len(ftp_metadata)
+    for path in ftp_metadata:
+        l = parse_metadata_link(path)
+        ftp_metadata = '/Volumes/ftp/UtahSGID_Vector/UTM12_NAD83/Metadata/'
+        new_xml_path = os.path.join(ftp_metadata, 'SGID10.' + l + '.xml')
+        new_xml_name = 'SGID10.' + l + '.xml'
+        if not os.path.exists(new_xml_path):
+            print '\'SGID10.' + l + "',"
+            # print path
+            pass
+        else:
+            #write_new_page(old_html_prefix + path, new_xml_name)
+            print new_xml_path
+            pass
+
+
+def replace_old_metadata():
+    all_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov')
+    replaced_links = replace_metadata_links(all_dir, rewrite_source=True)
+    return replaced_links
+
+
+def get_feature_download_links():
+    features = spec_manager.get_feature_specs()
+    feature_links = {}
+    for feature in features:
+        feature_links[feature['sgid_name'].lower()] = {
+            'gdb': driver.get_download_link(feature['gdb_id']),
+            'shp': driver.get_download_link(feature['shape_id'])
+        }
+    spec_manager.save_spec_json(feature_links, 'data/feature_downloads.json')
+
+
+
+
 if __name__ == '__main__':
     import argparse
     home_dir = os.path.expanduser('~')
@@ -702,7 +796,11 @@ if __name__ == '__main__':
     if args.top_dir:
         list_ftp_links_by_subfolder('/Users/kwalker/Documents/repos/gis.utah.gov/' + args.top_dir)
 
-    add_permissions('FARMING', 'kwalker@utah.gov')
+    get_feature_download_links()
+    # replaced_urls = replace_old_metadata()
+    # for old_url in replaced_urls:
+    #     old_html_path = old_url.replace('ftp://ftp.agrc.utah.gov/', '/Volumes/ftp/')
+    #     write_new_page(old_html_path, get_new_metadata_url(old_url))
 
     # print 'day', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.DAY))
     # print 'week', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.WEEK))
@@ -712,7 +810,25 @@ if __name__ == '__main__':
     # print 'annual', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.ANNUAL))
     # print 'never', len(spec_manager.get_feature_specs(spec_manager.UPDATE_CYCLES.NEVER))
 
-    #: Find all ftp links
+    # # : Find all ftp Metadata links
+    # all_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/data')
+    # all_ftp_paths = get_all_ftp_links(all_dir)
+    # ftp_metadata = []
+    # for path in all_ftp_paths:
+    #     print path
+    #     ftp_metadata.append(parse_metadata_link(path))
+    #
+    # # with open('data/not_found_meta.csv', 'wb')
+    # ftp_metadata = set(ftp_metadata)
+    # print len(ftp_metadata)
+    # for l in ftp_metadata:
+    #     ftp_metadata = '/Volumes/ftp/UtahSGID_Vector/UTM12_NAD83/Metadata/'
+    #     new_xml_path = os.path.join(ftp_metadata, 'SGID10.' + l + '.xml')
+    #     if not os.path.exists(new_xml_path):
+    #         print '\'SGID10.' + l + '\','
+    #         # print new_xml_path
+
+    # : Find all ftp links
     # data_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/data')
     # datas = get_all_ftp_links(data_dir)
     # post_dir = os.path.join(home_dir, 'Documents/repos/gis.utah.gov/_posts')
@@ -720,18 +836,21 @@ if __name__ == '__main__':
     # ftp_links = []
     #
     # for path in datas:
-    #     ftp_links.append(parse_ftp_link(path, 'data'))
-    # for p in posts:
+    #     ftp_links.append(parse_metadata_link(path))
+    # for path in posts:
     #     ftp_links.append(parse_ftp_link(path, '_posts'))
     # ftp_links = [l for l in ftp_links if l is not None]
     # print 'total links', len(ftp_links)
-    #
+    # for f in ftp_links:
+    #     print f.name
+
     # datas.extend(posts)
-    # unique_links = set(datas)
-    # exts = [p[p.rfind('.'):] for p in unique_links if '.' in p]
+    # unique_paths = set(datas)
+    # exts = [p[p.rfind('.'):] for p in unique_paths if '.' in p]
     # print 'ext files', len(exts)
     # print set(exts)
-    # print 'unique links', len(unique_links)
+    # print 'unique links', len(unique_paths)
+    # ftp_links = [l for l in ftp_links if l is not None]
     # ftp_catnames = {}
     # for fl in ftp_links:
     #     if fl.ext is None or fl.ext == '.zip':
