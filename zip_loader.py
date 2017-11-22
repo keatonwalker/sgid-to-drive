@@ -242,6 +242,8 @@ def init_drive_package(package):
 def sync_package_and_features(package_spec):
     """Add package to features if it is not already there."""
     feature_list = [f.lower() for f in package_spec['feature_classes']]
+    current_gdb_ids = []
+    current_shp_ids = []
 
     for feature_spec in [spec_manager.get_feature(f) for f in feature_list]:
         package_list = [p.lower() for p in feature_spec['packages']]
@@ -255,7 +257,22 @@ def sync_package_and_features(package_spec):
             get_user_drive().add_file_parent(feature_spec['shape_id'], package_spec['shape_id'])
             print 'add package shape_id'
 
+        current_gdb_ids.append(feature_spec['gdb_id'])
+        current_shp_ids.append(feature_spec['shape_id'])
+
         spec_manager.save_spec_json(feature_spec)
+
+    folder_gdb_ids = [name_id[1] for name_id in drive.list_files_in_directory(package_spec['gdb_id'])]
+    for gdb_id in folder_gdb_ids:
+        if gdb_id not in current_gdb_ids:
+            get_user_drive().remove_file_parent(gdb_id, package_spec['gdb_id'])
+            print 'remove package gdb_id'
+
+    folder_shp_ids = [name_id[1] for name_id in drive.list_files_in_directory(package_spec['shape_id'])]
+    for shp_id in folder_shp_ids:
+        if shp_id not in current_shp_ids:
+            get_user_drive().remove_file_parent(shp_id, package_spec['shape_id'])
+            print 'remove package shp_id'
 
 
 def sync_feature_to_package(feature_spec, package_spec):
@@ -266,10 +283,10 @@ def sync_feature_to_package(feature_spec, package_spec):
         feature_spec['packages'].remove(package_spec['name'])
         if package_spec['gdb_id'] in drive.get_parents(feature_spec['gdb_id']):
             get_user_drive().remove_file_parent(feature_spec['gdb_id'], package_spec['gdb_id'])
-            print 'add package gdb_id'
+            print 'remove package gdb_id'
         if package_spec['shape_id'] in drive.get_parents(feature_spec['shape_id']):
             get_user_drive().remove_file_parent(feature_spec['shape_id'], package_spec['shape_id'])
-            print 'add package shape_id'
+            print 'remove package shape_id'
 
     spec_manager.save_spec_json(feature_spec)
 
